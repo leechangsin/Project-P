@@ -5,6 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<bean class="controller.MainUI_Controller" />
 	<bean class="controller.LoginUI_Controller" />
 	<bean class="controller.RegisterUI_Controller"/>
 
