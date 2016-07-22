@@ -1,17 +1,17 @@
 package service;
 
-import dao.Member;
+import dao.MemberDao;
 
 public class AuthService {
 	
-	private Member member;
+	private MemberDao member;
 	
-	public void setMember(Member member){
+	public void setMember(MemberDao member){
 		this.member = member;
 	}
 	
 	public boolean authenticate(String email, String Password){
-		
+		return false;
 	}
 	
 }

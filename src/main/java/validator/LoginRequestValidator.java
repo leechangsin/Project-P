@@ -3,7 +3,8 @@ package validator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import dao.MemberInfo;
+import table.MemberInfo;
+
 
 public class LoginRequestValidator implements Validator {
 	

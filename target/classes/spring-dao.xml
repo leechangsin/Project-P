@@ -21,9 +21,11 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
-	<bean id="memberDao" class="dao.Member">
+	<bean id="memberDao" class="dao.MemberDao">
 		<!-- <constructor-arg ref="dataSource" />  -->
 	</bean>
 	
-	<bean id="memberInfoDao" class="dao.MemberInfo"/>
+	<bean id="memberInfoDao" class="dao.MemberInfoDao">
+		<constructor-arg ref="dataSource"/>
+	</bean>
 </beans>

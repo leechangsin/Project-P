@@ -1,7 +1,6 @@
-package dao;
+package table;
 
 public class Member {
-
 	String email;
 	String nickname;
 	String intro;

@@ -1,7 +1,7 @@
 package service;
 
-import dao.MemberInfo;
 import exceptions.NotFindEmailException;
+import table.MemberInfo;
 
 public class LoginRequestService {
 	

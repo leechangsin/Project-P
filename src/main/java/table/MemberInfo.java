@@ -1,13 +1,13 @@
-package dao;
+package table;
 
 public class MemberInfo {
-
+	
 	String email;
 	String passwd;
 	String reg_date;
 	String birth_date;
 	String sex;
-
+	
 	public String getEmail() {
 		return email;
 	}
@@ -47,5 +47,4 @@ public class MemberInfo {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-
 }
