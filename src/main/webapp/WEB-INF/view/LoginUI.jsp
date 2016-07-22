@@ -12,15 +12,23 @@
 	<form action="/Project-P/main/showMain" method="post">
 		<input type="submit" name="go_Main" value="Logo_Main"> <br>
 	</form>
-
+	
+	<form:form action="loginRequest" commandName="memberInfo">
+		<label>이메일 : </label> <form:input path="email"/><br>
+		<form:errors path="email"/><br><!-- 에러메세지를 출력하는 form:errors 태그 -->
+		<label>비밀번호 : </label> <form:password path="passwd"/><br>
+		<form:errors path="passwd"/><br><!-- 에러메세지를 출력하는 form:errors 태그  -->
+		<input type="submit" value="로그인">
+	</form:form>
+	
+<!-- 
 	<form action="loginRequest" method="post">
-		이메일 텍스트 : <input type="email" name="email_Text" placeholder="이메일을 입력하세요." required autofocus> <br>
-		<form:errors path="email"/>//에러메세지를 출력하는 form:errors 태그
-		비밀번호 텍스트 : <input type="password" name="PW_Text" placeholder="비밀번호를 입력하세요." required> <br>
-		<form:errors path="password"/>//에러메세지를 출력하는 form:errors 태그
+		<이메일 텍스트 : <input type="email" name="email_Text" placeholder="이메일을 입력하세요." required autofocus/> <br>
+		비밀번호 텍스트 : <input type="password" name="PW_Text" placeholder="비밀번호를 입력하세요." required/> <br>
 		이메일 저장 <input type="checkbox" name="Login_Save_Email_Check"> <br> <input type="submit" value="로그인" /><br> <br>
-	</form>
-
+	</form> 
+-->
+	
 	페이스북 로그인 <br> 
 	카카오톡 로그인 <br> <br>
 
