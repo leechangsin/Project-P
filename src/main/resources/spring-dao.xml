@@ -12,9 +12,9 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://umj64-004.cafe24.com/gmsksw1?characterEncoding=utf8" />
-		<property name="user" value="gmsksw1" />
-		<property name="password" value="rlatjddhks1!" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost/Project-P?characterEncoding=utf8" />
+		<property name="user" value="root" />
+		<property name="password" value="!Dlckdtls12" />
 	</bean>
 
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
