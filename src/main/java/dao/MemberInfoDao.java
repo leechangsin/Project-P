@@ -16,20 +16,23 @@ public class MemberInfoDao {
 
 	public MemberInfoDao(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-
-	}
+	}//end MemberInfoDao(DataSource dataSource)
 	
 	public MemberInfo selectByEmail(String email) {
 		List<MemberInfo> results = jdbcTemplate.query("select * from memberInfo where email = ?",
-				new RowMapper<MemberInfo>(){
+				new RowMapper<MemberInfo>() {
 					@Override
 					public MemberInfo mapRow(ResultSet rs, int rowNum) throws SQLException {
 						// TODO Auto-generated method stub
-						
-						return null;
-					}
-			
-		});
-		return null;
-	}
-}
+						MemberInfo memberInfo = new MemberInfo();
+						memberInfo.setEmail(rs.getString("email"));
+						memberInfo.setPasswd(rs.getString("password"));
+						memberInfo.setBirth_date(rs.getString("birth_date"));
+						memberInfo.setReg_date(rs.getString("reg_date"));
+						memberInfo.setSex(rs.getString("sex"));
+						return memberInfo;
+					}//end mapRow(ResultSet rs, int rowNum)
+				}, email);
+		return results.isEmpty() ? null : results.get(0);
+	}//end selectByEmail(String email)
+}//end class MemberInfoDao
