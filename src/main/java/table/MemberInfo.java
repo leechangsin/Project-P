@@ -47,4 +47,9 @@ public class MemberInfo {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
+	
+	@Override
+	public String toString(){
+		return "이메일 = " + email;
+	}
 }
