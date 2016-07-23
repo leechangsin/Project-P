@@ -9,6 +9,5 @@
 	<bean class="controller.LoginUI_Controller">
 		<constructor-arg ref="memberInfoDao"> </constructor-arg>
 	</bean>
-	<bean class="controller.RegisterUI_Controller"/>
 
 </beans>

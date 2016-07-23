@@ -26,6 +26,5 @@ public class LoginRequestValidator implements Validator {
 		//password가 비어있다면 검사대상객체의 password프로퍼티의 에러코드로 required를 추가
 		if(memberInfo.getPasswd() == null || memberInfo.getPasswd().trim().isEmpty())
 			errors.rejectValue("passwd", "required");
-		
 	}//validate(Object target, Errors errors)
 } //class LoginRequestValidator
