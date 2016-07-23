@@ -8,7 +8,7 @@
 </head>
 <body>
 
-${email_Text}님 로그인이 되었습니다.
+${Login_Email_Text}님 로그인이 되었습니다.
 MainUI 입니다.
 
 </body>

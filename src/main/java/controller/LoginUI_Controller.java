@@ -36,8 +36,6 @@ public class LoginUI_Controller {
 		String email = memberInfo.getEmail();
 		String passwd = memberInfo.getPasswd();
 		try{
-			System.out.println("이메일 : " + email);
-			System.out.println("비밀번호 : " + passwd);
 			LoginRequestService.authenticate(memberInfoDao, email, passwd);
 			//변수명을 Login_Email_Text -> MainUI에서 받는 변수명으로 변경해야함.
 			model.addAttribute("Login_Email_Text", email);
