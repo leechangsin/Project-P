@@ -7,6 +7,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-검색부분 
+
+
+<c:forEach items="${list}" var="boardVO">
+
+
+
+
+ <tr>
+
+  <td>${boardVO.bno}</td>
+
+  <td>${boardVO.writer}</td>
+
+  <td><span class="badge bg-red">${boardVO.viewcnt }</span></td>
+
+ </tr>
+
+
+
+
+</c:forEach>
+
+
+
+	
 </body>
 </html>

@@ -34,4 +34,7 @@ public class MemberInfoDao {
 
 		return result.isEmpty() ? null : result.get(0);
 	}// end selectByEmail(String email)
+	
+	
+	
 }// end class MemberInfoDao

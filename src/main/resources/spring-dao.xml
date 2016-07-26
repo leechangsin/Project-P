@@ -12,8 +12,8 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl" value="jdbc:mysql://localhost/DvelopDB?characterEncoding=utf8" />
-		<property name="user" value="developer" />
-		<property name="password" value="developer" />
+		<property name="user" value="root" />
+		<property name="password" value="1234" />
 	</bean>
 
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
