@@ -11,5 +11,6 @@
 	
 	<bean class="controller.IndexUI_Controller"/>
 	<bean class="controller.RegisterUI_Controller"/>
-	
+		
+<bean class="controller.SearchUI_Controller"/>
 </beans>
