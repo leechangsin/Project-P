@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,30 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
+	<!-- 검색하는 영역 -->
+	검색하는 영역
+	<input type="text" name="search" id="search">
+	
+	<br><br>
+	<%-- <form:input path="search" /> --%>
 
-
-<c:forEach items="${list}" var="boardVO">
-
-
-
-
- <tr>
-
-  <td>${boardVO.bno}</td>
-
-  <td>${boardVO.writer}</td>
-
-  <td><span class="badge bg-red">${boardVO.viewcnt }</span></td>
-
- </tr>
-
-
-
-
-</c:forEach>
-
-
-
+	<!-- 출력하는 영역 -->
+	 <%@ include file="Search_item.jsp" %> 
 	
 </body>
 </html>

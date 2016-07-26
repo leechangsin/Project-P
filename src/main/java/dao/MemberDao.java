@@ -34,6 +34,6 @@ public class MemberDao {
 
 		return result.isEmpty() ? null : result.get(0);
 		
-	}// end searchByEmail(String name)
+	}// end searchByEmail(String email)
 	
 }

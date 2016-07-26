@@ -13,7 +13,7 @@ public class SearchUI_Controller {
 	}
 	
 	@RequestMapping("notPage")
-	public String Search_not(Model model){
-		return "Search_not_page";
+	public String Search_notPage(Model model){
+		return "Search_not_pageUI";
 	}
 }
