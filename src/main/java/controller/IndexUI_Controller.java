@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class IndexUI_Controller {
 
+	@RequestMapping("/")
 	public String indexUI(Model model) {
 		return "IndexUI";
 	}
