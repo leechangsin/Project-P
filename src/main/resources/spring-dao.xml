@@ -28,7 +28,7 @@
 		<constructor-arg ref="dataSource"/>
 	</bean>
 	
-	<bean id="Contents" class="dao.Contents"/>
-	<bean id="Contents_comment" class="dao.Contents_comment"/>
+	<bean id="Contents" class="command.Contents"/>
+	<bean id="Contents_comment" class="command.Contents_comment"/>
 
 </beans>
