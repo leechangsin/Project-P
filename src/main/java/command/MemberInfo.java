@@ -1,4 +1,4 @@
-package table;
+package command;
 
 public class MemberInfo {
 	

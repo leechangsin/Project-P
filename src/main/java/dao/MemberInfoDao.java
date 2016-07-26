@@ -5,7 +5,8 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import table.MemberInfo;
+
+import command.MemberInfo;
 
 public class MemberInfoDao {
 	private JdbcTemplate jdbcTemplate;

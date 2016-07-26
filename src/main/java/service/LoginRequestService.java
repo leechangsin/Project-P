@@ -1,9 +1,9 @@
 package service;
 
+import command.MemberInfo;
 import dao.MemberInfoDao;
 import exceptions.NotFindEmailException;
 import exceptions.NotMatchPasswdException;
-import table.MemberInfo;
 
 public class LoginRequestService {
 	

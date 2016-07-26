@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/login/regist")
+@RequestMapping("/regist")
 public class RegisterUI_Controller {
 
 	@RequestMapping("main")

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import table.MemberInfo;
+import command.MemberInfo;
 
 public class MemberInfoRowMapper implements RowMapper<MemberInfo> {
 	@Override

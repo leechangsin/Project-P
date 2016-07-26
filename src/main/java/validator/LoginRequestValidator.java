@@ -3,7 +3,7 @@ package validator;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import table.MemberInfo;
+import command.MemberInfo;
 
 
 public class LoginRequestValidator implements Validator {

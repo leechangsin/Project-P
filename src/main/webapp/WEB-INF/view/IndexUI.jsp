@@ -7,6 +7,7 @@
 <title>여러분들과 함께하는 펫</title>
 </head>
 <body>
+<!-- Login에 성공하면 LoginUI_Controller에서 Login_Email_Text로 값이 넘어옴 -->
 
 <div id='mainUI'>
 	<!-- Head 영역 -->

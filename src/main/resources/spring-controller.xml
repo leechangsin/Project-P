@@ -5,10 +5,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 		
-	<bean class="controller.MainUI_Controller" />
 	<bean class="controller.LoginUI_Controller">
 		<constructor-arg ref="memberInfoDao"> </constructor-arg>
 	</bean>
 	
 	<bean class="controller.IndexUI_Controller"/>
+	<bean class="controller.RegisterUI_Controller"/>
+	
 </beans>
