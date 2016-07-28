@@ -11,21 +11,17 @@
 </head>
 <body>
 	
-	<form:form commandName="cmd">
-	<p>
-	<label>검색: <form:input path="search"/></label>
-	<input type="submit" value="검색">
-	
-	</p>
-	</form:form>
-	
-	<c:if test="${! empty members }">
-	닉네임 : ${mem.nickname } <br>
-	자기소개 : %{mem.intro}<br><br>
-	
-	
+<c:if test="${! empty memberList}">
+<form:form method="GET" commandName="searchParam">
+    이름: <form:input path="name" />
+    이메일: <form:input path="email" />
+    <input type="submit" value="검색" />
+</form:form>
 	
 	</c:if>
+	
+	 출력하기 -> ${greeting} <- 여기까지
+	dd2d ${test1} ddd2
 	
 	<!-- 검색하는 영역 -->
 	검색하는 영역
