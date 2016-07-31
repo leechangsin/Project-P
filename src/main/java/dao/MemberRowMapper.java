@@ -13,9 +13,9 @@ public class MemberRowMapper implements RowMapper<Member> {
 		// TODO Auto-generated method stub
 		Member member = new Member();
 		member.setEmail(rs.getString("email"));
-		member.setEmail(rs.getString("nickname"));
-		member.setEmail(rs.getString("intro"));
-		member.setEmail(rs.getString("pucture"));
+		member.setNickname(rs.getString("nickname"));
+		member.setIntro(rs.getString("intro"));
+		member.setPicture(rs.getString("pucture"));
 
 		return member;
 	}	

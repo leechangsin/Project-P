@@ -9,29 +9,38 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	
-<c:if test="${! empty memberList}">
-<form:form method="GET" commandName="searchParam">
-    이름: <form:input path="name" />
-    이메일: <form:input path="email" />
-    <input type="submit" value="검색" />
-</form:form>
-	
-	</c:if>
-	
-	 출력하기 -> ${greeting} <- 여기까지
-	dd2d ${test1} ddd2
-	
-	<!-- 검색하는 영역 -->
-	검색하는 영역
-	<input type="text" name="search" id="search">
-	
-	<br><br>
-	<%-- <form:input path="search" /> --%>
+<body>   
 
-	<!-- 출력하는 영역 -->
-	 <%@ include file="Search_item.jsp" %> 
+<form:form commandName="search_model">
+<p>
+
+<label><form:input path="name"/> </label>
+<input type="submit" value="검색">
+</p>>
+
+</form:form>
+
+<c:if test="$!empty members">
+<table>
+	<tr>
+	<th>아이디</th><th>이메일</th><th>인트로</th>
+	
+	</tr>
+	
+	<c:forEach var="mem" items="%{members}">
+	<tr> 
+		<td>${mem.nickname}</td>
+		<td>${mem.email}</td>
+		<td>${mem.intro}</td>
+	</tr>
+	</c:forEach>
+
+</table>
+</c:if>
+
+
+
+
 	
 </body>
 </html>

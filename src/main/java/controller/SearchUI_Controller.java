@@ -1,28 +1,32 @@
 package controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mysql.fabric.xmlrpc.base.Member;
-
+import command.Member;
 import dao.MemberDao;
 
 @Controller
-@RequestMapping("search")
 public class SearchUI_Controller {
-	MemberDao memberdao = new MemberDao();
-	@RequestMapping("main")
-	public String Search_main(Model model, @RequestParam(value="id", required = false)String id){
-		model.addAttribute("greeting","안녕하세요");
-		model.addAttribute("test1",id);
-		return "SearchUI";
-	}
+	private MemberDao memberDao;
 	
-	@RequestMapping("notPage")
-	public String Search_notPage(Model model){
-		return "Search_not_pageUI";
+
+	public SearchUI_Controller(MemberDao memberDao) {
+		this.memberDao = memberDao;
+	}
+
+	@RequestMapping("/search/main")
+	public String Search_main(@ModelAttribute("search_model")String id, Model model){
+	
+		List<Member> members = memberDao.searchByName(id);
+		
+		model.addAttribute("members",members);
+		
+		return "SearchUI";
 	}
 }
