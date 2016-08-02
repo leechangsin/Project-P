@@ -12,7 +12,10 @@
 	<bean class="controller.IndexUI_Controller"/>
 	<bean class="controller.RegisterUI_Controller"/>
 	
-	<bean class="controller.SearchUI_Controller">
-	<constructor-arg ref="memberDao"> </constructor-arg>
+	<bean class="controller.SearchUI_Contents_Controller">
+			<constructor-arg ref="contentsDao"> </constructor-arg>
+	</bean>
+		<bean class="controller.SearchUI_Member_Controller">
+			<constructor-arg ref="memberDao"> </constructor-arg>
 	</bean>
 </beans>

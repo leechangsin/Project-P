@@ -19,7 +19,9 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-
+	<bean id="contentsDao" class="dao.ContentsDao">
+		<constructor-arg ref="dataSource" />
+	</bean>
 	<bean id="memberDao" class="dao.MemberDao">
 		<constructor-arg ref="dataSource" />
 	</bean>
@@ -28,7 +30,5 @@
 		<constructor-arg ref="dataSource"/>
 	</bean>
 	
-	<bean id="Contents" class="command.Contents"/>
-	<bean id="Contents_comment" class="command.Contents_comment"/>
 
 </beans>
