@@ -6,11 +6,15 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 		
 	<bean class="controller.LoginUI_Controller">
-		<constructor-arg ref="memberInfoDao"> </constructor-arg>
+		<constructor-arg ref="memberInfoDao"/>
 	</bean>
 	
 	<bean class="controller.IndexUI_Controller"/>
 	<bean class="controller.RegisterUI_Controller"/>
-	<bean class="controller.ContentsUI_Controller"/>
+	
+	<bean class="controller.ContentsUI_Controller">
+		<constructor-arg ref="memberDao"/>
+	</bean>
+	
 	
 </beans>

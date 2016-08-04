@@ -3,13 +3,13 @@ package controller;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileVo {
-	private MultipartFile file;
+	private MultipartFile pictureFile;
 
-	public MultipartFile getFile() {
-		return file;
+	public void setPictureFile(MultipartFile pictureFile) {
+		this.pictureFile = pictureFile;
 	}
 
-	public void setFile(MultipartFile file) {
-		this.file = file;
+	public MultipartFile getPictureFile() {
+		return pictureFile;
 	}
 }

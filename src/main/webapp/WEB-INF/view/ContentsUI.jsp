@@ -7,8 +7,8 @@
 <title>ContentsUI입니다.</title>
 </head>
 <body>
-	<form action="/Project-P/contents/getFile" method="POST" enctype="multipart/form-data">
-		<input type="file" name="file" />
+	<form action="/Project-P/contents/savePicture" method="POST" enctype="multipart/form-data">
+		<input type="file" name="pictureFile" />
    		<input type="submit" value="서버전달"/>
 	</form>
 </body>
