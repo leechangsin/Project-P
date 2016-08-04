@@ -2,9 +2,7 @@ package service;
 
 import command.AuthInfo;
 import command.Member;
-import command.MemberInfo;
 import dao.MemberDao;
-import dao.MemberInfoDao;
 import exceptions.NotMatchPasswdException;
 
 public class AuthService {
