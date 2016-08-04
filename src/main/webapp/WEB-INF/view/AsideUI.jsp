@@ -14,7 +14,7 @@
 <input type="button" value="로그인하기" onClick="location.href='login/main'">
 <br><br>
 
-<a href="login/regist/main">회원가입</a>
+<a href="regist/main">회원가입</a>
 <br>
 </body>
 </html>
