@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import command.AuthInfo;
 import command.Contents;
 import command.PwdChange;
 import dao.ContentsDao;
+import exceptions.NotMatchPasswdException;
+import service.ChangePasswordService;
 import validator.PwdChangeValidator;
 
 
@@ -45,8 +48,8 @@ public class PwdChange_Controller {
 			changePasswordService.changePassord(authInfo.getEmail(),
 			pwdCmd.getCurrentPassword(),pwdCmd.getNewPassword());
 			return "edit/changePwd";
-		}catch(IdPasswordNorMatchingException e){
-			errors.rejectValue("currentPassword,"notMatching");
+		}catch(NotMatchPasswdException e){
+			errors.rejectValue("currentPassword","notMatching");
 			return "edit/changePawForm";
 		}
 	}
