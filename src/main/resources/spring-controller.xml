@@ -18,4 +18,9 @@
 		<bean class="controller.SearchUI_Member_Controller">
 			<constructor-arg ref="memberDao"> </constructor-arg>
 	</bean>
+	
+	<bean class="controller.PwdChange-Controller">
+	<property name="changePasswordService" ref="changePwdSvc"/>
+		
+	</bean>
 </beans>
