@@ -38,12 +38,12 @@ public class ContentsUI_Controller {
 		return "redirect:main";
 	}
 	
-	@RequestMapping("getBytePicture")
-	public ResponseEntity<byte[]> getBytePicture(){
-		Map<String, Object> hashMap = new HashMap<String, Object>();
-		byte[] Picture = (byte[]) hashMap.get("Picture");
+	@RequestMapping("getPicture")
+	public ResponseEntity<byte[]> getPicture(){
+		Map<String, Object> hashMap = memberDao.getPicture();
+		byte[] picture = (byte[]) hashMap.get("picture");
 		final HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.IMAGE_PNG);
-		return new ResponseEntity<byte[]>(Picture, header, HttpStatus.OK);
+		return new ResponseEntity<byte[]>(picture, header, HttpStatus.OK);
 	}
 }

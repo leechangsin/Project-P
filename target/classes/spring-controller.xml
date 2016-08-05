@@ -15,6 +15,5 @@
 	<bean class="controller.ContentsUI_Controller">
 		<constructor-arg ref="memberDao"/>
 	</bean>
-	
-	
+
 </beans>

@@ -6,4 +6,8 @@
 		INSERT INTO test_table(picture)
 		VALUES(#{picture})
 	</insert>
+
+	<select id="getPicture" resultType="java.util.Map">
+		SELECT picture FROM test_table
+	</select>
 </mapper>
