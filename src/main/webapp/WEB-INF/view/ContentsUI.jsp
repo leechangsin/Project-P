@@ -8,7 +8,8 @@
 </head>
 <body>
 
-	<img alt="" src="/Project-P/contents/getPicture" />
+	<!-- <img alt="" src="/Project-P/contents/getPicture" />  -->
+	<video src="/Project-P/contents/getPicture"></video>
 	<form action="/Project-P/contents/savePicture" method="POST" enctype="multipart/form-data">
 		<input type="file" name="pictureFile" />
    		<input type="submit" value="서버전달"/>

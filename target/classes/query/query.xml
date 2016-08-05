@@ -9,5 +9,6 @@
 
 	<select id="getPicture" resultType="java.util.Map">
 		SELECT picture FROM test_table
+		WHERE id=6
 	</select>
 </mapper>
