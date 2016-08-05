@@ -30,5 +30,7 @@
 		<constructor-arg ref="dataSource"/>
 	</bean>
 	
-
+	<bean id="AuthService" class="service.AuthService">
+		<property name="memberDao" ref="memberDao"/>
+	</bean>
 </beans>
