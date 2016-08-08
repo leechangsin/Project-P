@@ -46,4 +46,13 @@ public class ContentsUI_Controller {
 		header.setContentType(MediaType.IMAGE_PNG);
 		return new ResponseEntity<byte[]>(picture, header, HttpStatus.OK);
 	}
+	
+	@RequestMapping("getVideo")
+	public ResponseEntity<byte[]> getVideo(){
+		Map<String, Object> hashMap = memberDao.getPicture();
+		byte[] picture = (byte[]) hashMap.get("picture");
+		final HttpHeaders header = new HttpHeaders();
+		header.setContentType(MediaType.IMAGE_PNG);
+		return new ResponseEntity<byte[]>(picture, header, HttpStatus.OK);
+	}
 }

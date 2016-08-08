@@ -9,7 +9,11 @@
 <body>
 
 	<img alt="" src="/Project-P/contents/getPicture" />
-	<video src="/Project-P/contents/getPicture"></video>
+	
+	<video controls>
+		<source src="/Project-P/contents/getVideo">
+	</video>
+	
 	<form action="/Project-P/contents/savePicture" method="POST" enctype="multipart/form-data">
 		<input type="file" name="pictureFile" />
    		<input type="submit" value="서버전달"/>

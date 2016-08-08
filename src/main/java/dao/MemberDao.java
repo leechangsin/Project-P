@@ -23,5 +23,10 @@ public class MemberDao {
 		List<Map<String, Object>> result = query.selectList("query.getPicture");
 		return result.get(0);
 	}
+	
+	public Map<String, Object> getVideo(){
+		List<Map<String, Object>> result = query.selectOne("query.getVideo");
+		return result.get(0);
+	}
 
 }
