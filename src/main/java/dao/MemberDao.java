@@ -25,8 +25,14 @@ public class MemberDao {
 	}
 	
 	public Map<String, Object> getVideo(){
-		List<Map<String, Object>> result = query.selectOne("query.getVideo");
+		List<Map<String, Object>> result = query.selectList("query.getVideo");
 		return result.get(0);
 	}
-
+	
+	/*미구현 메서드
+	public String getText(){
+		String result = query.selectOne("query.getText");
+		return result;
+	}
+	*/
 }

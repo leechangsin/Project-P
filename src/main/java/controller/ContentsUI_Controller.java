@@ -26,6 +26,26 @@ public class ContentsUI_Controller {
 		return "ContentsUI";
 	}
 
+	/* 템플릿 메서드들
+	 * 웹프로그래밍 기술이 향상된다음에 다음과같은 구조로
+	 * 코딩할것
+	@RequestMapping("saveContents")
+	public String saveContents(){
+		savePicture(new FileVo());
+		saveVideo();
+		saveText();
+		return "redirect:main";
+	}
+	
+	@RequestMapping("getContents")
+	public String getContents(){
+		getPicture();
+		getVideo();
+		getText();
+		return "redirect:main";
+	}
+	*/
+
 	@RequestMapping("savePicture")
 	public String savePicture(FileVo fileVo) {
 		try {
@@ -37,6 +57,17 @@ public class ContentsUI_Controller {
 		}
 		return "redirect:main";
 	}
+
+	/*미구현 메서드들
+	public String saveVideo(){
+		
+		return "redirect:main";
+	}
+	public String saveText(){
+		
+		return "redirect:main";
+	}
+	*/
 	
 	@RequestMapping("getPicture")
 	public ResponseEntity<byte[]> getPicture(){
@@ -49,10 +80,18 @@ public class ContentsUI_Controller {
 	
 	@RequestMapping("getVideo")
 	public ResponseEntity<byte[]> getVideo(){
-		Map<String, Object> hashMap = memberDao.getPicture();
-		byte[] picture = (byte[]) hashMap.get("picture");
+		Map<String, Object> hashMap = memberDao.getVideo();
+		byte[] video = (byte[]) hashMap.get("picture");
 		final HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.IMAGE_PNG);
-		return new ResponseEntity<byte[]>(picture, header, HttpStatus.OK);
+		return new ResponseEntity<byte[]>(video, header, HttpStatus.OK);
 	}
+	
+	/*미구현 메서드
+	@RequestMapping("getText")
+	public String getText(){
+		String text = memberDao.getText();
+		return text;
+	}
+	*/
 }

@@ -10,9 +10,7 @@
 
 	<img alt="" src="/Project-P/contents/getPicture" />
 	
-	<video controls>
-		<source src="/Project-P/contents/getVideo">
-	</video>
+	<video controls src="/Project-P/contents/getVideo"> </video>
 	
 	<form action="/Project-P/contents/savePicture" method="POST" enctype="multipart/form-data">
 		<input type="file" name="pictureFile" />
