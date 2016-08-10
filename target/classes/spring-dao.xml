@@ -15,6 +15,7 @@
 		<property name="user" value="developer" />
 		<property name="password" value="developer" />
 	</bean>
+	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" value="classpath*:query/**" />
@@ -22,12 +23,17 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
+	
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-
+	
+	<bean id="contentsDao" class="dao.ContentsDao">
+		<constructor-arg ref="dataSource" />
+	</bean>
 	<bean id="memberDao" class="dao.MemberDao">
+		<constructor-arg ref="dataSource" />
 		<constructor-arg ref="sqlSession"/>
 	</bean>
 
@@ -37,5 +43,4 @@
 
 	<bean id="Contents" class="command.Contents" />
 	<bean id="Contents_comment" class="command.Contents_comment" />
-
 </beans>

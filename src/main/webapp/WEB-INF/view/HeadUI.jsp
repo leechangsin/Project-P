@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +18,7 @@
 <h1> 검색부분 </h1>
 검색부분은 자바스크립트로 텍스트 내용 여부 확인체크하기
  -->
-<form action="SearchUI" method="post">
+<form action="search/main" method="post">
 	<input type="text" name="search" id="search">
 	<input type="submit" value="검색">
 </form>

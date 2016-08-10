@@ -15,6 +15,28 @@ public class Contents {
 	String share_number;
 	String reg_date;
 	String summary;
+	
+	public Contents(){
+		
+	}
+	
+	public Contents(String writer, String identification, String title, String content, String vidio, String picture,
+			String hit_number, String like_number, String comment_number, String share_number, String reg_date,
+			String summary) {
+		super();
+		this.writer = writer;
+		Identification = identification;
+		this.title = title;
+		this.content = content;
+		this.vidio = vidio;
+		this.picture = picture;
+		this.hit_number = hit_number;
+		this.like_number = like_number;
+		this.comment_number = comment_number;
+		this.share_number = share_number;
+		this.reg_date = reg_date;
+		this.summary = summary;
+	}
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}

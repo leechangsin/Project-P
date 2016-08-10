@@ -5,6 +5,18 @@ public class Member {
 	String nickname;
 	String intro;
 	String picture;
+	
+	public Member(){
+		
+	}
+	public Member(String email, String nickname, String intro, String picture) {
+		super();
+		this.email = email;
+		this.nickname = nickname;
+		this.intro = intro;
+		this.picture = picture;
+	}
+
 
 	public String getEmail() {
 		return email;
