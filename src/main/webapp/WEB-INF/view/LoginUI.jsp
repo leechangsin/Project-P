@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<form action="/Project-P/main/showIndexUI" method="post">
+	<form action="/Project-P/index" method="post">
 		<input type="submit" name="Logo_Main" value="Logo_Main"> <br>
 	</form>
 
