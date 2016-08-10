@@ -4,11 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입 페이지</title>
 </head>
 <body>
 
-RegistUI - Main입니다.
+<P> <a href="/Project-P/index">PetSi</a> </P>
+
+<P>원하시는 가입 유형을 선택해주세요.</P>
+<a href="/Project-P/regist/SignUpEmail"> 이메일 계정만들기 </a>
+
+카카오톡 계정만들기(미구현)
+페이스북 계정만들기(미구현)
 
 </body>
 </html>
