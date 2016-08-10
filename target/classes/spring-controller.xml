@@ -11,12 +11,11 @@
 	
 	<bean class="controller.IndexUI_Controller"/>
 	<bean class="controller.RegisterUI_Controller"/>
-
-<!--  
+ 
 	<bean class="controller.ContentsUI_Controller">
 		<constructor-arg ref="memberDao"/>
 	</bean>
--->
+	
 	<bean class="controller.SearchUI_Contents_Controller">
 			<constructor-arg ref="contentsDao"> </constructor-arg>
 	</bean>
