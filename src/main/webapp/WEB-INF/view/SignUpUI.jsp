@@ -8,14 +8,14 @@
 </head>
 <body>
 
-<p>약관1
+<p>약관1 <br>
 <label> <input type="checkbox" name="agree1" value="true"> 약관동의</label>
 
-<p>약관2
+<p>약관2 <br>
 <label> <input type="checkbox" name="agree2" value="true"> 약관동의</label>
 
 <form action="../">
-	<input type="submit" value="가입취소">
+	<input type="submit" value="가입취소"> <br>
 </form>
 
 <form action="/Project-P/regist/SignUpEmail2">
