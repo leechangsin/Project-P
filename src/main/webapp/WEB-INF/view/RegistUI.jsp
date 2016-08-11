@@ -11,7 +11,7 @@
 <P> <a href="/Project-P/index">PetSi</a> </P>
 
 <P>원하시는 가입 유형을 선택해주세요.</P>
-<a href="/Project-P/regist/SignUpEmail"> 이메일 계정만들기 </a> <br>
+<a href="/Project-P/regist/SignUpEmail/step1"> 이메일 계정만들기 </a> <br>
 
 카카오톡 계정만들기(미구현) <br>
 페이스북 계정만들기(미구현)
