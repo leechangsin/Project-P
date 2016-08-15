@@ -18,6 +18,13 @@
 		<form:errors path="passwd" /> <br> <!-- 에러메세지를 출력하는 form:errors 태그  -->
 		<input type="submit" value="변경하기">
 	</form:form>
+	
+	비밀번호가 입력되고 넘어갈때 체크 하기 체크해서 다르면 오류
+	
+	<%
+	
+	
+	%>
 
 </body>
 </html>

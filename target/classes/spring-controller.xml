@@ -19,7 +19,7 @@
 			<constructor-arg ref="memberDao"> </constructor-arg>
 	</bean>
 	
-	<bean class="controller.PwdChange-Controller">
+	<bean class="controller.PwdChange_Controller">
 	<property name="changePasswordService" ref="changePwdSvc"/>
 		
 	</bean>

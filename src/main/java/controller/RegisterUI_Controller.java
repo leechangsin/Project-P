@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/regist")
 public class RegisterUI_Controller {
 
-	@RequestMapping("main")
+	@RequestMapping("/main")
 	public String Register(Model model){
 		
 		return "RegistUI";

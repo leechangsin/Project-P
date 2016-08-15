@@ -43,7 +43,7 @@ public class PwdChange_Controller {
 			return "edit/changePwd";
 		}catch(NotMatchPasswdException e){
 			errors.rejectValue("currentPassword","notMatching");
-			return "edit/changePawForm";
+			return "edit/changePwdForm";
 		}
 	}
 	
