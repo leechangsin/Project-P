@@ -31,13 +31,5 @@
 	<bean class="controller.SearchUI_Member_Controller">
 		<constructor-arg ref="memberDao"/>
 	</bean>
-<<<<<<< HEAD
-	
-	<bean class="controller.PwdChange_Controller">
-	<property name="changePasswordService" ref="changePwdSvc"/>
-		
-	</bean>
-=======
 
->>>>>>> PET_GIT/Feature/#12
 </beans>

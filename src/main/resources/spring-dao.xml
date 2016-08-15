@@ -40,14 +40,7 @@
 	<bean id="memberInfoDao" class="dao.MemberInfoDao">
 		<constructor-arg ref="dataSource" />
 	</bean>
-<<<<<<< HEAD
-	
-	<bean id="AuthService" class="service.AuthService">
-		<property name="memberDao" ref="memberDao"/>
-	</bean>
-=======
 
 	<bean id="Contents" class="command.Contents" />
 	<bean id="Contents_comment" class="command.Contents_comment" />
->>>>>>> PET_GIT/Feature/#12
 </beans>
