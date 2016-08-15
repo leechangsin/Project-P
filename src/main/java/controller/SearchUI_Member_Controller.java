@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import command.Member;
+import command.RequestType;
 import dao.MemberDao;
 
 @Controller
@@ -19,7 +20,7 @@ public class SearchUI_Member_Controller {
 
 	@RequestMapping("/search/members")
 	public String Search_Members(@ModelAttribute("SearchModel") Member member, Model model) {
-		List<Member> members = memberDao.searchByName(member.getNickname());
+		List<Member> members = memberDao.selectByNickName(member.getNickname(), RequestType.Search_Members);
 
 		model.addAttribute("members", members);
 
