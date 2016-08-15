@@ -18,11 +18,11 @@ public class SearchUI_Member_Controller {
 	}
 
 	@RequestMapping("/search/members")
-	public String Search_Members(@ModelAttribute("SearchModel")Member member, Model model){
+	public String Search_Members(@ModelAttribute("SearchModel") Member member, Model model) {
 		List<Member> members = memberDao.searchByName(member.getNickname());
-		
-		model.addAttribute("members",members);
-		
+
+		model.addAttribute("members", members);
+
 		return "SearchUI_Member";
 	}
 }

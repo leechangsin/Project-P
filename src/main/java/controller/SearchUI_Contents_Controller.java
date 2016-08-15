@@ -13,17 +13,17 @@ import dao.ContentsDao;
 @Controller
 public class SearchUI_Contents_Controller {
 	private ContentsDao contenstDao;
-	
+
 	public SearchUI_Contents_Controller(ContentsDao contenstDao) {
 		this.contenstDao = contenstDao;
 	}
 
 	@RequestMapping("/search/contents")
-	public String Search_Contents(@ModelAttribute("SearchModelContents")Contents contents, Model model){
+	public String Search_Contents(@ModelAttribute("SearchModelContents") Contents contents, Model model) {
 		List<Contents> contests = contenstDao.selectByTitle(contents.getTitle());
-		
-		model.addAttribute("contests",contests);
-		
+
+		model.addAttribute("contests", contests);
+
 		return "SearchUI_Contents";
 	}
 }

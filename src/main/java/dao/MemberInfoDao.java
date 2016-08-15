@@ -15,14 +15,6 @@ public class MemberInfoDao {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}// end MemberInfoDao(DataSource dataSource)
 
-	public List<MemberInfo> selectAll() {
-		String sql = "select * from memberInfo";
-
-		List<MemberInfo> results = jdbcTemplate.query(sql, new MemberInfoRowMapper());
-
-		return results;
-	}// end selectAll()
-
 	public MemberInfo selectByEmail(String email) {
 		String sql = "select * from memberInfo where email = ?";
 
@@ -31,6 +23,10 @@ public class MemberInfoDao {
 		return result.isEmpty() ? null : result.get(0);
 	}// end selectByEmail(String email)
 	
-	
+	public Boolean insert(MemberInfo memberInfo){
+		String sql = "insert into memberInfo valuse()";
+		return null;
+		
+	}
 	
 }// end class MemberInfoDao

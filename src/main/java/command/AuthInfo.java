@@ -10,6 +10,7 @@ public AuthInfo(String email, String name) {
 	super();
 	this.email = email;
 	this.name = name;
+	
 }
 
 public String getEmail() {
