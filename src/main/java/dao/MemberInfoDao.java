@@ -17,7 +17,7 @@ public class MemberInfoDao {
 
 	public MemberInfoDao(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-	}// end MemberInfoDao(DataSource dataSource)
+	}
 
 	public MemberInfo selectByEmail(String email) {
 		String sql = "select * from memberInfo where email = ?";
@@ -27,7 +27,7 @@ public class MemberInfoDao {
 		return result.isEmpty() ? null : result.get(0);
 	}// end selectByEmail(String email)
 	
-	//회원가입
+	//개인정보를 가지고 회원가입하는 쿼리문
 	public Boolean insertMemberInfo(final MemberInfo memberInfo){
 		final String sql = "insert into memberInfo values(?, ?, ?, ?, ?)";
 		
@@ -46,7 +46,5 @@ public class MemberInfoDao {
 		});
 
 		return true;
-		
-	}
-	
+	}//end insertMemberInfo(final MemberInfo memberInfo)
 }// end class MemberInfoDao

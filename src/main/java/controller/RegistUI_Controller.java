@@ -2,8 +2,6 @@ package controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -83,12 +81,16 @@ public class RegistUI_Controller {
 		//DB에 사용자가 입력한 개인정보 저장
 		signUpEmailService.signUpMemberInfo(memberInfo);
 		
+		//세션에 사용자 이메일을
+		
 		return "SignUpEmailStep3";
 	}
 	
 	/* step4 = 가입성공 여부를 보여주는 화면
 	 * 그와 동시에 step3(회원 계정정보입력 화면)에서 nickname을 입력하지 않았다면 step3로 돌아감
 	 * nickname을 입력했다면 DB에 닉네임, 자기소개, 사진을 저장
+	 * 문제점 발견 : step4에서 인터넷창을 끈다면 회원개인정보만 DB에 저장된 채로 회원가입 단계가 종료됨...
+	 * step3에서는 커맨드 객체값만 검증하고 step4에서 개인정보, 계정정보를 모두 저장해야될꺼 같음...
 	 */
 	@RequestMapping("SignUpEmail/step4")
 	public String SignUpEmailStep4(Member member, Errors error, FileVo fileVo){
@@ -98,6 +100,7 @@ public class RegistUI_Controller {
 		if(error.hasErrors())
 			return "SignUpEmailStep3";
 		
+		/* 미구현, 우선 사진이 없는 상태에서 DB에 업로드가 성공된 뒤에 구현하기
 		//SignUpEmailStep3뷰에서 사용자가 사진을 업로드하였다면 사진을 DB에 업로드함
 		try {
 			Map<String, Object> hashMap = new HashMap<String, Object>();
@@ -106,6 +109,9 @@ public class RegistUI_Controller {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		*/
+		
+		
 		
 		return "SignUpEmailStep4";
 	}
