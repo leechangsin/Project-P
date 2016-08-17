@@ -17,7 +17,6 @@ public class Member {
 		this.picture = picture;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}

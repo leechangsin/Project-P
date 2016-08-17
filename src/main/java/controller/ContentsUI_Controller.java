@@ -10,15 +10,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import dao.MemberDao;
+import dao.ContentsDao;
 
 @Controller
 @RequestMapping("/contents")
 public class ContentsUI_Controller {
-	private MemberDao memberDao;
+	private ContentsDao contentsDao;
 
-	public ContentsUI_Controller(MemberDao memberDao) {
-		this.memberDao = memberDao;
+	public ContentsUI_Controller(ContentsDao contentsDao) {
+			this.contentsDao = contentsDao;
 	}
 
 	@RequestMapping("main")
@@ -51,7 +51,7 @@ public class ContentsUI_Controller {
 		try {
 			Map<String, Object> hashMap = new HashMap<String, Object>();
 			hashMap.put("picture", fileVo.getPictureFile().getBytes());
-			memberDao.savePicture(hashMap);
+			contentsDao.savePicture(hashMap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -71,7 +71,7 @@ public class ContentsUI_Controller {
 	
 	@RequestMapping("getPicture")
 	public ResponseEntity<byte[]> getPicture(){
-		Map<String, Object> hashMap = memberDao.getPicture();
+		Map<String, Object> hashMap = contentsDao.getPicture();
 		byte[] picture = (byte[]) hashMap.get("picture");
 		final HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.IMAGE_PNG);
@@ -80,7 +80,7 @@ public class ContentsUI_Controller {
 	
 	@RequestMapping("getVideo")
 	public ResponseEntity<byte[]> getVideo(){
-		Map<String, Object> hashMap = memberDao.getVideo();
+		Map<String, Object> hashMap = contentsDao.getVideo();
 		byte[] video = (byte[]) hashMap.get("picture");
 		final HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.IMAGE_PNG);
