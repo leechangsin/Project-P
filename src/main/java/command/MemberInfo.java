@@ -4,6 +4,7 @@ public class MemberInfo {
 	
 	String email;
 	String passwd;
+	String confirmPasswd;
 	String reg_date;
 	String birth_date;
 	String sex;
@@ -46,6 +47,14 @@ public class MemberInfo {
 
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+	
+	public String getConfirmPasswd() {
+		return confirmPasswd;
+	}
+
+	public void setConfirmPasswd(String confirmPasswd) {
+		this.confirmPasswd = confirmPasswd;
 	}
 	
 	@Override

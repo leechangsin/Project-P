@@ -10,7 +10,7 @@ import dao.MemberInfoDao;
 import exceptions.NotFindEmailException;
 import exceptions.NotMatchPasswdException;
 import service.LoginRequestService;
-import validator.LoginRequestValidator;
+import validator.MemberInfoValidator;
 
 @Controller
 @RequestMapping("/login")
@@ -32,7 +32,7 @@ public class LoginUI_Controller {
 
 	@RequestMapping("loginRequest")
 	public String loginRequest(MemberInfo memberInfo, Errors errors, Model model) {
-		new LoginRequestValidator().validate(memberInfo, errors);
+		new MemberInfoValidator().validate(memberInfo, errors);
 		if(errors.hasErrors())
 			return "LoginUI";
 		

@@ -19,6 +19,7 @@
 		<form:errors path="email" /> <br> <!-- 에러메세지를 출력하는 form:errors 태그 -->
 		<label>비밀번호 : </label> <form:password path="passwd" /> <br>
 		<form:errors path="passwd" /> <br> <!-- 에러메세지를 출력하는 form:errors 태그  -->
+		
 		<input type="submit" value="로그인">
 	</form:form>
 
