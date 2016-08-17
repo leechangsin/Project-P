@@ -8,6 +8,7 @@
 	<!-- service빈 등록 -->	
 	<bean id="signUpEmailService" class="service.SignUpEmailService">
 		<constructor-arg ref="memberInfoDao"/>
+		<constructor-arg ref="memberDao"/>
 	</bean>
 		
 	<bean class="controller.LoginUI_Controller">
@@ -18,11 +19,10 @@
 	
 	<bean class="controller.RegistUI_Controller">
 		<constructor-arg ref="signUpEmailService"/>
-		<constructor-arg ref="memberDao"/>
 	</bean>
  
 	<bean class="controller.ContentsUI_Controller">
-		<constructor-arg ref="memberDao"/>
+		<constructor-arg ref="contentsDao"/>
 	</bean>
 	
 	<bean class="controller.SearchUI_Contents_Controller">

@@ -31,16 +31,16 @@
 	
 	<bean id="contentsDao" class="dao.ContentsDao">
 		<constructor-arg ref="dataSource" />
+		<constructor-arg ref="sqlSession"/>
 	</bean>
 	<bean id="memberDao" class="dao.MemberDao">
 		<constructor-arg ref="dataSource" />
-		<constructor-arg ref="sqlSession"/>
 	</bean>
 
 	<bean id="memberInfoDao" class="dao.MemberInfoDao">
 		<constructor-arg ref="dataSource" />
 	</bean>
-
+	
 	<bean id="Contents" class="command.Contents" />
 	<bean id="Contents_comment" class="command.Contents_comment" />
 </beans>

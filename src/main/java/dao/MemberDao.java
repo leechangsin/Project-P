@@ -1,39 +1,23 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 import javax.sql.DataSource;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 
 import command.Member;
 import command.RequestType;
 
 public class MemberDao {
 	private JdbcTemplate jdbcTemplate;
-	private SqlSession query;
 	
-	public MemberDao(DataSource dataSource, SqlSession query) {
+	public MemberDao(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-		this.query = query;
-	}
-
-	public void savePicture(Map<String, Object> hashMap) throws SQLException {
-		query.insert("query.savePicture", hashMap);
-	}
-
-	public Map<String, Object> getPicture() {
-		List<Map<String, Object>> result = query.selectList("query.getPicture");
-		return result.get(0);
-	}
-
-	public Map<String, Object> getVideo() {
-		List<Map<String, Object>> result = query.selectList("query.getVideo");
-		return result.get(0);
 	}
 
 	/*
@@ -68,5 +52,25 @@ public class MemberDao {
 		List<Member> results = jdbcTemplate.query(sql, new MemberRowMapper(), nickName);
 
 		return results;
-	}
+	}//end selectByNickName(String nickName, RequestType requestType)
+	
+	// 개인정보를 가지고 회원가입하는 쿼리문
+	public Boolean insertMember(final Member member) {
+		final String sql = "insert into member values(?, ?, ?, ?)";
+
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection arg0) throws SQLException {
+				// TODO Auto-generated method stub
+				PreparedStatement pstmt = arg0.prepareStatement(sql);
+				pstmt.setString(1, member.getEmail());
+				pstmt.setString(2, member.getNickname());
+				pstmt.setString(3, member.getIntro());
+				pstmt.setString(4, member.getPicture());
+				return pstmt;
+			}
+		});
+
+		return true;
+	}// end insertMember(final Member member)
 }

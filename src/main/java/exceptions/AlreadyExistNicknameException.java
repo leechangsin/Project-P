@@ -1,7 +1,7 @@
 package exceptions;
 
-public class AlreadyExistAccountException extends RuntimeException  {
-	
+public class AlreadyExistNicknameException extends RuntimeException {
+
 	/**
 	 * 
 	 */
