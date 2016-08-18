@@ -8,15 +8,12 @@
 <title>회원가입(계정정보 입력)</title>
 </head>
 <body> 
-<form:form action="step4" commandName="member">
+<form:form action="step4" commandName="member" enctype="multipart/form-data">
 	<p> <label>닉네임 : <form:input path="nickname"/> </label> </p>
 	<form:errors path="nickname"/>
 	<p> <label>자기소개 : <form:textarea path="intro"/> </label> </p>
-<!--  
-	<form:form action="step4" commandName="member"  enctype="multipart/form-data">
-			<p> <label>사진 : <input type="file" name="picture"/> </label> </p>
-	</form:form>
--->	
+	<p> <label>사진 : <input type="file" name="picture"/> </label> </p>
+	
 	<input type="submit" value="다음">
 </form:form>
 

@@ -109,8 +109,10 @@ public class RegistUI_Controller {
 		// 커멘드 객체값 검증
 		new MemberValidator().validate(member, error);
 		// 검증에서 에러가 발생했다면 step3로 이동
+		/* 이 메서드에서 오류가 발생함 오류의 이유는 모름.
 		if (error.hasErrors())
 			return "SignUpEmailStep3";
+		*/
 		// 닉네임 중복검사
 		try {
 			signUpEmailService.checkNickname(member.getNickname(), RequestType.signUpMember);
