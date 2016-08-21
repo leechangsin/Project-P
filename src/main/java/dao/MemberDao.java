@@ -20,14 +20,6 @@ public class MemberDao {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
-	/*
-	 * 미구현 메서드 
-	 * public String getText(){ 
-	 * 		String result = query.selectOne("query.getText"); 
-	 * 		return result;  
-	 * }
-	 */
-
 	public List<Member> selectAll() {
 		String sql = "select * from member";
 
@@ -66,7 +58,7 @@ public class MemberDao {
 				pstmt.setString(1, member.getEmail());
 				pstmt.setString(2, member.getNickname());
 				pstmt.setString(3, member.getIntro());
-				pstmt.setString(4, member.getPicture());
+				pstmt.setObject(4, member.getPicture());
 				return pstmt;
 			}
 		});

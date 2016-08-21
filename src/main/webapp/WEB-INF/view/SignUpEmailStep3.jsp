@@ -12,7 +12,7 @@
 	<p> <label>닉네임 : <form:input path="nickname"/> </label> </p>
 	<form:errors path="nickname"/>
 	<p> <label>자기소개 : <form:textarea path="intro"/> </label> </p>
-	<p> <label>사진 : <input type="file" name="picture"/> </label> </p>
+	<p> <label>사진 : <input type="file" name="pictureFile"/> </label> </p>
 	
 	<input type="submit" value="다음">
 </form:form>

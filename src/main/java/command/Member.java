@@ -4,7 +4,7 @@ public class Member {
 	String email;
 	String nickname;
 	String intro;
-	String picture;
+	Object picture;
 	
 	public Member(){
 		
@@ -41,11 +41,11 @@ public class Member {
 		this.intro = intro;
 	}
 
-	public String getPicture() {
+	public Object getPicture() {
 		return picture;
 	}
 
-	public void setPicture(String picture) {
+	public void setPicture(Object picture) {
 		this.picture = picture;
 	}
 

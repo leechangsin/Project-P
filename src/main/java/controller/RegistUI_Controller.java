@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -38,7 +39,7 @@ public class RegistUI_Controller {
 	 * 각 step에서 보여지는 뷰 페이지 
 	 * step1 = 약관동의, step2 = 회원 개인정보 입력, step3 = 회원 계정정보 입력, step4 = 가입완료
 	 * 
-	 * 각 STEP을 넘어간 후에 각 STEP에서 요구하는 값을 검사함 step1에서 약관동의 화면이 보여지지만 
+	 * 각 STEP을 넘어간 후에 전 STEP에서 요구하는 값을 검사함 step1에서 약관동의 화면이 보여지지만 
 	 * 약관동의를 눌렀는지 안눌렀는지는 step2에서 검사함 
 	 * step2에서 DB의 memberInfo(회원 개인정보)의 내용을 입력하지만 
 	 * memberInfo에 필요한 내용을 모두 입력하였는지 아닌지는 step3에서 검사함
@@ -57,6 +58,7 @@ public class RegistUI_Controller {
 	@RequestMapping("SignUpEmail/step2")
 	public String SignUpEmailStep2(@RequestParam(value = "agree1", defaultValue = "false") Boolean agree1,
 			@RequestParam(value = "agree2", defaultValue = "false") Boolean agree2, Model model) {
+		//커맨드객체 검증으로 바꿔야함. 에러달아서 agree1,2가 입력되지 않았을경우 필수입니다 나오게끔...
 		if (!agree1 || !agree2)
 			return "redirect:/regist/main";
 
@@ -121,14 +123,14 @@ public class RegistUI_Controller {
 			return "SignUpEmailStep3";
 		}
 
-		/*
-		 * 미구현, 우선 사진이 없는 상태에서 DB에 업로드가 성공된 뒤에 구현하기 //SignUpEmailStep3뷰에서 사용자가
-		 * 사진을 업로드하였다면 사진을 DB에 업로드함 try { Map<String, Object> hashMap = new
-		 * HashMap<String, Object>(); hashMap.put("picture",
-		 * fileVo.getPictureFile().getBytes()); memberDao.savePicture(hashMap);
-		 * } catch (Exception e) { e.printStackTrace(); }
-		 */
-		
+		// 사진을 업로드하였다면 사진을 member의 picture에 넣음
+		try {
+			member.setPicture(fileVo.getPictureFile().getBytes());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		MemberInfo memberInfo = (MemberInfo) session.getAttribute("memberInfo");
 
 		// 사용자가 입력한 개인정보를 DB에 저장

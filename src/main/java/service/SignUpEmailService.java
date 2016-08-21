@@ -41,4 +41,5 @@ public class SignUpEmailService {
 	public void signUpMember(Member member){
 		memberDao.insertMember(member);
 	}
+	
 }
