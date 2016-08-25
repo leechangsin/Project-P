@@ -22,14 +22,10 @@
          			<div class="input_email">
          				<label>이메일 : </label>
          				<input type="email" placeholder="이메일을 입력해주세요!" required>
-         				<!-- <form:input path="email" placeholder="이메일을 입력해주세요!" /> <br>
-         				<form:errors path="email" />--><!-- 에러메세지를 출력하는 form:errors 태그 -->
          			</div>
          			<div class="input_PW">
 						<label>비밀번호 : </label>
 						<input type="password" placeholder="비밀번호를 입력해주세요!" required>
-						<!-- <form:password path="passwd" placeholder="비밀번호를 입력해주세요!" /> <br>
-						<form:errors path="passwd" />--><!-- 에러메세지를 출력하는 form:errors 태그  -->
 					</div>
 					<div class="check">
                     	<label><input type="checkbox">이메일 저장</label>
