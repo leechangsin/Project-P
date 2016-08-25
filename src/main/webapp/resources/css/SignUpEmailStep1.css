@@ -1,0 +1,105 @@
+/* 초기화 */
+html, body, div, header, nav, section, aside, article, footer, figure,
+	figcaption, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, p, fieldset
+	{
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+fieldset, img {
+	border: 0;
+}
+
+html, body {
+	height: 100%
+}
+
+.wrapper {
+	width: 100%;
+	height: 100%;
+	background-image: url('../images/background.jpg');
+	background-position: center;
+}
+
+.main {
+	padding-top: 148px;
+}
+
+.logo {
+	width: 235px;
+	margin: 0 auto 60px;
+}
+
+.logo img {
+	width: 212px;
+	height: 76px;
+}
+
+.box{
+	width: 337px;
+	height: 300px;
+	padding: 45px 44px 38px 44px;
+	margin: 0 auto;
+	background-color: #fff;
+	opacity: 0.8;
+	border-radius: 5px;
+	border: 1px solid #ebebeb;
+}
+
+.box .regist_announcement{
+	color : gray;
+	font-size: 20px;
+	font-family: '돋움';
+	text-align: center;
+}
+
+.box .regist_email input{
+	width: 100%;
+	height: 55px;
+	background-color: #00a6de;
+	color: #fff;
+	font-size: 16px;
+	padding: 17px 0 16px;
+	border: 0;
+	margin-top: 20px;
+	cursor: pointer;
+	font-family: '돋움';
+}
+
+.box .regist_facebook input{
+	width: 100%;
+	height: 55px;
+	background-color: #556d9c;
+	color: #fff;
+	font-size: 16px;
+	padding: 17px 0 16px;
+	border: 0;
+	margin-top: 20px;
+	cursor: pointer;
+	font-family: '돋움';
+}
+
+.box .regist_kakao input{
+	width: 100%;
+	height: 55px;
+	background-color: #b2ae40;
+	color: #fff;
+	font-size: 16px;
+	padding: 17px 0 16px;
+	border: 0;
+	margin-top: 20px;
+	cursor: pointer;
+	font-family: '돋움';
+}
+
+.box .last {
+	width: 100%;
+	margin-top: 10px;
+	border-top: 1px solid #ebebeb;
+	padding-top: 20px;
+	text-align: center;
+}
