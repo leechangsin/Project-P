@@ -32,6 +32,7 @@ public class MemberDao {
 	 * DB에서 nickname을 검색
 	 * requestType은 어느 컨트롤러의 리퀘스트매핑에서 요청을 했는지 구분하기 위한 열거형 매개변수
 	 */
+	/*반환유형이 List인 이유는 SearchUI_Member_Controller에서 List<Member>형이 필요하기 때문*/
 	public List<Member> selectByNickName(String nickName, RequestType requestType) {
 		String sql = null;
 		//SearchUI_Member_Controller의 @RequestMapping("/search/members")에서 요청했다면
