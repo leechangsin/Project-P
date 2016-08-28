@@ -7,8 +7,19 @@
 <title>회원가입 성공</title>
 </head>
 <body>
+	<div class="welcomeMSG">
+		<label> 가입이 완료되었습니다. </label>
+		<label> 더 즐겁게 펫시를 이용하실 수 있습니다.</label>
+	</div>
 
-${ nickName}님 회원가입 성공을 축하드립니다.
+	<div class="confirmMSG">
+		<label>${ nickName}</label> <label>님의 이메일은</label>
+		<label>${ email}</label> <label>입니다.</label>
+	</div>
+
+	<div class="startBtn">
+		<input type="button" value="시작하기">
+	</div>
 
 </body>
 </html>

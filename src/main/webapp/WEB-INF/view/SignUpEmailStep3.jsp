@@ -4,26 +4,52 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/SignUpEmailStep3.css" type="text/css" media="screen" />
 <meta charset="UTF-8">
 <title>회원가입(계정정보 입력)</title>
 </head>
-<body> 
+<body>
+	<div class="wrapper">
+		<div class="top">
+			<div class="logo">
+				<a href="/Project-P/index">
+					<img src="${pageContext.request.contextPath}/resources/images/logo2.png" />
+				</a>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="box">
+				<form action="step4" enctype="multipart/form-data">
+					<div class="pictureUpload">
+						<label> 사진을 업로드 해주세요 <input type="file" name="pictureFile"></label>
+					</div>
+					<div class="nickname">
+						<label>닉네임*</label><br><br>
+						<input type="text" required placeholder="닉네임을 입력해주세요.(최대 14자)" maxlength="14">
+						<input type="button" value="중복확인">
+					</div>
+					<div class="introduce">
+						<label>자기소개*</label><br><br>
+						<input type="text" required placeholder="자신을 표현해주세요.(최대 17자)" maxlength="17">
+					</div>
+					<input type="submit" id="next" value="다음">
+				</form>
+				<form action="/Project-P/regist/main">
+					<input type="submit" id="cancle" value="가입취소">
+				</form>
+			</div>
+		</div>
+
+	</div>
+<!--
 <form:form action="step4" commandName="member" enctype="multipart/form-data">
 	<p> <label>닉네임 : <form:input path="nickname"/> </label> </p>
 	<form:errors path="nickname"/>
 	<p> <label>자기소개 : <form:textarea path="intro"/> </label> </p>
 	<p> <label>사진 : <input type="file" name="pictureFile"/> </label> </p>
-	
-	<input type="submit" value="다음">
-</form:form>
 
-<!--  
-<form action="step4">
 	<input type="submit" value="다음">
-</form>
--->
-<form:form action="/Project-P/regist/main">
-	<input type="submit" value="가입취소">
 </form:form>
+-->
 </body>
 </html>

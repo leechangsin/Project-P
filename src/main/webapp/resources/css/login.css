@@ -42,7 +42,7 @@ html, body {
 .login_box {
 	width: 337px;
 	height: 400px;
-	padding: 45px 44px 38px 44px;
+	padding: 20px 44px 50px 44px;
 	margin: 0 auto;
 	background-color: #fff;
 	opacity: 0.8;
@@ -57,10 +57,11 @@ html, body {
 
 .login_box .input_email input {
 	width: 100%;
+	margin-top: 5px;
 	color: #828180;
 	font-size: 15px;
 	border: none;
-	font-family: inherit;
+	font-family: '돋움';
 }
 
 .login_box .input_PW {
@@ -70,10 +71,11 @@ html, body {
 
 .login_box .input_PW input {
 	width: 100%;
+	margin-top: 5px;
 	color: #828180;
 	font-size: 15px;
 	border: none;
-	font-family: inherit;
+	font-family: '돋움';
 }
 
 .login_box .check {
@@ -95,6 +97,12 @@ html, body {
 	font-family: '돋움';
 }
 
+.login_box .fb_login{
+	width: 100%;
+	margin-top: 10px;
+	border-top: 2px solid #ebebeb;
+}
+
 .login_box .fb_login input {
 	width: 100%;
 	height: 55px;
@@ -103,7 +111,7 @@ html, body {
 	font-size: 16px;
 	padding: 17px 0 16px;
 	border: 0;
-	margin-top: 40px;
+	margin-top: 10px;
 	cursor: pointer;
 	font-family: '돋움';
 }
@@ -124,8 +132,8 @@ html, body {
 .login_box .last {
 	width: 100%;
 	margin-top: 10px;
-	border-top: 1px solid #ebebeb;
-	padding-top: 20px;
+	border-top: 2px solid #ebebeb;
+	padding-top: 15px;
 }
 
 .login_box .last .join {
@@ -136,19 +144,10 @@ html, body {
 	float: right;
 }
 
-.login_box .last .join input {
-	color: #00a6de;
-}
-
-.login_box .last .PW_search input{
-	color: #626262;
-}
-/*
 .last .join a {
 	color: #00a6de;
 }
 
-.last .search a {
+.last .PW_search a {
 	color: #626262;
 }
-*/

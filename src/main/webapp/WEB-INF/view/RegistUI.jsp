@@ -16,7 +16,9 @@
 				</a>
 			</div>
 			<div class="box">
-				<div class="regist_announcement">원하시는 가입 유형을 선택해주세요.</div>
+				<div class="regist_announcement">
+					원하시는 가입 유형을 선택해주세요.
+				</div>
 				<div class="regist_email">
 					<form action="/Project-P/regist/SignUpEmail/step1">
 						<input type="submit" value="이메일 계정 만들기">

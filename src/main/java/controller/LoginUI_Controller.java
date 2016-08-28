@@ -51,9 +51,4 @@ public class LoginUI_Controller {
 			return "LoginUI";
 		}//end try
 	}//end loginRequest(MemberInfo memberInfo, Errors errors)
-	
-	@RequestMapping("goRegistUI")
-	public String goRegistUI(){
-		return "/Project-P/RegistUI";
-	}
 }//end class LoginUI_Controller

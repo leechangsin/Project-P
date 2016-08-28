@@ -58,9 +58,14 @@ public class RegistUI_Controller {
 	@RequestMapping("SignUpEmail/step2")
 	public String SignUpEmailStep2(@RequestParam(value = "agree1", defaultValue = "false") Boolean agree1,
 			@RequestParam(value = "agree2", defaultValue = "false") Boolean agree2, Model model) {
-		//커맨드객체 검증으로 바꿔야함. 에러달아서 agree1,2가 입력되지 않았을경우 필수입니다 나오게끔...
+		//지금은 약관2개를 동의하지 않았을 경우 단순히 다시 약관동의 화면을 보여줌.
+		//그러나 약관2개를 동의하지 않았을 경우 동의하지않았다는 메세지를 출력하고 다시 약관동의 화면을 보여줘야함.
+		/*테스트코드*/
+		agree1 = true;
+		agree2 = true;
+		/*테스트코드*/
 		if (!agree1 || !agree2)
-			return "redirect:/regist/main";
+			return "redirect:/regist/SignUpEmailStep1";
 
 		// step2에서 쓸 커맨드객체 생성 및 전달
 		model.addAttribute("memberInfo", new MemberInfo());
@@ -73,18 +78,28 @@ public class RegistUI_Controller {
 	 */
 	@RequestMapping("SignUpEmail/step3")
 	public String SignUpEmailStep3(MemberInfo memberInfo, Errors error, HttpSession session, Model model) {
+		/*테스트코드*/
+		memberInfo.setEmail("ycs318@naver.com");
+		memberInfo.setPasswd("ckdtls12");
+		memberInfo.setConfirmPasswd("ckdtls12");
+		memberInfo.setBirth_date("1990-03-18");
+		memberInfo.setSex("남자");
+		/*테스트코드*/
 		// 커맨드 객체값 검증
 		new MemberInfoValidator().validate(memberInfo, error);
 		// 검증에서 에러가 발생했다면 step2로 이동
 		if (error.hasErrors())
 			return "SignUpEmailStep2";
 		// 개인정보를 모두 입력했지만 이메일 중복검사를 해야한다.
+		
 		// 이메일 중복 검사하는 단계
+		// step2에서 중복확인 버튼을 눌러 이메일 중복 검사를 해야함.
+		// 현재는 개인정보를 입력하고 다음버튼을 누르면 이메일 중복검사를 하는 상황...
 		try {
-			// 이메일 중복이 발생된다면 예외가 발생되므로 try, catch문을 사용
-			signUpEmailService.checkEmail(memberInfo.getEmail());
+			 //이메일 중복이 발생된다면 예외가 발생되므로 try, catch문을 사용
+			//signUpEmailService.checkEmail(memberInfo.getEmail());
 		} catch (AlreadyExistAccountException e) {
-			// 이메일 중복이 발생됬다면 커맨드 객체의 email프로퍼티 AlreadyExist에러코드를 달아줌
+			//이메일 중복이 발생됬다면 커맨드 객체의 email프로퍼티 AlreadyExist에러코드를 달아줌
 			error.rejectValue("email", "alreadyExistEmail");
 			return "SignUpEmailStep2";
 		}
@@ -103,11 +118,17 @@ public class RegistUI_Controller {
 	}
 	
 	/*
-	 * step4 = 가입성공 여부를 보여주는 화면 그와 동시에 step3(회원 계정정보입력 화면)에서 nickname을 입력하지 않았다면
-	 * step3로 돌아감 nickname을 입력했다면 DB에 닉네임, 자기소개, 사진을 저장
+	 * step4 = 가입성공 여부를 보여주는 화면 
+	 * 그와 동시에 step3(회원 계정정보입력 화면)에서 nickname을 입력하지 않았다면 step3로 돌아감 
+	 * nickname을 입력했다면 DB에 닉네임, 자기소개, 사진을 저장
 	 */
 	@RequestMapping("SignUpEmail/step4")
-	public String SignUpEmailStep4(Member member, Errors error, FileVo fileVo, Model model, HttpSession session) {
+	public String SignUpEmailStep4(Member member, Errors error, FileVo fileVo, HttpSession session, Model model) {
+		/*테스트코드*/
+		member.setNickname("아이놀라");
+		member.setIntro("나야");
+		member.setPicture(null);
+		/*테스트코드*/
 		// 커멘드 객체값 검증
 		new MemberValidator().validate(member, error);
 		// 검증에서 에러가 발생했다면 step3로 이동
@@ -117,31 +138,46 @@ public class RegistUI_Controller {
 		*/
 		// 닉네임 중복검사
 		try {
-			signUpEmailService.checkNickname(member.getNickname(), RequestType.signUpMember);
+			//signUpEmailService.checkNickname(member.getNickname(), RequestType.signUpMember);
 		} catch (AlreadyExistNicknameException e) {
 			error.rejectValue("nickname", "alreadyExistNickname");
 			return "SignUpEmailStep3";
 		}
 
+
 		// 사진을 업로드하였다면 사진을 member의 picture에 넣음
+		// 사진을 업로드 하지 않을 경우 null값이 날라오는데 이럴때 nullPointerException이 발생함
+		/*
 		try {
 			member.setPicture(fileVo.getPictureFile().getBytes());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
-		MemberInfo memberInfo = (MemberInfo) session.getAttribute("memberInfo");
+		} 
+		//예상되는 해결책 nullPointerException이 발생하면 그냥 스택출력하고 finally로 남은 밑에 부분처리하기...
+		 * 시도해보지는 않음
+		 * catch(NullPointerException){
+		 * 	e.printStackTrace();
+		 * }
+		*/
+		/* 여기서도 널값이 날라옴... 임시 주석 */
+		//MemberInfo memberInfo = (MemberInfo) session.getAttribute("memberInfo");
 
 		// 사용자가 입력한 개인정보를 DB에 저장
-		signUpEmailService.signUpMemberInfo(memberInfo);
+		/*다음 코드는 테스트를 위해 임시로 주석처리함*/
+		//signUpEmailService.signUpMemberInfo(memberInfo);
 
 		// 사용자가 입력한 계정정보를 DB에 저장
-		member.setEmail(memberInfo.getEmail());
-		signUpEmailService.signUpMember(member);
+		/* 164번째줄에서 널값이 날라오기 때문에 다음 코드도 주석처리 */
+		//member.setEmail(memberInfo.getEmail());
+		/*다음 코드는 테스트를 위해 임시로 주석처리함*/
+		//signUpEmailService.signUpMember(member);
 
 		// xxx님 회원가입에 성공했습니다. 라고 뷰에 출력하기 위해 model로 전달
 		model.addAttribute("nickName", member.getNickname());
+		
+		//사용자가 입력했던 개인정보를 없애기위한 부분
+		session.invalidate();
 
 		return "SignUpEmailStep4";
 	}

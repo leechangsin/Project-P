@@ -43,18 +43,10 @@
 
 				<div class="last">
 					<div class="join">
-						<!-- 원래는 a태그로 해서 텍스트를 눌렀을 경우 이동해야한다. 그럴려면 jquery를 알아야 하는듯... -->
-						<!-- 나중에 수정하기...-->
-						<form action="/Project-P/regist/main" method="post">
-							<input type="submit" value="회원가입" />
-						</form>
+						<a href="/Project-P/regist/main">회원가입</a>
 					</div>
 					<div class="PW_search">
-						<!-- 원래는 a태그로 해서 텍스트를 눌렀을 경우 이동해야한다. 그럴려면 jquery를 알아야 하는듯... -->
-						<!-- 나중에 수정하기...-->
-						<form action="/Project-P/PW_Search/main" method="post">
-							<input type="submit" value="비밀번호 찾기">
-						</form>
+						<a href="Project-P/PW_Search/main">비밀번호 찾기</a>
 					</div>
 				</div>
 			</div>
