@@ -20,7 +20,7 @@ public class MemberInfoDao {
 	}
 
 	public MemberInfo selectByEmail(String email) {
-		String sql = "select * from psetsi.memberInfo where email = ?";
+		String sql = "select * from memberInfo where email = ?";
 
 		List<MemberInfo> result = jdbcTemplate.query(sql, new MemberInfoRowMapper(), email);
 

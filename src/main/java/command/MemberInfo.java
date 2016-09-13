@@ -7,6 +7,10 @@ public class MemberInfo {
 	String confirmPasswd;
 	String reg_date;
 	String birth_date;
+	//birth_date를 구성하기 위해서 step2뷰에서 year,month,day를 받아오기 위한 변수들
+	String year;
+	String month;
+	String day;
 	String sex;
 	
 	public String getEmail() {
@@ -60,5 +64,29 @@ public class MemberInfo {
 	@Override
 	public String toString(){
 		return "이메일 = " + email;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
 	}
 }

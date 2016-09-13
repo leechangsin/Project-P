@@ -13,8 +13,8 @@
 	</div>
 
 	<div class="confirmMSG">
-		<label>${ nickName}</label> <label>님의 이메일은</label>
-		<label>${ email}</label> <label>입니다.</label>
+		<label>${nickName}</label> <label>님의 이메일은</label>
+		<label>${email}</label> <label>입니다.</label>
 	</div>
 
 	<div class="startBtn">
