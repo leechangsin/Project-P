@@ -22,23 +22,6 @@
 				<img src="${pageContext.request.contextPath}/resources/images/SignUpEmailStep3Title.png"/>
 			</div>
 			<div class="box">
-			<!-- 
-				<form action="/Project-P/regist/SignUpEmail/step4" enctype="multipart/form-data">
-					<div class="pictureUpload">
-						<label> 사진을 업로드 해주세요 <input type="file" name="pictureFile"></label>
-					</div>
-					<div class="nickname">
-						<label>닉네임*</label><br><br>
-						<input type="text" required placeholder="닉네임을 입력해주세요.(최대 14자)" maxlength="14">
-						<input type="button" value="중복확인">
-					</div>
-					<div class="introduce">
-						<label>자기소개*</label><br><br>
-						<input type="text" required placeholder="자신을 표현해주세요.(최대 17자)" maxlength="17">
-					</div>
-					<input type="submit" id="next" value="다음">
-				</form>
-			 -->
 				<form:form action="/Project-P/regist/SignUpEmail/step4" commandName="member" enctype="multipart/form-data">
 					<div class="pictureUpload">
 						<label> 사진을 업로드 해주세요 <input type="file" name="pictureFile"></label>

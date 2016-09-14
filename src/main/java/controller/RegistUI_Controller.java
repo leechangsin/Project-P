@@ -5,9 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -150,6 +148,7 @@ public class RegistUI_Controller {
 	 * 그와 동시에 step3(회원 계정정보입력 화면)에서 nickname을 입력하지 않았다면 step3로 돌아감 
 	 * nickname을 입력했다면 DB에 닉네임, 자기소개, 사진을 저장
 	 */
+
 	@RequestMapping("SignUpEmail/step4")
 	public String SignUpEmailStep4(Member member, Errors error, FileVo fileVo, HttpSession session, Model model) {
 		MemberInfo memberInfo = (MemberInfo) session.getAttribute("memberInfo");
@@ -190,7 +189,6 @@ public class RegistUI_Controller {
 
 		return "SignUpEmailStep4";
 	}
-
 	/*
 	@RequestMapping("SignUpKaKao")
 	public void SingUpKaKao(){
