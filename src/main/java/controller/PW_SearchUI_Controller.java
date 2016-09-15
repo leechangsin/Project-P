@@ -11,19 +11,19 @@ import exceptions.NotFindEmailException;
 import service.PW_SearchService;
 
 @Controller
-@RequestMapping("/PW_searchUI")
+@RequestMapping("/PW_Search")
 public class PW_SearchUI_Controller {
 	PW_SearchService pw_searchService;
 	
 	public PW_SearchUI_Controller(PW_SearchService pw_searchService){
 		this.pw_searchService = pw_searchService;
 	}
-	
+
 	@RequestMapping("main")
 	public String ShowPW_SearchUI(){
 		return "PW_SearchUI";
 	}
-	
+
 	@RequestMapping("inputCode")
 	public String inputCode(){
 		try{
