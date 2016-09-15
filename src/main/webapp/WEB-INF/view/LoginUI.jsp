@@ -46,7 +46,7 @@
 						<a href="/Project-P/regist/main">회원가입</a>
 					</div>
 					<div class="PW_search">
-						<a href="Project-P/PW_Search/main">비밀번호 찾기</a>
+						<a href="/Project-P/PW_Search/main">비밀번호 찾기</a>
 					</div>
 				</div>
 			</div>

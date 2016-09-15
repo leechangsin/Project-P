@@ -32,5 +32,8 @@
 	<bean class="controller.SearchUI_Member_Controller">
 		<constructor-arg ref="memberDao"/>
 	</bean>
+	
+	<bean class="controller.PW_SearchUI_Controller">
+	</bean>
 
 </beans>
