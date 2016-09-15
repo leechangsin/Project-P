@@ -45,6 +45,10 @@ public class PW_SearchUI_Controller {
 			MimeMessage mimeMessage = pw_searchService.setMimeMessage(reciver);
 			pw_searchService.sendEmail(mimeMessage);
 		} catch(NotFindEmailException e){
+			/* 미완성 코드...
+			 * 사용자가 입력한 이메일이 DB에 없다면 없다는 메세지를 출력하고
+			 * PW_SearchUI뷰를 보여줘야한다.
+			 * */
 			e.printStackTrace();
 			return ShowPW_SearchUI(model);
 		} catch(MessagingException e){
@@ -56,8 +60,7 @@ public class PW_SearchUI_Controller {
 		return "inputCode";
 	}
 
-	//암호코드를 기준으로 DB에서 암호코드가 존재하는지 찾는다
-	//존재하면 비밀번호변경 화면 출력
+	//암호코드를 기준으로 DB에서 암호코드가 존재하는지 찾는다. 존재하면 비밀번호변경 화면 출력
 	@RequestMapping("inputPW")
 	public String inputPW(HttpServletRequest request, Model model){
 		String emailAddress = request.getParameter("emailAddress");
@@ -67,6 +70,10 @@ public class PW_SearchUI_Controller {
 			pw_searchService.selectByCode(reciveCode);
 		} catch(NotFindCodeException e){
 			e.printStackTrace();
+			/* 미완성 코드...
+			 * 암호코드를 잘못입력했다면 암호코드를 잘못입력했다는 메세지를 출력하고
+			 * inputCode뷰를 보여줘야한다.
+			 * */
 			ShowPW_SearchUI(model);
 		}
 		
@@ -86,6 +93,9 @@ public class PW_SearchUI_Controller {
 			memberInfoDao.updatePasswd(emailAddress, passwd);
 		} catch(NotMatchPasswdException e){
 			e.printStackTrace();
+			/*미완성 코드... 
+			 * 두 차례의 비밀번호 입력이 틀렸다면은 inputPW뷰로가서 비밀번호가 틀렸다는 내용을 출력해야함...
+			 * */
 			request.setAttribute("emailAddress", "");
 			request.setAttribute("reciveCode", "");
 			inputPW(request, model);

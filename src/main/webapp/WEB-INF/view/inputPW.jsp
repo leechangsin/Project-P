@@ -3,13 +3,6 @@
 <!DOCTYPE>
 <html>
 <head>
-<<<<<<< HEAD
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-성공!!
-=======
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/inputpw.css" type="text/css" media="screen" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>비밀번호 변경</title>
@@ -30,7 +23,7 @@
 					<label>새 비밀번호를 입력해주세요!!</label><br>
 				</div>
 				<div class="passwdbox">
-					<form action="/Project-P/inputPW">
+					<form action="/Project-P/regist/changPW">
 						<input type="password" name="passwd" size="50" maxlength="16" required placeholder="비밀번호를 입력"><br>
 						<input type="password" name="rePasswd" size="50" maxlength="16" required placeholder="비밀번호를 재입력">
 						<input type="submit" id="next" value="다음">
@@ -42,6 +35,5 @@
 			</div>
 		</div>
 	</div>
->>>>>>> Design/#19
 </body>
 </html>
