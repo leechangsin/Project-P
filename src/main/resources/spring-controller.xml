@@ -40,6 +40,7 @@
 	
 	<bean class="controller.PW_SearchUI_Controller">
 		<constructor-arg ref="pw_searchService"/>
+		<constructor-arg ref="memberInfoDao"/>
 	</bean>
 	
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">

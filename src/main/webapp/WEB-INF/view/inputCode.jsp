@@ -24,8 +24,9 @@
 					<label> 이메일을 확인해주세요.</label>
 				</div>
 				<div class="codebox">
-					<form action="/Project-P/inputPW">
-						<input type="text" id="reciveCode" required placeholder="여기에 코드를 입력해주세요." size="80">
+					<form action="/Project-P/PW_Search/inputPW" method="post">
+						<input type="text" id="reciveCode" name="reciveCode" required placeholder="여기에 코드를 입력해주세요." size="80">
+						<input type="hidden" name="emailAddress" value="${emailAddress}">
 						<input type="submit" id="next" value="다음">
 					</form>
 				</div>

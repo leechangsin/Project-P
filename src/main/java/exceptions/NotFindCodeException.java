@@ -1,9 +1,10 @@
 package exceptions;
 
-public class NotMatchPasswdException extends RuntimeException {
-	
+public class NotFindCodeException extends RuntimeException {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 }

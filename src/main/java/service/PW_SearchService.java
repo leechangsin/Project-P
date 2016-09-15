@@ -11,9 +11,12 @@ import org.springframework.mail.javamail.JavaMailSender;
 
 import command.EmailForm;
 import command.MemberInfo;
+import command.PWSearch;
 import dao.MemberInfoDao;
 import dao.PWSearchDao;
+import exceptions.NotFindCodeException;
 import exceptions.NotFindEmailException;
+import exceptions.NotMatchPasswdException;
 
 public class PW_SearchService {
 	private MemberInfoDao memberInfoDao;
@@ -30,6 +33,13 @@ public class PW_SearchService {
 		MemberInfo result = memberInfoDao.selectByEmail(email);
 		if(result == null)
 			throw new NotFindEmailException();
+	}
+	
+	public void selectByCode(String code){
+		PWSearch result = pwSearchDao.selectByCode(code);
+		if(result == null){
+			throw new NotFindCodeException();
+		}
 	}
 	
 	public EmailForm setEmail(String email) throws MessagingException{
@@ -64,5 +74,10 @@ public class PW_SearchService {
 			code += String.valueOf(randomCode.nextInt(9));
 		
 		return code; 
+	}
+	
+	public void confirmPasswd(String passwd, String rePasswd){
+		if(!passwd.equals(rePasswd))
+			throw new NotMatchPasswdException();
 	}
 }

@@ -47,4 +47,11 @@ public class MemberInfoDao {
 
 		return true;
 	}//end insertMemberInfo(final MemberInfo memberInfo)
+	
+	public void updatePasswd(String email, String passwd){
+		String sql = "update memberInfo set passwd=? where email=?";
+		int result = 0;
+		result = jdbcTemplate.update(sql, MemberInfo.class,passwd, email);
+		System.out.println("Update결과는 " + result);
+	}
 }// end class MemberInfoDao

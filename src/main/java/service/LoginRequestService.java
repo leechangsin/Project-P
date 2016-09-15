@@ -13,7 +13,7 @@ public class LoginRequestService {
 		if(memberInfo == null)
 			throw new NotFindEmailException();
 		else if(!memberInfo.getPasswd().equals(passwd))
-			throw new NotMatchPasswdException("아이디 또는 비밀번호가 일치하지 않습니다.");
+			throw new NotMatchPasswdException();
 	}//end authenticate(MemberInfoDao memberInfoDao, String email, String password)
 
 }//end class LoginRequestService

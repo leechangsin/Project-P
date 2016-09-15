@@ -31,7 +31,7 @@
 						<input type="submit" id="next" value="다음">
 					</form:form>
 				</div>
-				<form action="/Proejct-P/login/main">
+				<form action="/Project-P/login/main">
 					<input type="submit" id="cancle" value="취소">
 				</form>
 			</div>
