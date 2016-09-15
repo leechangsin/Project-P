@@ -26,7 +26,7 @@ public class PW_SearchUI_Controller {
 		model.addAttribute(new EmailForm());
 		return "PW_SearchUI";
 	}
-
+	
 	@RequestMapping("inputCode")
 	public String inputCode(EmailForm emailForm, Errors errors, Model model){
 		String emailAddress = emailForm.getFirstEmail() + "@" + emailForm.getSecondEmail();
