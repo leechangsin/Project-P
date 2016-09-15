@@ -12,6 +12,7 @@
 	
 	<bean id="pw_searchService" class="service.PW_SearchService">
 		<constructor-arg ref="memberInfoDao"/>
+		<constructor-arg ref="pwSearchDao"/>
 		<constructor-arg ref="mailSender"/>
 	</bean>
 		

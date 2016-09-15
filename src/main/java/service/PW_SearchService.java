@@ -9,17 +9,20 @@ import javax.mail.internet.MimeMessage.RecipientType;
 
 import org.springframework.mail.javamail.JavaMailSender;
 
-import command.Email;
+import command.EmailForm;
 import command.MemberInfo;
 import dao.MemberInfoDao;
+import dao.PWSearchDao;
 import exceptions.NotFindEmailException;
 
 public class PW_SearchService {
-	MemberInfoDao memberInfoDao;
-	JavaMailSender mailSender;
+	private MemberInfoDao memberInfoDao;
+	private PWSearchDao pwSearchDao;
+	private JavaMailSender mailSender;
 	
-	public PW_SearchService(MemberInfoDao memberInfoDao, JavaMailSender mailSender){
+	public PW_SearchService(MemberInfoDao memberInfoDao, PWSearchDao pwSearchDao ,JavaMailSender mailSender){
 		this.memberInfoDao = memberInfoDao;
+		this.pwSearchDao = pwSearchDao;
 		this.mailSender = mailSender;
 	}
 	
@@ -29,18 +32,20 @@ public class PW_SearchService {
 			throw new NotFindEmailException();
 	}
 	
-	public Email setEmail(String email) throws MessagingException{
-		Email reciver = new Email();
-		reciver.setEmail(email);
+	public EmailForm setEmail(String email) throws MessagingException{
+		EmailForm reciver = new EmailForm();
+		reciver.setEmailAddress(email);
 		reciver.setSubject("펫시 비밀번호 찾기");
-		reciver.setContent("암호 코드는 [" + createCode() + "] 입니다.");
 		
+		String code = createCode();
+		reciver.setContent("암호 코드는 [" + code + "] 입니다.");
+		pwSearchDao.insertCode(code, email);
 		return reciver;
 	}
 	
-	public MimeMessage setMimeMessage(Email reciver) throws MessagingException{
+	public MimeMessage setMimeMessage(EmailForm reciver) throws MessagingException{
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
-		mimeMessage.setRecipient(RecipientType.TO , new InternetAddress(reciver.getEmail()));
+		mimeMessage.setRecipient(RecipientType.TO , new InternetAddress(reciver.getEmailAddress()));
 		mimeMessage.setSubject(reciver.getSubject());
 		mimeMessage.setText(reciver.getContent());
 		
