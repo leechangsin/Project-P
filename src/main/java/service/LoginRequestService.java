@@ -11,7 +11,7 @@ public class LoginRequestService {
 		MemberInfo memberInfo = memberInfoDao.selectByEmail(email);
 		
 		if(memberInfo == null)
-			throw new NotFindEmailException("존재하지 않는 email입니다.");
+			throw new NotFindEmailException();
 		else if(!memberInfo.getPasswd().equals(passwd))
 			throw new NotMatchPasswdException("아이디 또는 비밀번호가 일치하지 않습니다.");
 	}//end authenticate(MemberInfoDao memberInfoDao, String email, String password)
