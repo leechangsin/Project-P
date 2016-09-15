@@ -18,7 +18,7 @@ html, body {
 .wrapper {
 	width: 100%;
 	height: 100%;
-	background-image: url('../images/background.jpg');
+	background-color: #85D7FD;
 	background-repeat: repeat;
 	overflow-y: auto;
 	opacity: 0.9;
@@ -49,7 +49,7 @@ html, body {
 
 .box{
 	width: 40%;
-	height: 25%;
+	height: 30%;
 	padding: 30px 44px 30px 44px;
 	margin: 0 auto;
 	background-color: #ffffff;
@@ -67,14 +67,10 @@ html, body {
 
 .passwdbox input{
 	margin-top: 10px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	BORDER-BOTTOM: teal 2px solid;
-	BORDER-LEFT: medium none;
-	BORDER-RIGHT: medium none;
-	BORDER-TOP: medium none;
-
+	BORDER-BOTTOM: teal 2px solid; 
+	BORDER-LEFT: medium none; 
+	BORDER-RIGHT: medium none; 
+	BORDER-TOP: medium none; 
 }
 
 .box #next{
@@ -85,7 +81,7 @@ html, body {
 	font-size: 16px;
 	padding: 17px 0 16px;
 	border: 0;
-	margin-top: 35px;
+	margin-top: 60px;
 	cursor: pointer;
 	font-family: '돋움';
 	float: right;

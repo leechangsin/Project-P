@@ -16,4 +16,9 @@ public class PW_SearchUI_Controller {
 	public String inputCode(){
 		return "inputCode";
 	}
+	
+	@RequestMapping("inputPW")
+	public String inputPW(){
+		return "inputPW";
+	}
 }

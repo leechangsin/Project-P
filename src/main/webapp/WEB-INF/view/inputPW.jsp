@@ -1,11 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
 <head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/inputpw.css" type="text/css" media="screen" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/inputcode.css" type="text/css" media="screen" />
-<title>비밀번호 찾기</title>
+<title>비밀번호 변경</title>
 </head>
+<body>
 <body>
 	<div class="wrapper">
 		<div class="top">
@@ -18,13 +20,12 @@
 		<div class="bottom">
 			<div class="box">
 				<div class="titlebox">
-					<label id="emailAddress">${emailAddress}</label><label>으로</label><br>
-					<label> 새 비밀번호 설정을 위한 코드를 전송하였습니다.</label><br>
-					<label> 이메일을 확인해주세요.</label>
+					<label>새 비밀번호를 입력해주세요!!</label><br>
 				</div>
-				<div class="codebox">
+				<div class="passwdbox">
 					<form action="/Project-P/inputPW">
-						<input type="text" id="reciveCode" required placeholder="여기에 코드를 입력해주세요." size="80">
+						<input type="password" name="passwd" size="50" maxlength="16" required placeholder="비밀번호를 입력"><br>
+						<input type="password" name="rePasswd" size="50" maxlength="16" required placeholder="비밀번호를 재입력">
 						<input type="submit" id="next" value="다음">
 					</form>
 				</div>
