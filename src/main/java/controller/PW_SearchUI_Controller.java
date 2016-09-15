@@ -55,6 +55,7 @@ public class PW_SearchUI_Controller {
 		model.addAttribute("emailAddress", emailAddress);
 		return "inputCode";
 	}
+
 	//암호코드를 기준으로 DB에서 암호코드가 존재하는지 찾는다
 	//존재하면 비밀번호변경 화면 출력
 	@RequestMapping("inputPW")
