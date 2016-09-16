@@ -16,17 +16,14 @@
 			</div>
 		</div>
 		<div class="bottom">
+			<div class="step_title">
+				<img src="${pageContext.request.contextPath}/resources/images/SignUpEmailStep1Title.png" />
+			</div>
 			<div class="box">
-			<!--
-				일단 보류... 다른거 다 만들고 이미지 넣기
-				<div class="SignUpEmailStep1_title">
-					<img src="${pageContext.request.contextPath}/resources/images/SignUpEmailStep1Title.png"/>
-				</div>
-			-->
 				<form action="/Project-P/regist/SignUpEmail/step2">
 					<div class="access_term1">
 						<div class="title">
-							서비스 이용약관 동의(필수) <input type="checkbox" name="agree1" value="true">
+							서비스 이용약관 동의(필수) <input type="checkbox" name="agree1" value="true" required>
 						</div>
 						<div class="content">
 							<textarea readonly disabled cols="70" rows="12">
@@ -183,7 +180,7 @@
 					</div>
 					<div class="access_term2">
 						<div class="title">
-							개인정보 수집 및 이용동의(필수) <input type="checkbox" name="agree2" value="true">
+							개인정보 수집 및 이용동의(필수) <input type="checkbox" name="agree2" value="true" required>
 						</div>
 						<div class="content">
 							<textarea readonly disabled cols="70" rows="12">

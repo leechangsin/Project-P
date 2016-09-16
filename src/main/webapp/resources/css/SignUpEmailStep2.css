@@ -43,8 +43,16 @@ html, body {
 }
 
 .bottom{
-	width: 100%;
+	height: 100%;
+	background-color: #DADEDC;
 	opacity: 0.9;
+}
+
+.step_title img{
+	width: 46%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .box{
@@ -99,7 +107,7 @@ html, body {
 	font-size: 16px;
 	padding: 17px 0 16px;
 	border: 0;
-	margin-top: 20px;
+	margin-top: 34px;
 	cursor: pointer;
 	font-family: '돋움';
 	float: left;

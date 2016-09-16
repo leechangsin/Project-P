@@ -40,7 +40,7 @@ public class MemberDao {
 			sql = "select * from member where nickname like concat('%', ? , '%')";
 		//RegistUI_Controller의 @RequestMapping("SignUpEmail/step4")에서 요청했다면
 		else if(requestType == RequestType.signUpMember)
-			sql = "select email from member where nickname = ?";
+			sql = "select nickname from member where nickname = ?";
 
 		List<Member> results = jdbcTemplate.query(sql, new MemberRowMapper(), nickName);
 
@@ -50,14 +50,13 @@ public class MemberDao {
 	// 개인정보를 가지고 회원가입하는 쿼리문
 	public Boolean insertMember(final Member member) {
 		final String sql = "insert into member values(?, ?, ?, ?)";
-
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			@Override
 			public PreparedStatement createPreparedStatement(Connection arg0) throws SQLException {
 				// TODO Auto-generated method stub
 				PreparedStatement pstmt = arg0.prepareStatement(sql);
-				pstmt.setString(1, member.getEmail());
-				pstmt.setString(2, member.getNickname());
+				pstmt.setString(1, member.getNickname());
+				pstmt.setString(2, member.getEmail());
 				pstmt.setString(3, member.getIntro());
 				pstmt.setObject(4, member.getPicture());
 				return pstmt;

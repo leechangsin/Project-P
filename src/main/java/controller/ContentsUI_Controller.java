@@ -45,7 +45,7 @@ public class ContentsUI_Controller {
 		return "redirect:main";
 	}
 	*/
-
+/* 컨텐츠 개발할때 주석 풀기...
 	@RequestMapping("savePicture")
 	public String savePicture(FileVo fileVo) {
 		try {
@@ -57,7 +57,7 @@ public class ContentsUI_Controller {
 		}
 		return "redirect:main";
 	}
-
+*/
 	/*미구현 메서드들
 	public String saveVideo(){
 		

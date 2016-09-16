@@ -3,17 +3,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="query">
 	<insert id="savePicture" parameterType="java.util.Map">
-		INSERT INTO test_table(picture)
+		INSERT INTO contents(picture)
 		VALUES(#{picture})
 	</insert>
 
 	<select id="getPicture" resultType="java.util.Map">
-		SELECT picture FROM test_table
+		SELECT picture FROM contents
 		WHERE id=1
 	</select>
 	
 	<select id="getVideo" resultType="java.util.Map">
-		SELECT picture FROM test_table
+		SELECT picture FROM contents
 		WHERE id=6
 	</select>
 </mapper>

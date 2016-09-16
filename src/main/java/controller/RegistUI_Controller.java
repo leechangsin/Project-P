@@ -2,7 +2,10 @@ package controller;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import command.Member;
 import command.MemberInfo;
@@ -48,6 +50,7 @@ public class RegistUI_Controller {
 	// step1 = 약관동의 화면을 보여줌
 	@RequestMapping(value = "SignUpEmail/step1")
 	public String SignUpEmailStep1() {
+		//약관동의 여부는 뷰에서 input태그의 required속성으로 확인한다.
 		return "SignUpEmailStep1";
 	}
 
@@ -56,19 +59,40 @@ public class RegistUI_Controller {
 	 * 2개의 약관에 동의를 했나 안했나 검사함. 하나라도 약관동의를 하지 않았다면 step1로 돌아감
 	 */
 	@RequestMapping("SignUpEmail/step2")
-	public String SignUpEmailStep2(@RequestParam(value = "agree1", defaultValue = "false") Boolean agree1,
-			@RequestParam(value = "agree2", defaultValue = "false") Boolean agree2, Model model) {
-		//지금은 약관2개를 동의하지 않았을 경우 단순히 다시 약관동의 화면을 보여줌.
-		//그러나 약관2개를 동의하지 않았을 경우 동의하지않았다는 메세지를 출력하고 다시 약관동의 화면을 보여줘야함.
-		/*테스트코드*/
-		agree1 = true;
-		agree2 = true;
-		/*테스트코드*/
-		if (!agree1 || !agree2)
-			return "redirect:/regist/SignUpEmailStep1";
+	public String SignUpEmailStep2(Model model) {
+		//step2뷰에서 생년월일 선택에 쓸 년,월,일을 생성하고 전달
+		Calendar calendar = Calendar.getInstance();
+		int nowYear = calendar.get(Calendar.YEAR);
+		List<String> year = new ArrayList<>();
+		List<String> month = new ArrayList<>();
+		List<String> day = new ArrayList<>();
+		for (int i = nowYear; i >= nowYear - 100; i--)
+			year.add(String.valueOf(i));
+		for (int i = 1; i <= 12; i++)
+			month.add(String.valueOf(i));
+		for (int i = 1; i <= 31; i++)
+			day.add(String.valueOf(i));
 
+		model.addAttribute("year", year);
+		model.addAttribute("month", month);
+		model.addAttribute("day", day);
+		
+		//step2뷰에서 성별 선택에 쓸 남,여를 생성하고 전달
+		List<String> sex = new ArrayList<>();
+		sex.add("남자");
+		sex.add("여자");
+		model.addAttribute("sex", sex);
+		
 		// step2에서 쓸 커맨드객체 생성 및 전달
-		model.addAttribute("memberInfo", new MemberInfo());
+		// 이렇게 커맨드 객체를 생성하는 이유는 step3에서 step2때 입력한 memberInfo값을 검증하게되는데
+		// 검증에 실패(이메일 공백 또는 중복, 비밀번호 공백 또는 비밀번호 확인란과 불일치)가 발생하면 기존의 입력값을 불러와
+		// step2에 표시하고 왜 검증에 실패했는지 사용자에게 보여줘야하기 때문에...
+		// 무조건 new MemberInfo()로 넘겨버리면 사용자가 기존에 입력한값, 검증실패이유를 보여주지 못함...
+		if(!model.containsAttribute("memberInfo"))
+			model.addAttribute("memberInfo", new MemberInfo());
+		//최종적으로 원하는 코드는 이메일중복 또는 비밀번호 불일치가 발생하면 이메일 또는 비밀번호를 지우고
+		//검증 실패 이유를 띄워주고 싶으나 구현 실패... 현재는 기존의 값이 다 출력되고 검증실패 이유만 노출된다.
+		
 		return "SignUpEmailStep2";
 	}
 	
@@ -78,40 +102,42 @@ public class RegistUI_Controller {
 	 */
 	@RequestMapping("SignUpEmail/step3")
 	public String SignUpEmailStep3(MemberInfo memberInfo, Errors error, HttpSession session, Model model) {
-		/*테스트코드*/
-		memberInfo.setEmail("ycs318@naver.com");
-		memberInfo.setPasswd("ckdtls12");
-		memberInfo.setConfirmPasswd("ckdtls12");
-		memberInfo.setBirth_date("1990-03-18");
-		memberInfo.setSex("남자");
-		/*테스트코드*/
 		// 커맨드 객체값 검증
+		// 정규표현식을 사용해서 이메일, 비밀번호형식을 검사하는 코드를 커맨드 객체값 검증에 추가할 것
 		new MemberInfoValidator().validate(memberInfo, error);
 		// 검증에서 에러가 발생했다면 step2로 이동
-		if (error.hasErrors())
-			return "SignUpEmailStep2";
-		// 개인정보를 모두 입력했지만 이메일 중복검사를 해야한다.
-		
+		if (error.hasErrors()){
+			return SignUpEmailStep2(model);
+		}
+
 		// 이메일 중복 검사하는 단계
-		// step2에서 중복확인 버튼을 눌러 이메일 중복 검사를 해야함.
-		// 현재는 개인정보를 입력하고 다음버튼을 누르면 이메일 중복검사를 하는 상황...
 		try {
-			 //이메일 중복이 발생된다면 예외가 발생되므로 try, catch문을 사용
-			//signUpEmailService.checkEmail(memberInfo.getEmail());
+			signUpEmailService.checkEmail(memberInfo.getEmail());
 		} catch (AlreadyExistAccountException e) {
 			//이메일 중복이 발생됬다면 커맨드 객체의 email프로퍼티 AlreadyExist에러코드를 달아줌
 			error.rejectValue("email", "alreadyExistEmail");
-			return "SignUpEmailStep2";
+			return SignUpEmailStep2(model);
 		}
+		// 사용자가 입력한 생년월일을 birth_date에 저장
+		String year = memberInfo.getYear();
+		String month = memberInfo.getMonth();
+		String day = memberInfo.getDay();
+		if(month.length() == 1)
+			month = "0" + month;
+		String Birth_date = year + "-" + month + "-" + day;
+		memberInfo.setBirth_date(Birth_date);
 
-		// 에러가 발생하지 않았다면 오늘 날짜를 불러와서 memberInfo에 삽입
+		// 오늘 날짜를 불러와서 memberInfo에 삽입
 		Date toDay = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		memberInfo.setReg_date(sdf.format(toDay));
 
 		// step3에서 member커맨드 객체를 사용하므로 커맨드 객체를 생성해서 모델로 넘겨줌
-		model.addAttribute("member", new Member());
-		// step4에서 회원가입을 진행하기 위해 session에 memberInfo를 담아서 전달
+		// 커맨드 객체를 이렇게 생성하는 이유는 SignUpEmail/step2 참고...
+		if(!model.containsAttribute("member"))
+			model.addAttribute("member", new Member());
+		// step4에서 회원 개인정보,계정정보를 DB에 저장한다.
+		// step4에서 회원 개인정보 저장하기 위해 session에 memberInfo를 담아서 전달
 		session.setAttribute("memberInfo", memberInfo);
 
 		return "SignUpEmailStep3";
@@ -122,66 +148,47 @@ public class RegistUI_Controller {
 	 * 그와 동시에 step3(회원 계정정보입력 화면)에서 nickname을 입력하지 않았다면 step3로 돌아감 
 	 * nickname을 입력했다면 DB에 닉네임, 자기소개, 사진을 저장
 	 */
+
 	@RequestMapping("SignUpEmail/step4")
 	public String SignUpEmailStep4(Member member, Errors error, FileVo fileVo, HttpSession session, Model model) {
-		/*테스트코드*/
-		member.setNickname("아이놀라");
-		member.setIntro("나야");
-		member.setPicture(null);
-		/*테스트코드*/
-		// 커멘드 객체값 검증
+		MemberInfo memberInfo = (MemberInfo) session.getAttribute("memberInfo");
+		
+		//커맨드 객체를 검사해서 값에 빈값이 없는지 검사
 		new MemberValidator().validate(member, error);
-		// 검증에서 에러가 발생했다면 step3로 이동
-		/* 이 메서드에서 오류가 발생함 오류의 이유는 모름.
-		if (error.hasErrors())
-			return "SignUpEmailStep3";
-		*/
+		if(error.hasErrors())
+			return SignUpEmailStep3(memberInfo, error, session, model);
+			//return "SignUpEmailStep3";
 		// 닉네임 중복검사
 		try {
-			//signUpEmailService.checkNickname(member.getNickname(), RequestType.signUpMember);
+			signUpEmailService.checkNickname(member.getNickname(), RequestType.signUpMember);
 		} catch (AlreadyExistNicknameException e) {
 			error.rejectValue("nickname", "alreadyExistNickname");
-			return "SignUpEmailStep3";
+			return SignUpEmailStep3(memberInfo, error, session, model);
+			//return "SignUpEmailStep3";
 		}
 
-
-		// 사진을 업로드하였다면 사진을 member의 picture에 넣음
-		// 사진을 업로드 하지 않을 경우 null값이 날라오는데 이럴때 nullPointerException이 발생함
-		/*
 		try {
-			member.setPicture(fileVo.getPictureFile().getBytes());
+			if(!fileVo.getPictureFile().isEmpty())
+				member.setPicture(fileVo.getPictureFile().getBytes());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-		//예상되는 해결책 nullPointerException이 발생하면 그냥 스택출력하고 finally로 남은 밑에 부분처리하기...
-		 * 시도해보지는 않음
-		 * catch(NullPointerException){
-		 * 	e.printStackTrace();
-		 * }
-		*/
-		/* 여기서도 널값이 날라옴... 임시 주석 */
-		//MemberInfo memberInfo = (MemberInfo) session.getAttribute("memberInfo");
-
+		}
 		// 사용자가 입력한 개인정보를 DB에 저장
-		/*다음 코드는 테스트를 위해 임시로 주석처리함*/
-		//signUpEmailService.signUpMemberInfo(memberInfo);
-
+		signUpEmailService.signUpMemberInfo(memberInfo);
 		// 사용자가 입력한 계정정보를 DB에 저장
-		/* 164번째줄에서 널값이 날라오기 때문에 다음 코드도 주석처리 */
-		//member.setEmail(memberInfo.getEmail());
-		/*다음 코드는 테스트를 위해 임시로 주석처리함*/
-		//signUpEmailService.signUpMember(member);
+		member.setEmail(memberInfo.getEmail());
+		signUpEmailService.signUpMember(member);
 
 		// xxx님 회원가입에 성공했습니다. 라고 뷰에 출력하기 위해 model로 전달
 		model.addAttribute("nickName", member.getNickname());
+		model.addAttribute("email", member.getEmail());
 		
 		//사용자가 입력했던 개인정보를 없애기위한 부분
 		session.invalidate();
 
 		return "SignUpEmailStep4";
 	}
-
 	/*
 	@RequestMapping("SignUpKaKao")
 	public void SingUpKaKao(){

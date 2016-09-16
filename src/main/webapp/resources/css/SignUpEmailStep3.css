@@ -1,4 +1,4 @@
-ㅇ* 초기화 */
+/* 초기화 */
 html, body, div, header, nav, section, aside, article, footer, figure,
 	figcaption, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, p, fieldset
 	{
@@ -42,8 +42,15 @@ html, body {
 
 .bottom{
 	height: 100%;
-	background-color: #a5a5a5;
+	background-color: #DADEDC;
 	opacity: 0.9;
+}
+
+.step_title img{
+	width: 46%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .box{
