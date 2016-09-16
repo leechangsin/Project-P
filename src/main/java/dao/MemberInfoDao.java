@@ -28,24 +28,10 @@ public class MemberInfoDao {
 	}// end selectByEmail(String email)
 	
 	//개인정보를 가지고 회원가입하는 쿼리문
-	public Boolean insertMemberInfo(final MemberInfo memberInfo){
-		final String sql = "insert into memberInfo values(?, ?, ?, ?, ?)";
+	public void insertMemberInfo(MemberInfo memberInfo){
+		String sql = "insert into memberInfo values(?, ?, ?, ?, ?)";
 		
-		jdbcTemplate.update(new PreparedStatementCreator(){
-			@Override
-			public PreparedStatement createPreparedStatement(Connection arg0) throws SQLException {
-				// TODO Auto-generated method stub
-				PreparedStatement pstmt = arg0.prepareStatement(sql);
-				pstmt.setString(1, memberInfo.getEmail());
-				pstmt.setString(2, memberInfo.getPasswd());
-				pstmt.setString(3, memberInfo.getReg_date());
-				pstmt.setString(4, memberInfo.getBirth_date());
-				pstmt.setString(5, memberInfo.getSex());
-				return pstmt;
-			}
-		});
-
-		return true;
+		jdbcTemplate.update(sql, memberInfo.getEmail(), memberInfo.getPasswd(), memberInfo.getReg_date(), memberInfo.getBirth_date(), memberInfo.getSex());
 	}//end insertMemberInfo(final MemberInfo memberInfo)
 	
 	public void updatePasswd(String email, String passwd){
