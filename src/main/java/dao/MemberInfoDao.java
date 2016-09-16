@@ -50,8 +50,7 @@ public class MemberInfoDao {
 	
 	public void updatePasswd(String email, String passwd){
 		String sql = "update memberInfo set passwd=? where email=?";
-		int result = 0;
-		result = jdbcTemplate.update(sql, MemberInfo.class,passwd, email);
-		System.out.println("Update결과는 " + result);
+		//update는 변경된 행의 개수를 리턴
+		jdbcTemplate.update(sql, passwd, email);
 	}
 }// end class MemberInfoDao

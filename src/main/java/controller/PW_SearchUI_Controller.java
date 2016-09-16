@@ -77,7 +77,7 @@ public class PW_SearchUI_Controller {
 			ShowPW_SearchUI(model);
 		}
 		
-		model.addAttribute("emailAddres", emailAddress);
+		model.addAttribute("emailAddress", emailAddress);
 		return "inputPW";
 	}
 	//비밀번호변경 화면에서 패스워드를 두 차례 올바르게 입력했다면 DB에 비밀번호변경 실행
@@ -90,17 +90,17 @@ public class PW_SearchUI_Controller {
 		
 		try{
 			pw_searchService.confirmPasswd(passwd, rePasswd);
-			memberInfoDao.updatePasswd(emailAddress, passwd);
+			pw_searchService.updatePasswd(emailAddress, passwd);
+			pw_searchService.deleteCode(emailAddress);
 		} catch(NotMatchPasswdException e){
 			e.printStackTrace();
 			/*미완성 코드... 
 			 * 두 차례의 비밀번호 입력이 틀렸다면은 inputPW뷰로가서 비밀번호가 틀렸다는 내용을 출력해야함...
 			 * */
-			request.setAttribute("emailAddress", "");
-			request.setAttribute("reciveCode", "");
 			inputPW(request, model);
 		}
 		
-		return "indexUI";
+		model.addAttribute("email", emailAddress);
+		return "IndexUI";
 	}
 }

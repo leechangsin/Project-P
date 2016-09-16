@@ -23,13 +23,14 @@
 					<label>새 비밀번호를 입력해주세요!!</label><br>
 				</div>
 				<div class="passwdbox">
-					<form action="/Project-P/regist/changPW">
+					<form action="/Project-P/PW_Search/changePW" method="post">
 						<input type="password" name="passwd" size="50" maxlength="16" required placeholder="비밀번호를 입력"><br>
 						<input type="password" name="rePasswd" size="50" maxlength="16" required placeholder="비밀번호를 재입력">
+						<input type="hidden" id="emailAddress" name="emailAddress" value="${emailAddress}">
 						<input type="submit" id="next" value="다음">
 					</form>
 				</div>
-				<form action="/Proejct-P/login/main">
+				<form action="/Project-P/login/main">
 					<input type="submit" id="cancle" value="취소">
 				</form>
 			</div>

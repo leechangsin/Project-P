@@ -42,6 +42,14 @@ public class PW_SearchService {
 		}
 	}
 	
+	public void updatePasswd(String email, String passwd){
+		memberInfoDao.updatePasswd(email, passwd);
+	}
+	
+	public void deleteCode(String email){
+		pwSearchDao.deleteCode(email);
+	}
+	
 	public EmailForm setEmail(String email) throws MessagingException{
 		EmailForm reciver = new EmailForm();
 		reciver.setEmailAddress(email);

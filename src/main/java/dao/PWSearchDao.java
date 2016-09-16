@@ -22,4 +22,9 @@ public class PWSearchDao {
 		String sql = "select * from PWSearch where code=?";
 		return jdbcTemplate.queryForObject(sql, new PWSearchRowMapper(), code);
 	}
+	
+	public void deleteCode(String email){
+		String sql = "delete from PWSearch where email=?";
+		jdbcTemplate.update(sql, email);
+	}
 }
