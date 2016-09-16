@@ -2,18 +2,22 @@ package command;
 
 public class AuthInfo {
 	private String email;
-	private String name;
-
-	public AuthInfo(String email, String name) {
-		this.email = email;
-		this.name = name;
-	}
+	private String passwd;
 
 	public String getEmail() {
 		return email;
 	}
 
-	public String getName() {
-		return name;
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
+	public String getPasswd() {
+		return passwd;
+	}
+
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+
 }

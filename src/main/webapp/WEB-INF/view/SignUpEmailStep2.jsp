@@ -25,16 +25,16 @@
 				<form:form action="/Project-P/regist/SignUpEmail/step3" commandName="memberInfo">
 					<div class="email">
 						<label>이메일*</label><br><br>
-						<form:input path="email" value="${memberInfo.email}" size="80"/><br>
-					</div>
+						<form:input path="email" size="80"/><br>
 						<form:errors path="email"/>
+					</div>
 					<div class="password">
 						<label>비밀번호*</label><br><br>
-						<form:password path="passwd" value="${memberInfo.passwd}" maxlength="16" placeholder="6~16자 비밀번호를 입력해주세요."/>
+						<form:password path="passwd" maxlength="16" placeholder="6~16자 비밀번호를 입력해주세요."/>
 						<form:errors path="passwd"/>
 					</div>
 					<div class="confirmPW">
-						<form:password path="confirmPasswd" value="${memberInfo.confirmPasswd}" maxlength="16" placeholder="위와 동일한 비밀번호를 입력해주세요."/>
+						<form:password path="confirmPasswd" maxlength="16" placeholder="위와 동일한 비밀번호를 입력해주세요."/>
 						<form:errors path="confirmPasswd"/>
 					</div>
 					<div class="birthday">

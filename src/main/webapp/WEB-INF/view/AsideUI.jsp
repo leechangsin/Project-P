@@ -11,10 +11,10 @@
 로그인 하세요<br>
 더욱 즐거워집니다!
 </h3>
-<input type="button" value="로그인하기" onClick="location.href='login/main'">
+<input type="button" value="로그인하기" onClick="location.href='/Project-P/login/main'">
 <br><br>
 
-<a href="regist/main">회원가입</a>
+<a href="/Project-P/regist/main">회원가입</a>
 <br>
 </body>
 </html>

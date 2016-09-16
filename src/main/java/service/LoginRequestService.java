@@ -6,8 +6,13 @@ import exceptions.NotFindEmailException;
 import exceptions.NotMatchPasswdException;
 
 public class LoginRequestService {
+	MemberInfoDao memberInfoDao;
 	
-	public static void authenticate(MemberInfoDao memberInfoDao, String email, String passwd){
+	public LoginRequestService(MemberInfoDao memberInfoDao){
+		this.memberInfoDao = memberInfoDao;
+	}
+	
+	public void authenticate(String email, String passwd){
 		MemberInfo memberInfo = memberInfoDao.selectByEmail(email);
 		
 		if(memberInfo == null)

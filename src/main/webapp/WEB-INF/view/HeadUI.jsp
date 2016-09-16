@@ -13,12 +13,12 @@
 <!-- 
 <h4> 로고부분 </h4>
  -->
-<h2><a href="/Project-P">Pet For you</a></h2>
+<h2><a href="/Project-P/">Pet For you</a></h2>
 <!--
 <h1> 검색부분 </h1>
 검색부분은 자바스크립트로 텍스트 내용 여부 확인체크하기
  -->
-<form action="search/main" method="post">
+<form action="/Project-P/search/main" method="post">
 	<input type="text" name="search" id="search">
 	<input type="submit" value="검색">
 </form>
@@ -31,7 +31,7 @@
  <a href="logout"> 로그아웃 하겠습니까?<br></a>
  </c:when>
  <c:otherwise>
-<a href="login/main">로그인하세요. 더욱 더 즐거워 집니다.</a>
+<a href="/Project-P/login/main">로그인하세요. 더욱 더 즐거워 집니다.</a>
 </c:otherwise>
 </c:choose>
 
