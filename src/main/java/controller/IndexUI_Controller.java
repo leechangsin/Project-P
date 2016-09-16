@@ -11,11 +11,11 @@ public class IndexUI_Controller {
 
 	@RequestMapping("/")
 	public String indexUI(Model model) {
-		return "IndexUI";
+		return "index";
 	}
 
 	@RequestMapping("/index")
 	public String index() {
-		return "IndexUI";
+		return "index";
 	}
 }

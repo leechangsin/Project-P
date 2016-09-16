@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +10,6 @@
 		<li><a href='#'>사이드메뉴1</a></li>
 		<li><a href='#'>사이드메뉴2</a></li>
 		<li><a href='#'>사이드메뉴3</a></li>
-	</ul>
-<br>
-<br>
+	</ul> <br><br>
 </body>
 </html>
