@@ -4,7 +4,7 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import command.PWSearch;
+import command.CodeAuth;
 
 public class PWSearchDao {
 	private JdbcTemplate jdbcTemplate;
@@ -18,9 +18,9 @@ public class PWSearchDao {
 		jdbcTemplate.update(sql, code, email);
 	}
 	
-	public PWSearch selectByCode(String code){
+	public CodeAuth selectByCode(String code){
 		String sql = "select * from PWSearch where code=?";
-		return jdbcTemplate.queryForObject(sql, new PWSearchRowMapper(), code);
+		return jdbcTemplate.queryForObject(sql, new CodeAuthRowMapper(), code);
 	}
 	
 	public void deleteCode(String email){

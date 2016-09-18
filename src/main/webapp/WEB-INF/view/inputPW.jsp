@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/inputpw.css" type="text/css" media="screen" />
@@ -23,12 +23,14 @@
 					<label>새 비밀번호를 입력해주세요!!</label><br>
 				</div>
 				<div class="passwdbox">
-					<form action="/Project-P/PW_Search/changePW" method="post">
-						<input type="password" name="passwd" size="50" maxlength="16" required placeholder="비밀번호를 입력"><br>
-						<input type="password" name="rePasswd" size="50" maxlength="16" required placeholder="비밀번호를 재입력">
-						<input type="hidden" id="emailAddress" name="emailAddress" value="${emailAddress}">
+					<form:form action="/Project-P/PW_Search/changePW" method="post" commandName="passwdSet">
+						<form:password path="passwd" size="50" maxlength="16" placeholder="비밀번호를 입력"/>
+						<form:errors path="passwd"/>
+						<form:password path="confirmPasswd" size="50" maxlength="16" placeholder="비밀번호를 재입력"/>
+						<form:errors path="confirmPasswd"/>
+						<form:hidden path="emailAddress" value="${passwdSet.getEmailAddress()}"/>
 						<input type="submit" id="next" value="다음">
-					</form>
+					</form:form>
 				</div>
 				<form action="/Project-P/login/main">
 					<input type="submit" id="cancle" value="취소">

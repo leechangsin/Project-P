@@ -9,14 +9,14 @@ import javax.mail.internet.MimeMessage.RecipientType;
 
 import org.springframework.mail.javamail.JavaMailSender;
 
+import command.CodeAuth;
 import command.EmailForm;
 import command.MemberInfo;
-import command.PWSearch;
 import dao.MemberInfoDao;
 import dao.PWSearchDao;
 import exceptions.NotFindCodeException;
 import exceptions.NotFindEmailException;
-import exceptions.NotMatchPasswdException;
+import exceptions.NotMatchEmailException;
 
 public class PW_SearchService {
 	private MemberInfoDao memberInfoDao;
@@ -35,11 +35,13 @@ public class PW_SearchService {
 			throw new NotFindEmailException();
 	}
 	
-	public void selectByCode(String code){
-		PWSearch result = pwSearchDao.selectByCode(code);
+	public CodeAuth selectByCode(String code){
+		CodeAuth result = pwSearchDao.selectByCode(code);
 		if(result == null){
 			throw new NotFindCodeException();
 		}
+		
+		return result;
 	}
 	
 	public void updatePasswd(String email, String passwd){
@@ -84,8 +86,8 @@ public class PW_SearchService {
 		return code; 
 	}
 	
-	public void confirmPasswd(String passwd, String rePasswd){
-		if(!passwd.equals(rePasswd))
-			throw new NotMatchPasswdException();
+	public void confirmCode(String resultEmail, String userEmail){
+		if(!resultEmail.equals(userEmail))
+			throw new NotMatchEmailException();
 	}
 }

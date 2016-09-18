@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,18 +19,19 @@
 		<div class="bottom">
 			<div class="box">
 				<div class="titlebox">
-					<label id="emailAddress">${emailAddress}</label><label>으로</label><br>
+					<label id="emailAddress">${codeAuth.getEmailAddress()}</label><label>으로</label><br>
 					<label> 새 비밀번호 설정을 위한 코드를 전송하였습니다.</label><br>
 					<label> 이메일을 확인해주세요.</label>
 				</div>
 				<div class="codebox">
-					<form action="/Project-P/PW_Search/inputPW" method="post">
-						<input type="text" id="reciveCode" name="reciveCode" required placeholder="여기에 코드를 입력해주세요." size="80">
-						<input type="hidden" name="emailAddress" value="${emailAddress}">
-						<input type="submit" id="next" value="다음">
-					</form>
+				<form:form action="/Project-P/PW_Search/inputPW" commandName="codeAuth">
+					<form:input path="reciveCode" id="reciveCode" placeholder="여기에 코드를 입력해주세요." size="40"/>
+					<form:errors path="reciveCode"/>
+					<form:hidden path="emailAddress" value="${codeAuth.getEmailAddress()}"/>
+					<input type="submit" id="next" value="다음">
+				</form:form>
 				</div>
-				<form action="/Proejct-P/login/main">
+				<form action="/Project-P/login/main">
 					<input type="submit" id="cancle" value="취소">
 				</form>
 			</div>

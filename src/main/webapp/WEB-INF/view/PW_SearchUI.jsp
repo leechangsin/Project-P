@@ -24,10 +24,9 @@
 				<div class="emailbox">
 					<form:form action="/Project-P/PW_Search/inputCode" commandName="emailForm">
 						<form:input path="firstEmail" id="firstEmail"/>
-						<form:errors path="firstEmail"/>
 						<label>@</label>
 						<form:input path="secondEmail" id="secondEmail"/>
-						<form:errors path="secondEmail"/><br>
+						<form:errors delimiter="" />
 						<input type="submit" id="next" value="다음">
 					</form:form>
 				</div>
