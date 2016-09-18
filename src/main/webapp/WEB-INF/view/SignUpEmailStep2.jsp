@@ -23,28 +23,28 @@
 			</div>
 			<div class="box">
 				<form:form action="/Project-P/regist/SignUpEmail/step3" commandName="memberInfo">
-					<div class="email">
-						<label>이메일*</label><br><br>
-						<form:input path="email" size="80"/><br>
+					<div class="email_area">
+						<label>이메일*</label><br>
+						<form:input path="email" id="email_text" size="50"/><br>
 						<form:errors path="email"/>
 					</div>
-					<div class="password">
-						<label>비밀번호*</label><br><br>
-						<form:password path="passwd" maxlength="16" placeholder="6~16자 비밀번호를 입력해주세요."/>
+					<div class="password_area">
+						<label>비밀번호*</label><br>
+						<form:password path="passwd" id="passwd" size="50" maxlength="16" placeholder="6~16자 비밀번호를 입력해주세요."/>
 						<form:errors path="passwd"/>
 					</div>
-					<div class="confirmPW">
-						<form:password path="confirmPasswd" maxlength="16" placeholder="위와 동일한 비밀번호를 입력해주세요."/>
+					<div class="confirmPW_area">
+						<form:password path="confirmPasswd" id="confirmPasswd" size="50" maxlength="16" placeholder="위와 동일한 비밀번호를 입력해주세요."/>
 						<form:errors path="confirmPasswd"/>
 					</div>
-					<div class="birthday">
-						<label>생년월일*</label><br><br>
+					<div class="birthday_area">
+						<label>생년월일*</label><br>
 						<form:select path="year" items="${year}" />
 						<form:select path="month" items="${month}"/>
 						<form:select path="day" items="${day}"/>
 					</div>
-					<div class="sex">
-						<label>성별*</label><br><br>
+					<div class="sex_area">
+						<label>성별*</label><br>
 						<form:radiobuttons path="sex" items="${sex}"/>
 					</div>
 					<input type="submit" id="next" value="다음">
