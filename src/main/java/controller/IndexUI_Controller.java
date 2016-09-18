@@ -18,4 +18,9 @@ public class IndexUI_Controller {
 	public String index() {
 		return "index";
 	}
+	
+	@RequestMapping("testUI")
+	public String testUI(){
+		return "testUI";
+	}
 }
