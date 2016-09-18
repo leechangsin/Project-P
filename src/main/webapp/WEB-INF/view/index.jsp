@@ -18,15 +18,26 @@
 				<a href="/Project-P/searchUI/main"><img src="${pageContext.request.contextPath}/resources/images/search.png"/></a>
 			</div>
 			<div class="login_area">
-				<a href="/Project-P/login/main"><img src="${pageContext.request.contextPath}/resources/images/header_icon.png"/></a>
-				<a href="/Project-P/login/main"><img src="${pageContext.request.contextPath}/resources/images/login.png"/></a>
+				<a href="/Project-P/login/main">
+					<img src="${pageContext.request.contextPath}/resources/images/header_icon.png"/>
+					<img src="${pageContext.request.contextPath}/resources/images/login.png"/>
+				</a>
 			</div>
 		</div>
 		<div id="sideinfo">
 			<div class="loginbox">
 				<c:if test="${!empty member}">
 					<c:set var="nickName" value="${member.nickname}"/>
-					<label>${nickName}님 안녕하세요!</label>
+					<div class="profile_image">
+						<a href="#"><img src="${pageContext.request.contextPath}/resources/images/my_image.jpg"></a>
+					</div>
+					<div class="profile_nickName">
+						<a href="#">${nickName}</a>
+					</div>
+					<div class="active">
+							<a href="#"><img src="${pageContext.request.contextPath}/resources/images/write_icon.png">글쓰기</a>
+							<a href="#"><img src="${pageContext.request.contextPath}/resources/images/drawer_icon.png">보관함</a>
+					</div>
 				</c:if>
 				<c:if test="${empty member }">
 					<div class="login_title">

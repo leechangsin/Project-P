@@ -67,6 +67,39 @@ body{
 	height: 40%;
 }
 
+#sideinfo .loginbox .profile_nickName{
+	margin-top: 10px;
+	margin-left: 80px;
+}
+
+#sideinfo .loginbox .profile_nickName a, a:link, a:visited, a:hover, a:active{
+	color: #DD5053;
+	text-decoration: none;
+}
+
+#sideinfo .loginbox .profile_image img{
+	width: 150px;
+	height: 150px;
+	border-radius: 70px;
+	margin-top: 20px;
+	margin-left: 70px;
+}
+
+#sideinfo .loginbox .active{
+	margin-top: 10px;
+	margin-left: 80px;
+}
+
+#sideinfo .loginbox .active a, a:link, a:visited, a:hover, a:active{
+	color: gray;
+	text-decoration: none;
+}
+
+#sideinfo .loginbox .active img{
+	width: 25px;
+	height: 25px;
+}
+
 #sideinfo .login_title{
 	padding-top: 25%;
 	padding-left: 30%;
