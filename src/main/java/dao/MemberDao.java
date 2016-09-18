@@ -65,4 +65,10 @@ public class MemberDao {
 
 		return true;
 	}// end insertMember(final Member member)
+	
+	public Member selectByEmail(String email){
+		String sql = "select * from member where email=?";
+		Member member = jdbcTemplate.queryForObject(sql, Member.class ,email);
+		return member;
+	}
 }

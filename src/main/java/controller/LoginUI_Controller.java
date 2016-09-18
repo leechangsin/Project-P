@@ -6,6 +6,9 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import command.AuthInfo;
+import command.Member;
+import command.MemberInfo;
+
 import exceptions.NotFindEmailException;
 import exceptions.NotMatchPasswdException;
 import service.LoginRequestService;
@@ -14,7 +17,9 @@ import validator.AuthInfoValidator;
 @Controller
 @RequestMapping("/login")
 public class LoginUI_Controller {
-	LoginRequestService loginRequestService;
+
+	private LoginRequestService loginRequestService;
+
 	
 	public LoginUI_Controller(LoginRequestService loginRequestService){
 		this.loginRequestService = loginRequestService;
@@ -34,23 +39,22 @@ public class LoginUI_Controller {
 	public String loginRequest(AuthInfo authInfo, Errors errors, Model model) {
 		new AuthInfoValidator().validate(authInfo, errors);
 		if(errors.hasErrors())
-			return showLoginUI(model);
-		
-		try{
-			String email = authInfo.getEmail();
-			String passwd = authInfo.getPasswd();
+			return "LoginUI";
 			
-			loginRequestService.authenticate(email, passwd);
-			//변수명을 Login_Email_Text -> MainUI에서 받는 변수명으로 변경해야함.
-			model.addAttribute("Login_Email_Text", email);
+		String email = authInfo.getEmail();
+		String passwd = authInfo.getPasswd();
+		try{
+			loginRequestService.emailAuthenticate(email, passwd);
+			Member member = loginRequestService.selectByEmail(email);
+			model.addAttribute("member", member);
 		}catch(NotFindEmailException e){
 			e.printStackTrace();
 			errors.rejectValue("email", "NotFindEmail");
-			return showLoginUI(model);
+			return "LoginUI";
 		}catch(NotMatchPasswdException e){
 			e.printStackTrace();
 			errors.rejectValue("passwd", "NotMatchPasswd");
-			return showLoginUI(model);
+			return "LoginUI";
 		}//end try
 		
 		return "IndexUI";
