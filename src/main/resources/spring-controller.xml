@@ -10,9 +10,14 @@
 		<constructor-arg ref="memberInfoDao"/>
 		<constructor-arg ref="memberDao"/>
 	</bean>
+	
+	<bean id="loginRequestService" class="service.LoginRequestService">
+		<constructor-arg ref="memberInfoDao"/>
+		<constructor-arg ref="memberDao"/>
+	</bean>
 		
 	<bean class="controller.LoginUI_Controller">
-		<constructor-arg ref="memberInfoDao"/>
+		<constructor-arg ref="loginRequestService"/>
 	</bean>
 	
 	<bean class="controller.IndexUI_Controller"/>
