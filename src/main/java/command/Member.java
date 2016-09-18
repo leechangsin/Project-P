@@ -1,8 +1,8 @@
 package command;
 
 public class Member {
-	String email;
 	String nickname;
+	String email;
 	String intro;
 	Object picture;
 	

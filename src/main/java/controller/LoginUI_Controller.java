@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import command.AuthInfo;
 import command.Member;
-import command.MemberInfo;
-
 import exceptions.NotFindEmailException;
 import exceptions.NotMatchPasswdException;
 import service.LoginRequestService;

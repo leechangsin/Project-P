@@ -48,27 +48,14 @@ public class MemberDao {
 	}//end selectByNickName(String nickName, RequestType requestType)
 	
 	// 개인정보를 가지고 회원가입하는 쿼리문
-	public Boolean insertMember(final Member member) {
-		final String sql = "insert into member values(?, ?, ?, ?)";
-		jdbcTemplate.update(new PreparedStatementCreator() {
-			@Override
-			public PreparedStatement createPreparedStatement(Connection arg0) throws SQLException {
-				// TODO Auto-generated method stub
-				PreparedStatement pstmt = arg0.prepareStatement(sql);
-				pstmt.setString(1, member.getNickname());
-				pstmt.setString(2, member.getEmail());
-				pstmt.setString(3, member.getIntro());
-				pstmt.setObject(4, member.getPicture());
-				return pstmt;
-			}
-		});
-
-		return true;
+	public void insertMember(Member member) {
+		String sql = "insert into member values(?, ?, ?, ?)";
+		jdbcTemplate.update(sql, member.getNickname(), member.getEmail(), member.getIntro(), member.getPicture());
 	}// end insertMember(final Member member)
 	
 	public Member selectByEmail(String email){
 		String sql = "select * from member where email=?";
-		Member member = jdbcTemplate.queryForObject(sql, Member.class ,email);
+		Member member = jdbcTemplate.queryForObject(sql, new MemberRowMapper() ,email);
 		return member;
 	}
 }
