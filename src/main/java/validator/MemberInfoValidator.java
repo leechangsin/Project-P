@@ -35,14 +35,19 @@ public class MemberInfoValidator implements Validator {
 		//required 에러를 달아줌
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "required");
 		//이메일의 형식을 검사하기 위한 절차
-		Matcher matcher = pattern.matcher(memberInfo.getEmail());
-		if(!matcher.matches())
-			errors.rejectValue("email", "bedEmail");
+		if(!errors.hasErrors()){
+			Matcher matcher = pattern.matcher(memberInfo.getEmail());
+			if(!matcher.matches())
+				errors.rejectValue("email", "bedEmail");
+		}
 		//커맨드 객체의 비밀번호, 비밀번호 확인란의 값 검증
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "passwd", "required");
+		if(!errors.hasErrors())
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "passwd", "required");
+		if(!errors.hasErrors())
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPasswd", "required");
 		//비밀번호와 비밀번호 확인란의 값이 같지 않다면...
-		if(!memberInfo.getPasswd().equals(memberInfo.getConfirmPasswd()))
-			errors.rejectValue("confirmPasswd", "bedConfirmPasswd");
+		if(!errors.hasErrors())
+			if(!memberInfo.getPasswd().equals(memberInfo.getConfirmPasswd()))
+				errors.rejectValue("confirmPasswd", "bedConfirmPasswd");
 	}//validate(Object target, Errors errors)
 } //class LoginRequestValidator

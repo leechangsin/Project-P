@@ -18,12 +18,15 @@ public class PasswdSetValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		// TODO Auto-generated method stub
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "passwd", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPasswd", "required");
+		if(!errors.hasErrors())
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPasswd", "required");
 		
-		PasswdSet passwdSet = (PasswdSet) target;
-		String passwd = passwdSet.getPasswd();
-		String confirmPasswd = passwdSet.getConfirmPasswd();
-		if(!passwd.equals(confirmPasswd))
-			errors.rejectValue("confirmPasswd", "bedConfirmPasswd");
+		if (!errors.hasErrors()) {
+			PasswdSet passwdSet = (PasswdSet) target;
+			String passwd = passwdSet.getPasswd();
+			String confirmPasswd = passwdSet.getConfirmPasswd();
+			if (!passwd.equals(confirmPasswd))
+				errors.rejectValue("confirmPasswd", "bedConfirmPasswd");
+		}
 	}
 }

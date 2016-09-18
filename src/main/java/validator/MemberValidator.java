@@ -16,6 +16,7 @@ public class MemberValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		// TODO Auto-generated method stub
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickname", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "intro", "required");
+		if(!errors.hasErrors())
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "intro", "required");
 	}
 }

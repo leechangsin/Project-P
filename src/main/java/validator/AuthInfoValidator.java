@@ -33,11 +33,13 @@ public class AuthInfoValidator implements Validator {
 		//이메일이 입력되지 않았거나 공백문자로만 되어있다면 authInfo커맨드 객체의 email프로퍼티에 required 에러를 달아줌
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "required");
 		//이메일의 형식을 검사하기 위한 절차
-		Matcher matcher = pattern.matcher(authInfo.getEmail());
-		if(!matcher.matches())
-			errors.rejectValue("email", "bedEmail");
-		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "passwd", "required");
+		if (!errors.hasErrors()) {
+			Matcher matcher = pattern.matcher(authInfo.getEmail());
+			if (!matcher.matches())
+				errors.rejectValue("email", "bedEmail");
+		}
+		if(! errors.hasErrors())
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "passwd", "required");
 	}
 
 }
