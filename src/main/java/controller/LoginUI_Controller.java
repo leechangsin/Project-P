@@ -55,6 +55,6 @@ public class LoginUI_Controller {
 			return "LoginUI";
 		}//end try
 		
-		return "IndexUI";
+		return "index";
 	}//end loginRequest(MemberInfo memberInfo, Errors errors)
 }//end class LoginUI_Controller

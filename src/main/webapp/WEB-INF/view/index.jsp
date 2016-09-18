@@ -24,15 +24,22 @@
 		</div>
 		<div id="sideinfo">
 			<div class="loginbox">
-				<div class="login_title">
-					<label>로그인하세요.<br> 더욱 즐거워집니다!</label><br>
-				</div>
-				<div class="login_image">
-					<a href="/Project-P/login/main"><img src="${pageContext.request.contextPath}/resources/images/login1.png"></a>
-				</div>
-				<div class="login_regist">
-					<a href="/Project-P/regist/main">회원가입</a>
-				</div>
+				<c:if test="${!empty member}">
+					<c:set var="nickName" value="${member.nickname}"/>
+					<label>${nickName}님 안녕하세요!</label>
+				</c:if>
+				<c:if test="${empty member }">
+					<div class="login_title">
+						<label>로그인하세요.<br> 더욱 즐거워집니다!
+						</label><br>
+					</div>
+					<div class="login_image">
+						<a href="/Project-P/login/main"><img src="${pageContext.request.contextPath}/resources/images/login1.png"></a>
+					</div>
+					<div class="login_regist">
+						<a href="/Project-P/regist/main">회원가입</a>
+					</div>
+				</c:if>
 			</div>
 			<div class="categorybox">
 				<div class="static_area">
