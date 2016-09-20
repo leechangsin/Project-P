@@ -1,6 +1,10 @@
 package controller;
 
 import org.springframework.stereotype.Controller;
+<<<<<<< HEAD
+=======
+import org.springframework.ui.Model;
+>>>>>>> Design/#22
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -13,8 +17,8 @@ public class ProfileUI_Controller {
 	}
 	
 	@RequestMapping("modify")
-	public String modifyAccount(){
-		return "profileUI";
+	public String modifyAccount(Model model){
+		return "modify";
 	}
 	
 	@RequestMapping("write")

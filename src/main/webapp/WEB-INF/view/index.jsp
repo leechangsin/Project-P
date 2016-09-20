@@ -44,14 +44,14 @@
 				<c:if test="${!empty member}">
 					<c:set var="nickName" value="${member.nickname}"/>
 					<div class="profile_image">
-						<a href="#"><img src="${pageContext.request.contextPath}/resources/images/my_image.jpg"></a>
+						<a href="/Project-P/Profile/main"><img src="${pageContext.request.contextPath}/resources/images/my_image.jpg"></a>
 					</div>
 					<div class="profile_nickName">
-						<a href="#">${nickName}</a>
+						<a href="/Project-P/Profile/main">${nickName}</a>
 					</div>
 					<div class="active">
-							<a href="#"><img src="${pageContext.request.contextPath}/resources/images/write_icon.png">글쓰기</a>
-							<a href="#"><img src="${pageContext.request.contextPath}/resources/images/drawer_icon.png">보관함</a>
+							<a href="/Project-P/Profile/write"><img src="${pageContext.request.contextPath}/resources/images/write_icon.png">글쓰기</a>
+							<a href="/Project-P/Profile/drawer"><img src="${pageContext.request.contextPath}/resources/images/drawer_icon.png">보관함</a>
 					</div>
 				</c:if>
 				<c:if test="${empty member }">
