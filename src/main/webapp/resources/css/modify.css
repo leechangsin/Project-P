@@ -1,0 +1,185 @@
+@CHARSET "UTF-8";
+
+html {
+	width:100%;
+	height:100%;
+	overflow-y: hidden;
+}
+
+body{
+	background-color: #DCDAD9;
+}
+
+#container {
+	background-color: #F0F0F0;
+	margin: 0 auto;
+}
+
+/*
+ * header의 CSS영역
+ */
+#header {
+	position:fixed;
+    z-index:999;
+    top: 0px;
+    left:0px;
+	background-color: #DD5053;
+	height: 11%;
+	width: 100%;
+}
+
+#header .logo_area{
+	margin-left: 5%;
+}
+
+#header .search_area{
+	margin-top: 1%;
+	margin-left: 15%
+}
+
+#header .search_area input{
+	margin-bottom: 10px;
+}
+
+#header .login_area{
+	margin-top: 1%;
+	margin-left: 18%
+}
+
+#header .login_area .lougout {
+	width: 50px;
+	height: 50px
+}
+
+#header .logo_area, .search_area, .login_area{
+	float: left;
+}
+
+/*
+ * sideinfo의 CSS영역
+ */
+#sideinfo {
+	margin-top: 6.5%;
+	padding-left: 50px;
+	background-color: #DCDAD9;
+	float: left;
+	width: 300px;
+	height: 85%;
+}
+
+#sideinfo .loginbox{
+	background-color: white;
+	height: 50%;
+}
+
+#sideinfo .loginbox .profile_image img{
+	width: 150px;
+	height: 150px;
+	border-radius: 70px;
+	margin-top: 20px;
+	margin-left: 50px;
+}
+
+#sideinfo .loginbox .profile_nickName{
+	margin-top: 10px;
+	margin-left: 60px;
+}
+
+#sideinfo .loginbox .profile_nickName a, a:link, a:visited, a:hover, a:active{
+	color: #DD5053;
+	text-decoration: none;
+}
+
+
+#sideinfo .loginbox .active{
+	margin-top: 10px;
+	margin-left: 60px;
+}
+
+#sideinfo .loginbox .active a, a:link, a:visited, a:hover, a:active{
+	color: gray;
+	text-decoration: none;
+}
+
+#sideinfo .loginbox .active img{
+	width: 25px;
+	height: 25px;
+}
+
+#sideinfo .loginbox .write, #sideinfo .loginbox .drawer, #sideinfo .loginbox .modify{
+	margin-bottom: 10px;
+}
+
+/*
+ * content의 CSS영역
+ */
+#contents {
+	margin-top: 6.5%;
+	overflow-y: scroll;
+	background-color: #DCDAD9;
+	float: right;
+	width: 75%;
+	height: 85%;
+}
+
+/*
+ * footer의 CSS영역
+ */
+#footer {
+	width: 100%;
+	position:fixed;
+    z-index:999;
+    top: 95%;
+    left:0px;
+	background-color: #2F2F2F;
+	color: white;
+	clear: both;
+	height: 5%;
+}
+
+#footer .left_link{
+	height: 100%;
+	border-right: 2px solid white;
+	float: left;
+	padding-right: 30px;
+	padding-left: 30px;
+	padding-top: 5px;
+}
+
+#footer .left_link .menu_fontcolor{
+	color: black;
+}
+
+#footer .center_link{
+	float: left;
+	padding-top: 10px;
+}
+
+#footer .center_link a, a:link, a:visited ,a:hover, a:active{
+	color: white;
+	text-decoration: none;
+}
+
+#footer .center_link a{
+	margin-left: 30px;
+}
+
+#footer .center_link .AppDownload{
+	padding-left: 650px;
+	padding-right: 20px;
+}
+
+#footer .right_link{
+	height: 100%;
+	border-left: 2px solid white;
+	float: left;
+	padding-top: 5px;
+	padding-right: 35px;
+	padding-left: 25px;
+}
+
+#footer .right_link img{
+	margin-right: 20px;
+	width: 30px;
+	height: 30px;
+}

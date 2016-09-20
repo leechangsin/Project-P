@@ -60,4 +60,7 @@
 			</props>
 		</property>
 	</bean>
+	
+	<bean class="controller.ProfileUI_Controller">
+	</bean>
 </beans>
