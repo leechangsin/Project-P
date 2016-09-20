@@ -46,6 +46,11 @@ body{
 	margin-left: 18%
 }
 
+#header .login_area .lougout {
+	width: 50px;
+	height: 50px
+}
+
 #header .logo_area, .search_area, .login_area{
 	float: left;
 }
@@ -175,6 +180,17 @@ body{
 	height: 85%;
 }
 
+#contents #carousel-example-generic{
+	margin-left: 10px;
+	width: 480px;
+	height: 275px;
+}
+
+#contents #carousel-example-generic img{
+	width: 480px;
+	height: 275px;
+}
+
 #contents .content{
 	width: 230px;
 	height: 250px;
@@ -204,32 +220,49 @@ body{
 	height: 5%;
 }
 
-#footer a, a:link, a:visited ,a:hover, a:active{
-	color: white;
-	text-decoration: none;
-}
-
 #footer .left_link{
 	height: 100%;
-	border-right: 1px solid white;
+	border-right: 2px solid white;
 	float: left;
 	padding-right: 30px;
 	padding-left: 30px;
-	padding-top: 10px;
+	padding-top: 5px;
+}
+
+#footer .left_link .menu_fontcolor{
+	color: black;
 }
 
 #footer .center_link{
+	float: left;
 	padding-top: 10px;
+}
+
+#footer .center_link a, a:link, a:visited ,a:hover, a:active{
+	color: white;
+	text-decoration: none;
 }
 
 #footer .center_link a{
 	margin-left: 30px;
 }
 
+#footer .center_link .AppDownload{
+	padding-left: 650px;
+	padding-right: 20px;
+}
+
 #footer .right_link{
 	height: 100%;
-	border-left: 1px solid white;
-	float: right;
-	padding-right: 30px;
-	padding-left: 30px;
+	border-left: 2px solid white;
+	float: left;
+	padding-top: 5px;
+	padding-right: 35px;
+	padding-left: 25px;
+}
+
+#footer .right_link img{
+	margin-right: 20px;
+	width: 30px;
+	height: 30px;
 }

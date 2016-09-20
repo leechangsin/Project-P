@@ -1,5 +1,7 @@
 package controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -34,7 +36,7 @@ public class LoginUI_Controller {
 	}//end login(Model model)
 
 	@RequestMapping("loginRequest")
-	public String loginRequest(AuthInfo authInfo, Errors errors, Model model) {
+	public String loginRequest(AuthInfo authInfo, Errors errors, HttpSession session) {
 		new AuthInfoValidator().validate(authInfo, errors);
 		if(errors.hasErrors())
 			return "LoginUI";
@@ -44,7 +46,7 @@ public class LoginUI_Controller {
 		try{
 			loginRequestService.emailAuthenticate(email, passwd);
 			Member member = loginRequestService.selectByEmail(email);
-			model.addAttribute("member", member);
+			session.setAttribute("member", member);
 		}catch(NotFindEmailException e){
 			e.printStackTrace();
 			errors.rejectValue("email", "NotFindEmail");
@@ -57,4 +59,10 @@ public class LoginUI_Controller {
 		
 		return "index";
 	}//end loginRequest(MemberInfo memberInfo, Errors errors)
+	
+	@RequestMapping("logout")
+	public String logoutRequest(HttpSession session){
+		session.invalidate();
+		return "redirect:/index";
+	}
 }//end class LoginUI_Controller

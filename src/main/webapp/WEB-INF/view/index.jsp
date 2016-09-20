@@ -3,6 +3,13 @@
 <!DOCTYPE>
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css" type="text/css" media="screen" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PetSi - 펫시</title>
@@ -18,10 +25,18 @@
 				<a href="/Project-P/searchUI/main"><img src="${pageContext.request.contextPath}/resources/images/search.png"/></a>
 			</div>
 			<div class="login_area">
-				<a href="/Project-P/login/main">
-					<img src="${pageContext.request.contextPath}/resources/images/header_icon.png"/>
-					<img src="${pageContext.request.contextPath}/resources/images/login.png"/>
-				</a>
+				<c:if test="${!empty member}">
+					<a href="/Project-P/login/logout">
+						로그아웃
+						<img width="50px" height="50px" src="${pageContext.request.contextPath}/resources/images/logout.png">
+					</a>
+				</c:if>
+				<c:if test="${empty member }">
+					<a href="/Project-P/login/main">
+						<img src="${pageContext.request.contextPath}/resources/images/header_icon.png"/>
+						<img src="${pageContext.request.contextPath}/resources/images/login.png"/>
+					</a>
+				</c:if>
 			</div>
 		</div>
 		<div id="sideinfo">
@@ -80,6 +95,42 @@
 			</div>
 		</div>
 		<div id="contents">
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				</ol>
+
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<img src="${pageContext.request.contextPath}/resources/images/carousel1.jpg">
+						<div class="carousel-caption">캐러셀 테스트용 이미지1입니다.</div>
+					</div>
+					<div class="item">
+						<img src="${pageContext.request.contextPath}/resources/images/carousel2.jpg">
+						<div class="carousel-caption">캐러셀 테스트용 이미지2입니다.</div>
+					</div>
+					<div class="item">
+						<img src="${pageContext.request.contextPath}/resources/images/carousel3.jpg">
+						<div class="carousel-caption">캐러셀 테스트용 이미지3입니다.</div>
+					</div>
+				</div>
+
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel-example-generic"
+					role="button" data-slide="prev"> <span
+					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a> <a class="right carousel-control" href="#carousel-example-generic"
+					role="button" data-slide="next"> <span
+					class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+			
 			<c:forEach begin="0" end="31">
 				<div class="content">
 					<video src="https://www.youtube.com/watch?v=25y8-5hAAdU" controls preload="metadata"></video>
@@ -88,17 +139,29 @@
 		</div>
 		<div id="footer">
 			<div class="left_link">
-				드랍다운 메뉴
+				<div class="btn-group dropup">
+					<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						More pet-si
+						<span class="caret"></span> 
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">회사소개</a>
+						<li><a href="#">이용약관</a>
+						<li><a href="#">저작권</a>
+						<li><a href="#">신고기능 안내</a>
+						<li><a href="#">고객센터</a>
+					</ul>
+				</div>
 			</div>
 			<div class="center_link">
 				<a href="#">광고 문의</a>
 				<a href="#">제휴 문의</a>
 				<a href="#">개인 정보 취급방침</a>
-				<label>App Download</label>
+				<label class="AppDownload">App Download</label>
 			</div>			
 			<div class="right_link">
-				<a href="#">구글 링크</a>
-				<a href="#">애플 링크</a>
+				<a href="#"><img src="${pageContext.request.contextPath}/resources/images/googleplay_icon.png"></a>
+				<a href="#"><img src="${pageContext.request.contextPath}/resources/images/appstore_icon.png"></a>
 			</div>
 		</div>
 	</div>
