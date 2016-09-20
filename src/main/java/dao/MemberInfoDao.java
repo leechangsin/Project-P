@@ -35,4 +35,10 @@ public class MemberInfoDao {
 		//update는 변경된 행의 개수를 리턴
 		jdbcTemplate.update(sql, passwd, email);
 	}
+
+	public void updateMemberInfo(MemberInfo memberInfo) {
+		// TODO Auto-generated method stub
+		String sql = "update memberInfo set email=?, passwd=?, birth_date=?, sex=?";
+		jdbcTemplate.update(sql, memberInfo.getEmail(), memberInfo.getPasswd(), memberInfo.getBirth_date(), memberInfo.getSex());
+	}
 }// end class MemberInfoDao

@@ -5,6 +5,7 @@ public class ModifyForm {
 	private String email;
 	private String passwd;
 	private String confirmPasswd;
+	private Boolean passwdChanged;
 	private String reg_date;
 	private String birth_date;
 	private String sex;
@@ -34,6 +35,14 @@ public class ModifyForm {
 
 	public void setConfirmPasswd(String confirmPasswd) {
 		this.confirmPasswd = confirmPasswd;
+	}
+
+	public Boolean getPasswdChanged() {
+		return passwdChanged;
+	}
+
+	public void setPasswdChanged(Boolean passwdChanged) {
+		this.passwdChanged = passwdChanged;
 	}
 
 	public String getReg_date() {

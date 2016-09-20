@@ -35,7 +35,7 @@ public class MemberDao {
 		if(requestType == RequestType.Search_Members)
 			sql = "select * from member where nickname like concat('%', ? , '%')";
 		//RegistUI_Controller의 @RequestMapping("SignUpEmail/step4")에서 요청했다면
-		else if(requestType == RequestType.signUpMember)
+		else if(requestType == RequestType.signUpMember || requestType == RequestType.ModifyService)
 			sql = "select nickname from member where nickname = ?";
 
 		List<Member> results = jdbcTemplate.query(sql, new MemberRowMapper(), nickName);
@@ -53,5 +53,14 @@ public class MemberDao {
 		String sql = "select * from member where email=?";
 		Member member = jdbcTemplate.queryForObject(sql, new MemberRowMapper() ,email);
 		return member;
+	}
+
+	//미 완성된 메서드 blob칼럼에 값을 넣기 위해서는 Mybatis를 사용함
+	//이 update문을 Mybatis를 사용해서 실행하던가 jdbcTemplate를 사용해서 blob파일 업로드를 찾던가 해야함.
+	public void updateMember(Member member) {
+		// TODO Auto-generated method stub
+		String sql ="update member set nickname=?, intro=?, picture=?";
+		jdbcTemplate.update(sql, member.getNickname(), member.getIntro(), member.getPicture());
+		미ㅏㅇ러ㅣ만ㅇ러
 	}
 }

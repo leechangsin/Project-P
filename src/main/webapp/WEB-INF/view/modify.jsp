@@ -67,14 +67,14 @@
 		<!-- contents -->
 		<div id="contents">
 				<div class="panel panel-default">
-					<div class="panel-heading"><h3 class="panel-title">이메일</h3></div>
+					<div class="panel-heading"><h3 class="panel-title">이메일*</h3></div>
 					<div class="panel-body">
 						<input type="text" value="커맨드 객체의 이메일 값이 들어간다.">
 						<label>에러가 출력될 곳</label>
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading"><h3 class="panel-title">비밀번호</h3></div>
+					<div class="panel-heading"><h3 class="panel-title">비밀번호*</h3></div>
 					<div class="panel-body"> 
 						<input type="password" value="커맨드 객체의 비밀번호 값이 들어간다.">
 						<label>에러가 출력될 곳</label>
@@ -84,17 +84,19 @@
 						<input type="password" value="커맨드 객체의 비밀번호 확인 값이 들어간다.">
 						<label>에러가 출력될 곳</label>
 					</div>
+					<!-- 비밀번호를 변경했는지 안했는지 판단하기 위해 사용자의 원래 비밀번호를 담고있는다. 컨트롤러에서 이값을 가지고 비밀번호를 변경했는지 안했는지 판단한다. -->
+					<input type="hidden" name="originalPasswd" value="${커맨드 객체의 passwd값이 들어간다.}">
 				</div>
 				<div class="panel panel-default">
 				<!-- 생일은 아직 보류... 현재 아이디어는 사용자가 가입당시 입력했던 생일을 읽어와서 forEach문을 돌리다가 
 				if문으로 사용자가 입력했던 생일과 forEach의 특정 년, 월, 일과 맞는다면 그 값을 체크하는?-->
-					<div class="panel-heading"><h3 class="panel-title">생일</h3></div>
+					<div class="panel-heading"><h3 class="panel-title">생일*</h3></div>
 					<div class="panel-body">
 						Panel content
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading"><h3 class="panel-title">성별</h3></div>
+					<div class="panel-heading"><h3 class="panel-title">성별*</h3></div>
 					<div class="panel-body">
 						<div class="radio">
 							<label><input type="radio" name="optionsRadios" id="optionsRadios3" value="man"> 남자</label>
@@ -105,14 +107,14 @@
 					</div>
 				</div>
 					<div class="panel panel-default">
-					<div class="panel-heading"><h3 class="panel-title">닉네임</h3></div>
+					<div class="panel-heading"><h3 class="panel-title">닉네임*</h3></div>
 					<div class="panel-body">
 						<input type="text" value="커맨드 객체의 닉네임 값이 들어간다.">
 						<label>에러가 출력될 곳</label>
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading"><h3 class="panel-title">자기소개</h3></div>
+					<div class="panel-heading"><h3 class="panel-title">자기소개*</h3></div>
 					<div class="panel-body">
 						<input type="text" value="커맨드 객체의 자기소개 값이 들어간다.">
 						<label>에러가 출력될 곳</label>	
