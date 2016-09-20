@@ -182,13 +182,30 @@ body{
 
 #contents #carousel-example-generic{
 	margin-left: 10px;
-	width: 480px;
+	width: 730px;
 	height: 275px;
+	float: left;
 }
 
 #contents #carousel-example-generic img{
-	width: 480px;
+	width: 730px;
 	height: 275px;
+}
+
+#contents .list-group{
+	width: 230px;
+	height: 275;
+	float: left;
+	margin-left: 20px;
+}
+
+#contents .list-group .progress{
+	width: 230px;
+	margin-bottom: 0px;
+}
+
+#contents .list-group a, a:link, a:visited ,a:hover, a:active{
+	color: black;
 }
 
 #contents .content{

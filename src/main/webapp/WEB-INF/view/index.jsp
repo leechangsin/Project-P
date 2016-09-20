@@ -70,7 +70,6 @@
 			<div class="categorybox">
 				<div class="static_area">
 					<a href="">홈</a><br>
-					<a href="">피키툰</a><br>
 				</div>
 				<div class="dynamic_area">
 					<label>골라보기</label><br>
@@ -106,15 +105,15 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
-						<img src="${pageContext.request.contextPath}/resources/images/carousel1.jpg">
+						<img src="${pageContext.request.contextPath}/resources/images/carousel1testimage.png">
 						<div class="carousel-caption">캐러셀 테스트용 이미지1입니다.</div>
 					</div>
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/images/carousel2.jpg">
+						<img src="${pageContext.request.contextPath}/resources/images/carousel2testimage.png">
 						<div class="carousel-caption">캐러셀 테스트용 이미지2입니다.</div>
 					</div>
 					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/images/carousel3.jpg">
+						<img src="${pageContext.request.contextPath}/resources/images/carousel3testimage.png">
 						<div class="carousel-caption">캐러셀 테스트용 이미지3입니다.</div>
 					</div>
 				</div>
@@ -130,7 +129,22 @@
 					<span class="sr-only">Next</span>
 				</a>
 			</div>
-			
+
+			<div class="list-group">
+				<div class="list-group-item active">실시간 best5</div>
+				<div class="progress">
+					<div class="progress-bar progress-bar-info progress-bar-striped active" 
+						role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+						<span class="sr-only">20% Complete</span>
+					</div>
+				</div>
+				<a href="#" class="list-group-item list-item">첫 번째</a> 
+				<a href="#" class="list-group-item list-item">두 번째</a> 
+				<a href="#" class="list-group-item list-item">세 번쨰</a> 
+				<a href="#" class="list-group-item list-item">네 번쨰</a>
+				<a href="#" class="list-group-item list-item">다섯 번째</a>
+			</div>
+
 			<c:forEach begin="0" end="31">
 				<div class="content">
 					<video src="https://www.youtube.com/watch?v=25y8-5hAAdU" controls preload="metadata"></video>
