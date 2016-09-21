@@ -66,7 +66,7 @@
 		</div>
 		<!-- contents -->
 		<div id="contents">
-		
+			<form:form actin="/Project-P/Profile/modifyProcess" method="post" commandName="modifyForm" enctype="multipart/form-data">
 				<!-- 컨트롤러에서 이 값들을 가지고 값들이 변경됬는지 판단한다. 이메일, 닉네임이 변경되었다면 중복검사를, 비밀번호가 변경되었다면 비밀번호 확인란이 입력됬는지 
 					그리고 비밀번호 확인란과 일치하는지 검사한다.-->
 				<input type="hidden" name="orignalEmail" value="${커맨드 객체의 이메일 값이 들어간다}">
@@ -96,19 +96,25 @@
 				if문으로 사용자가 입력했던 생일과 forEach의 특정 년, 월, 일과 맞는다면 그 값을 체크하는?-->
 					<div class="panel-heading"><h3 class="panel-title">생일*</h3></div>
 					<div class="panel-body">
-						Panel content
+						<form:select path="year" items="${year}" />
+						<form:select path="month" items="${month}"/>
+						<form:select path="day" items="${day}"/>
 					</div>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">성별*</h3></div>
 					<div class="panel-body">
+					<!--  
 						<div class="radio">
 							<label><input type="radio" name="optionsRadios" id="optionsRadios3" value="man"> 남자</label>
 						</div>
 						<div class="radio">
 							<label><input type="radio" name="optionsRadios" id="optionsRadios3" value="woman"> 여자</label>
 						</div>
+					-->
+						<form:radiobuttons path="sex" items="${sex}"/>
 					</div>
+					
 				</div>
 					<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">닉네임*</h3></div>
@@ -149,6 +155,7 @@
 					<a href="/Project-P/Profile/deleteProcess"><button type="button" class="btn btn-default">탈퇴</button></a>
 				</div>
 			</div>
+			</form:form>
 		</div>
 		<!-- footer -->
 		<div id="footer">
