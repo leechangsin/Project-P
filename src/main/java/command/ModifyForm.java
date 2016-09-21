@@ -3,6 +3,7 @@ package command;
 public class ModifyForm {
 
 	private String email;
+	private Boolean emailChanged;
 	private String passwd;
 	private String confirmPasswd;
 	private Boolean passwdChanged;
@@ -10,6 +11,7 @@ public class ModifyForm {
 	private String birth_date;
 	private String sex;
 	private String nickname;
+	private Boolean nicknameChanged;
 	private String intro;
 	private Object picture;
 
@@ -19,6 +21,14 @@ public class ModifyForm {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Boolean getEmailChanged() {
+		return emailChanged;
+	}
+
+	public void setEmailChanged(Boolean emailChanged) {
+		this.emailChanged = emailChanged;
 	}
 
 	public String getPasswd() {
@@ -77,6 +87,14 @@ public class ModifyForm {
 		this.nickname = nickname;
 	}
 
+	public Boolean getNicknameChanged() {
+		return nicknameChanged;
+	}
+
+	public void setNicknameChanged(Boolean nicknameChanged) {
+		this.nicknameChanged = nicknameChanged;
+	}
+
 	public String getIntro() {
 		return intro;
 	}
@@ -92,4 +110,5 @@ public class ModifyForm {
 	public void setPicture(Object picture) {
 		this.picture = picture;
 	}
+
 }

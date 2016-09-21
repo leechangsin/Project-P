@@ -55,12 +55,9 @@ public class MemberDao {
 		return member;
 	}
 
-	//미 완성된 메서드 blob칼럼에 값을 넣기 위해서는 Mybatis를 사용함
-	//이 update문을 Mybatis를 사용해서 실행하던가 jdbcTemplate를 사용해서 blob파일 업로드를 찾던가 해야함.
 	public void updateMember(Member member) {
 		// TODO Auto-generated method stub
 		String sql ="update member set nickname=?, intro=?, picture=?";
 		jdbcTemplate.update(sql, member.getNickname(), member.getIntro(), member.getPicture());
-		미ㅏㅇ러ㅣ만ㅇ러
 	}
 }

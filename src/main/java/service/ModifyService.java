@@ -39,10 +39,18 @@ public class ModifyService {
 		
 		return modifyForm;
 	}
+	
+	public boolean compareEmail(String originalEmail, String modifyFormPasswd){
+		return originalEmail.equals(modifyFormPasswd) ? false : true;
+	}
 
 	public boolean comparePasswd(String originalPasswd, String modifyFormPasswd) {
 		// TODO Auto-generated method stub
 		return originalPasswd.equals(modifyFormPasswd) ? false : true;
+	}
+	
+	public boolean compareNickname(String originalNickname, String modifyFormNickname){
+		return originalNickname.equals(modifyFormNickname) ? false : true;
 	}
 	
 	public void checkEmail(String email){

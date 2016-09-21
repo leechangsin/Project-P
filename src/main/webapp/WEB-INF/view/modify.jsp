@@ -66,6 +66,12 @@
 		</div>
 		<!-- contents -->
 		<div id="contents">
+		
+				<!-- 컨트롤러에서 이 값들을 가지고 값들이 변경됬는지 판단한다. 이메일, 닉네임이 변경되었다면 중복검사를, 비밀번호가 변경되었다면 비밀번호 확인란이 입력됬는지 
+					그리고 비밀번호 확인란과 일치하는지 검사한다.-->
+				<input type="hidden" name="orignalEmail" value="${커맨드 객체의 이메일 값이 들어간다}">
+				<input type="hidden" name="orignalPasswd" value="${커맨드 객체의 패스워드 값이 들어간다}">
+				<input type="hidden" name="orignalNickname" value="${커맨드 객체의 닉네임 값이 들어간다}">
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">이메일*</h3></div>
 					<div class="panel-body">
@@ -84,8 +90,6 @@
 						<input type="password" value="커맨드 객체의 비밀번호 확인 값이 들어간다.">
 						<label>에러가 출력될 곳</label>
 					</div>
-					<!-- 비밀번호를 변경했는지 안했는지 판단하기 위해 사용자의 원래 비밀번호를 담고있는다. 컨트롤러에서 이값을 가지고 비밀번호를 변경했는지 안했는지 판단한다. -->
-					<input type="hidden" name="originalPasswd" value="${커맨드 객체의 passwd값이 들어간다.}">
 				</div>
 				<div class="panel panel-default">
 				<!-- 생일은 아직 보류... 현재 아이디어는 사용자가 가입당시 입력했던 생일을 읽어와서 forEach문을 돌리다가 
