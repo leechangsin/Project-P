@@ -70,20 +70,20 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">이메일</h3></div>
 					<div class="panel-body">
-						<input type="text" value="커맨드 객체의 이메일 값이 들어간다.">
-						<label>에러가 출력될 곳</label>
+						<form:input path="email" value="${modifyForm.email}" />
+						<form:errors path="email"/>
 					</div>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">비밀번호</h3></div>
 					<div class="panel-body"> 
-						<input type="password" value="커맨드 객체의 비밀번호 값이 들어간다.">
-						<label>에러가 출력될 곳</label>
+						<form:password path="passwd" value="${modifyForm.passwd }" />
+						<form:errors path="passwd" />
 					</div>
 					<div class="panel-heading"><h3 class="panel-title">비밀번호 확인</h3></div>
 					<div class="panel-body">
-						<input type="password" value="커맨드 객체의 비밀번호 확인 값이 들어간다.">
-						<label>에러가 출력될 곳</label>
+						<form:password path="confirmPasswd" />
+						<form:errors path="confirmPasswd" />
 					</div>
 				</div>
 				<div class="panel panel-default">
@@ -114,29 +114,28 @@
 					<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">닉네임</h3></div>
 					<div class="panel-body">
-						<input type="text" value="커맨드 객체의 닉네임 값이 들어간다.">
-						<label>에러가 출력될 곳</label>
+						<form:input path="nickname" value="${modifyForm.nickname }" />
+						<form:errors path="nickname" />
 					</div>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">자기소개</h3></div>
 					<div class="panel-body">
-						<input type="text" value="커맨드 객체의 자기소개 값이 들어간다.">
-						<label>에러가 출력될 곳</label>	
+						<form:input path="intro" value="${modifyForm.intro }" />
+						<form:errors path="intro" />
 					</div>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">사진</h3></div>
 					<div class="panel-body">
-					<!-- 이미 업로드 한 사진이 노출된다... 내가 선택한 파일이 올라가게 하고싶다... 부트스트랩에 미디어객체? 그거 쓰면 되지 않을까...-->
-						<label>현재 사진이 업로드될 곳</label>
-						<input type="file" value="사진 업로드">
+						<!-- c:if문을 추가해서 그림파일이 있다면 출력하도록... -->
+						<input type="file" name="pictureFile">
 					</div>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">가입일</h3></div>
 					<div class="panel-body">
-						<label>커맨드 객체의 가입일이 들어갈 곳/ 수정이 불가하므로 라벨로 표시...</label>
+						<form:input path="reg_date" value="${modifyForm.reg_date }" disabled />
 					</div>
 				</div>
 			<div class="btn-group btn-group-justified" role="group" aria-label="...">
