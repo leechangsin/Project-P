@@ -69,9 +69,9 @@
 			<form:form actin="/Project-P/Profile/modifyProcess" method="post" commandName="modifyForm" enctype="multipart/form-data">
 				<!-- 컨트롤러에서 이 값들을 가지고 값들이 변경됬는지 판단한다. 이메일, 닉네임이 변경되었다면 중복검사를, 비밀번호가 변경되었다면 비밀번호 확인란이 입력됬는지 
 					그리고 비밀번호 확인란과 일치하는지 검사한다.-->
-				<input type="hidden" name="orignalEmail" value="${커맨드 객체의 이메일 값이 들어간다}">
-				<input type="hidden" name="orignalPasswd" value="${커맨드 객체의 패스워드 값이 들어간다}">
-				<input type="hidden" name="orignalNickname" value="${커맨드 객체의 닉네임 값이 들어간다}">
+				<input type="hidden" name="orignalEmail" value="${modifyForm.email}">
+				<input type="hidden" name="orignalPasswd" value="${modifyForm.passwd}">
+				<input type="hidden" name="orignalNickname" value="${modifyForm.nickname}">
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">이메일*</h3></div>
 					<div class="panel-body">
