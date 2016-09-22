@@ -44,7 +44,7 @@
 				<c:if test="${!empty member}">
 					<c:set var="nickName" value="${member.nickname}"/>
 					<div class="profile_image">
-						<a href="/Project-P/Profile/main"><img src="${pageContext.request.contextPath}/resources/images/my_image.jpg"></a>
+						<a href="/Project-P/Profile/main"><img src="/Project-P/Profile/getProfileImage"></a>
 					</div>
 					<div class="profile_nickName">
 						<a href="/Project-P/Profile/main">${nickName}</a>

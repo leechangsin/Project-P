@@ -1,9 +1,11 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import command.Member;
@@ -11,9 +13,11 @@ import command.RequestType;
 
 public class MemberDao {
 	private JdbcTemplate jdbcTemplate;
+	private SqlSession query;
 	
-	public MemberDao(DataSource dataSource) {
+	public MemberDao(DataSource dataSource, SqlSession query) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
+		this.query = query;
 	}
 
 	public List<Member> selectAll() {
@@ -59,5 +63,10 @@ public class MemberDao {
 		// TODO Auto-generated method stub
 		String sql ="update member set nickname=?, intro=?, picture=?";
 		jdbcTemplate.update(sql, member.getNickname(), member.getIntro(), member.getPicture());
+	}
+	
+	public Map<String, Object> getMemberImage(String nickname){
+		List<Map<String, Object>> result = query.selectList("query.getMemberImage", nickname);
+		return result.get(0);
 	}
 }

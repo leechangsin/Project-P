@@ -25,6 +25,10 @@
 		<constructor-arg ref="memberInfoDao"/>
 		<constructor-arg ref="memberDao"/>
 	</bean>
+	
+	<bean id="profileService" class="service.ProfileService">
+		<constructor-arg ref="memberDao" />
+	</bean>
 
 	<bean class="controller.LoginUI_Controller">
 		<constructor-arg ref="loginRequestService" />
@@ -68,5 +72,6 @@
 	
 	<bean class="controller.ProfileUI_Controller">
 		<constructor-arg ref="modifyService"/>
+		<constructor-arg ref="profileService"/>
 	</bean>
 </beans>

@@ -4,10 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -19,15 +24,18 @@ import command.ModifyForm;
 import exceptions.AlreadyExistAccountException;
 import exceptions.AlreadyExistNicknameException;
 import service.ModifyService;
+import service.ProfileService;
 import validator.ModifyFormValidator;
 
 @Controller
 @RequestMapping("/Profile")
 public class ProfileUI_Controller {
 	private ModifyService modifyService;
+	private ProfileService profileService;
 	
-	public ProfileUI_Controller(ModifyService modifyService){
+	public ProfileUI_Controller(ModifyService modifyService, ProfileService profileService){
 		this.modifyService = modifyService;
+		this.profileService = profileService;
 	}
 	
 	@RequestMapping("main")
@@ -112,5 +120,16 @@ public class ProfileUI_Controller {
 	@RequestMapping()
 	public String drawer(){
 		return "ProfileUI";
+	}
+	
+	@RequestMapping("getProfileImage")
+	public ResponseEntity<byte[]> getProfileImage(HttpSession session){
+		Member member = (Member) session.getAttribute("member");
+		String nickname = member.getNickname();
+		Map<String, Object> hashMap = profileService.getProfileImage(nickname);
+		byte[] image = (byte[]) hashMap.get("picture");
+		HttpHeaders httpHeaders = new HttpHeaders();
+		httpHeaders.setContentType(MediaType.IMAGE_PNG);
+		return new ResponseEntity<byte[]>(image, httpHeaders, HttpStatus.OK);
 	}
 }
