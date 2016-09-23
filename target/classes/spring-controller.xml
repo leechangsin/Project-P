@@ -27,7 +27,7 @@
 	</bean>
 	
 	<bean id="profileService" class="service.ProfileService">
-		<constructor-arg ref="memberDao" />
+		<constructor-arg ref="memberDao"/>
 	</bean>
 
 	<bean class="controller.LoginUI_Controller">

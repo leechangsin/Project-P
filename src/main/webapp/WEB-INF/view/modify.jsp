@@ -66,23 +66,23 @@
 		</div>
 		<!-- contents -->
 		<div id="contents">
-			<form:form actin="/Project-P/Profile/modifyProcess" method="post" commandName="modifyForm" enctype="multipart/form-data">
-				<!-- 컨트롤러에서 이 값들을 가지고 값들이 변경됬는지 판단한다. 이메일, 닉네임이 변경되었다면 중복검사를, 비밀번호가 변경되었다면 비밀번호 확인란이 입력됬는지 
-					그리고 비밀번호 확인란과 일치하는지 검사한다.-->
-				<input type="hidden" name="orignalEmail" value="${modifyForm.email}">
-				<input type="hidden" name="orignalPasswd" value="${modifyForm.passwd}">
-				<input type="hidden" name="orignalNickname" value="${modifyForm.nickname}">
+			<form:form action="/Project-P/Profile/modifyProcess" commandName="modifyStoreForm" enctype="multipart/form-data">
+				<input type="hidden" name="originalEmail" value="${modifyStoreForm.email}">
+				<input type="hidden" name="originalPasswd" value="${modifyStoreForm.passwd}">
+				<input type="hidden" name="originalNickname" value="${modifyStoreForm.nickname}">
+				<input type="hidden" name="reg_date" value="${modifyStoreForm.reg_date}">
+				
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">이메일*</h3></div>
 					<div class="panel-body">
-						<form:input path="email" value="${modifyForm.email}" />
+						<form:input path="email" value="${modifyStoreForm.email}"/>
 						<form:errors path="email"/>
 					</div>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">비밀번호*</h3></div>
 					<div class="panel-body"> 
-						<form:password path="passwd" value="${modifyForm.passwd }" />
+						<form:password path="passwd" value="${modifyStoreForm.passwd}"/>
 						<form:errors path="passwd" />
 					</div>
 					<div class="panel-heading"><h3 class="panel-title">비밀번호 확인</h3></div>
@@ -92,8 +92,6 @@
 					</div>
 				</div>
 				<div class="panel panel-default">
-				<!-- 생일은 아직 보류... 현재 아이디어는 사용자가 가입당시 입력했던 생일을 읽어와서 forEach문을 돌리다가 
-				if문으로 사용자가 입력했던 생일과 forEach의 특정 년, 월, 일과 맞는다면 그 값을 체크하는?-->
 					<div class="panel-heading"><h3 class="panel-title">생일*</h3></div>
 					<div class="panel-body">
 						<form:select path="year" items="${year}" />
@@ -104,56 +102,49 @@
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">성별*</h3></div>
 					<div class="panel-body">
-					<!--  
-						<div class="radio">
-							<label><input type="radio" name="optionsRadios" id="optionsRadios3" value="man"> 남자</label>
-						</div>
-						<div class="radio">
-							<label><input type="radio" name="optionsRadios" id="optionsRadios3" value="woman"> 여자</label>
-						</div>
-					-->
-						<form:radiobuttons path="sex" items="${sex}"/>
+						<form:radiobuttons path="sex" id="sex" items="${sex}"/>
 					</div>
-					
 				</div>
 					<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">닉네임*</h3></div>
 					<div class="panel-body">
-						<form:input path="nickname" value="${modifyForm.nickname }" />
+						<form:input path="nickname" value="${nickname}" />
 						<form:errors path="nickname" />
 					</div>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">자기소개*</h3></div>
 					<div class="panel-body">
-						<form:input path="intro" value="${modifyForm.intro }" />
+						<form:input path="intro" value="${intro}" />
 						<form:errors path="intro" />
 					</div>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">사진</h3></div>
 					<div class="panel-body">
-						<!-- c:if문을 추가해서 그림파일이 있다면 출력하도록... -->
+						<div class="profile_image">
+							<img src="/Project-P/Profile/getProfileImage">
+						</div>
 						<input type="file" name="pictureFile">
 					</div>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading"><h3 class="panel-title">가입일</h3></div>
 					<div class="panel-body">
-						<form:input path="reg_date" value="${modifyForm.reg_date }" disabled />
+						<label>${modifyStoreForm.reg_date}</label>
 					</div>
 				</div>
-			<div class="btn-group btn-group-justified" role="group" aria-label="...">
-				<div class="btn-group" role="group">
-					<a href="/Project-P/Profile/modify"><button type="button" class="btn btn-default btn-custom">초기화</button></a>
+				<div class="btn-group btn-group-justified" role="group">
+					<div class="btn-group" role="group">
+						<input type="submit" class="btn btn-default btn-custom" value="정보수정">
+					</div>
+					<div class="btn-group" role="group">
+						<a href="/Project-P/Profile/modify"><button type="button" class="btn btn-default btn-custom">초기화</button></a>
+					</div>
+					<div class="btn-group" role="group">
+						<a href="/Project-P/Profile/deleteProcess"><button type="button" class="btn btn-default">탈퇴</button></a>
+					</div>
 				</div>
-				<div class="btn-group" role="group">
-					<a href="/Project-P/Profile/modifyProcess"><button type="button" class="btn btn-default btn-custom">정보수정</button></a>
-				</div>
-				<div class="btn-group" role="group">
-					<a href="/Project-P/Profile/deleteProcess"><button type="button" class="btn btn-default">탈퇴</button></a>
-				</div>
-			</div>
 			</form:form>
 		</div>
 		<!-- footer -->

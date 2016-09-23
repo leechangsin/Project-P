@@ -4,7 +4,7 @@ import java.util.List;
 
 import command.Member;
 import command.MemberInfo;
-import command.ModifyForm;
+import command.ModifyStoreForm;
 import command.RequestType;
 import dao.MemberDao;
 import dao.MemberInfoDao;
@@ -24,20 +24,25 @@ public class ModifyService {
 		return memberInfoDao.selectByEmail(email);
 	}
 
-	public ModifyForm setModifyForm(MemberInfo memberInfo, Member member) {
+	public ModifyStoreForm setModifyStoreForm(MemberInfo memberInfo, Member member) {
 		// TODO Auto-generated method stub
 		
-		ModifyForm modifyForm = new ModifyForm();
-		modifyForm.setEmail(memberInfo.getEmail());
-		modifyForm.setPasswd(memberInfo.getPasswd());
-		modifyForm.setReg_date(memberInfo.getReg_date());
-		modifyForm.setBirth_date(memberInfo.getBirth_date());
-		modifyForm.setSex(memberInfo.getSex());
-		modifyForm.setNickname(member.getNickname());
-		modifyForm.setIntro(member.getIntro());
-		modifyForm.setPicture(member.getPicture());
+		ModifyStoreForm modifyStoreForm = new ModifyStoreForm();
+		modifyStoreForm.setEmail(memberInfo.getEmail());
+		modifyStoreForm.setPasswd(memberInfo.getPasswd());
+		modifyStoreForm.setReg_date(memberInfo.getReg_date());
 		
-		return modifyForm;
+		String[] birth_date = memberInfo.getBirth_date().split("-");
+		modifyStoreForm.setYear(birth_date[0]);
+		modifyStoreForm.setMonth(birth_date[1]);
+		modifyStoreForm.setDay(birth_date[2]);
+		
+		modifyStoreForm.setBirth_date(memberInfo.getBirth_date());
+		modifyStoreForm.setSex(memberInfo.getSex());
+		modifyStoreForm.setNickname(member.getNickname());
+		modifyStoreForm.setIntro(member.getIntro());
+		
+		return modifyStoreForm;
 	}
 	
 	public boolean compareEmail(String originalEmail, String modifyFormPasswd){
@@ -66,35 +71,47 @@ public class ModifyService {
 			throw new AlreadyExistNicknameException();
 	}
 
-	public void updateAccount(ModifyForm modifyForm) {
+	public void updateAccount(ModifyStoreForm modifyForm, String originalEmail) {
 		// TODO Auto-generated method stub
 		MemberInfo memberInfo = setMemberInfo(modifyForm);
 		Member member = setMember(modifyForm);
 		
-		memberInfoDao.updateMemberInfo(memberInfo);
+		memberInfoDao.updateMemberInfo(memberInfo, originalEmail);
 		memberDao.updateMember(member);
 	}
 	
-	public MemberInfo setMemberInfo(ModifyForm modifyForm){
+	public MemberInfo setMemberInfo(ModifyStoreForm modifyStoreForm){
 		MemberInfo memberInfo = new MemberInfo();
 		
-		memberInfo.setEmail(modifyForm.getEmail());
-		memberInfo.setPasswd(modifyForm.getPasswd());
-		memberInfo.setReg_date(modifyForm.getReg_date());
-		memberInfo.setBirth_date(modifyForm.getBirth_date());
-		memberInfo.setSex(modifyForm.getSex());
+		memberInfo.setEmail(modifyStoreForm.getEmail());
+		memberInfo.setPasswd(modifyStoreForm.getPasswd());
+		memberInfo.setReg_date(modifyStoreForm.getReg_date());
+		String birth_date = modifyStoreForm.getYear() + "-" + modifyStoreForm.getMonth() + "-" + modifyStoreForm.getDay();
+		memberInfo.setBirth_date(birth_date);
+		memberInfo.setSex(modifyStoreForm.getSex());
 		
 		return memberInfo;
 	}
 	
-	public Member setMember(ModifyForm modifyForm){
+	public Member setMember(ModifyStoreForm modifyStoreForm){
 		Member member = new Member();
 		
-		member.setEmail(modifyForm.getEmail());
-		member.setNickname(modifyForm.getNickname());
-		member.setIntro(modifyForm.getIntro());
-		member.setPicture(modifyForm.getPicture());
+		member.setEmail(modifyStoreForm.getEmail());
+		member.setNickname(modifyStoreForm.getNickname());
+		member.setIntro(modifyStoreForm.getIntro());
+		member.setPicture(modifyStoreForm.getPicture());
 		
 		return member;
+	}
+
+	public void deleteAccount(String email) {
+		// TODO Auto-generated method stub
+		//단 덧글 삭제하기
+		//commentDao.deleteAllComment(email);
+		//쓴 글 삭제하기
+		//contentsDao.deleteAllContents(email);
+		memberDao.deleteMember(email);
+		memberInfoDao.deleteMemberInfo(email);
+		
 	}
 }

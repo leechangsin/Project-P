@@ -1,19 +1,29 @@
 package command;
 
-public class ModifyForm {
-
+public class ModifyStoreForm {
 	private String email;
 	private Boolean emailChanged;
 	private String passwd;
 	private String confirmPasswd;
 	private Boolean passwdChanged;
 	private String reg_date;
+	private String year;
+	private String month;
+	private String day;
 	private String birth_date;
 	private String sex;
 	private String nickname;
 	private Boolean nicknameChanged;
 	private String intro;
 	private Object picture;
+
+	public Object getPicture() {
+		return picture;
+	}
+
+	public void setPicture(Object picture) {
+		this.picture = picture;
+	}
 
 	public String getEmail() {
 		return email;
@@ -63,6 +73,30 @@ public class ModifyForm {
 		this.reg_date = reg_date;
 	}
 
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
 	public String getBirth_date() {
 		return birth_date;
 	}
@@ -102,13 +136,4 @@ public class ModifyForm {
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
-
-	public Object getPicture() {
-		return picture;
-	}
-
-	public void setPicture(Object picture) {
-		this.picture = picture;
-	}
-
 }

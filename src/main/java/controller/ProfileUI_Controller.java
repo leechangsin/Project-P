@@ -16,16 +16,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import command.Member;
 import command.MemberInfo;
-import command.ModifyForm;
+import command.ModifyStoreForm;
 import exceptions.AlreadyExistAccountException;
 import exceptions.AlreadyExistNicknameException;
 import service.ModifyService;
 import service.ProfileService;
-import validator.ModifyFormValidator;
+import validator.ModifyStoreFormValidator;
 
 @Controller
 @RequestMapping("/Profile")
@@ -45,10 +46,13 @@ public class ProfileUI_Controller {
 	
 	@RequestMapping("modify")
 	public String modifyAccount(HttpSession session, Model model){
-		Member member = (Member) session.getAttribute("member");
-		MemberInfo memberInfo = modifyService.selecyByEmail(member.getEmail());
-		ModifyForm modifyForm = modifyService.setModifyForm(memberInfo, member);
-		
+		if(!model.containsAttribute("modifyStoreForm")){
+			Member member = (Member) session.getAttribute("member");
+			MemberInfo memberInfo = modifyService.selecyByEmail(member.getEmail());
+			ModifyStoreForm modifyStoreForm = modifyService.setModifyStoreForm(memberInfo, member);
+			
+			model.addAttribute("modifyStoreForm", modifyStoreForm);
+		}
 		//modify뷰에서 생년월일 선택에 쓸 년,월,일을 생성하고 전달
 		Calendar calendar = Calendar.getInstance();
 		int nowYear = calendar.get(Calendar.YEAR);
@@ -72,44 +76,67 @@ public class ProfileUI_Controller {
 		sex.add("여자");
 		model.addAttribute("sex", sex);
 		
-		model.addAttribute("modifyForm", modifyForm);
 		return "modify";
 	}
 	
 	@RequestMapping("modifyProcess")
-	public String modifyProcess(ModifyForm modifyForm, Errors errors, HttpServletRequest request, FileVo fileVo){
-		modifyForm.setEmailChanged( modifyService.compareEmail(request.getParameter("originalEmail"), modifyForm.getEmail()) );
-		modifyForm.setPasswdChanged( modifyService.comparePasswd(request.getParameter("originalPasswd"), modifyForm.getPasswd()) );
-		modifyForm.setNicknameChanged( modifyService.compareNickname(request.getParameter("originalNickname"), modifyForm.getNickname()) );
+	public String modifyProcess(ModifyStoreForm modifyStoreForm, Errors errors, HttpServletRequest request, FileVo fileVo, HttpSession session, Model model){
+		String originalEmail = request.getParameter("originalEmail");
+		String originalPasswd = request.getParameter("originalPasswd");
+		String originalNickname = request.getParameter("originalNickname");
 		
-		new ModifyFormValidator().validate(modifyForm, errors);
-		if(errors.hasErrors())
-			return "modify";
+		modifyStoreForm.setEmailChanged(modifyService.compareEmail(originalEmail, modifyStoreForm.getEmail()));
+		modifyStoreForm.setPasswdChanged(modifyService.comparePasswd(originalPasswd, modifyStoreForm.getPasswd()));
+		modifyStoreForm.setNicknameChanged(modifyService.compareNickname(originalNickname, modifyStoreForm.getNickname()));
+		
+		new ModifyStoreFormValidator().validate(modifyStoreForm, errors);
+		if(errors.hasErrors()){
+			FieldError fieldError = errors.getFieldError();
+			if(fieldError.getField().equals("email"))
+				modifyStoreForm.setEmail(originalEmail);
+			else if(fieldError.getField().equals("passwd"))
+				modifyStoreForm.setPasswd(originalPasswd);
+			else if(fieldError.getField().equals("nickname"))
+				modifyStoreForm.setNickname(originalNickname);
+			
+			return modifyAccount(session, model);
+		}
 		
 		try{
-			if(modifyForm.getEmailChanged())
-				modifyService.checkEmail(modifyForm.getEmail());
-			if(modifyForm.getNicknameChanged())
-				modifyService.checkNickName(modifyForm.getNickname());
+			if(modifyStoreForm.getEmailChanged())
+				modifyService.checkEmail(modifyStoreForm.getEmail());
+			if(modifyStoreForm.getNicknameChanged())
+				modifyService.checkNickName(modifyStoreForm.getNickname());
 			if(!fileVo.getPictureFile().isEmpty())
-				modifyForm.setPicture(fileVo.getPictureFile().getBytes());
+				modifyStoreForm.setPicture(fileVo.getPictureFile().getBytes());
+			//else
+				//비어있다면 원래 사진을 넣는 방식...?
 		} catch(AlreadyExistAccountException e){//modifyService.checkEmail에서 발생
 			e.printStackTrace();
 			errors.rejectValue("email", "alreadyExistEmail");
-			return "modify";
+			return modifyAccount(session, model);
 		} catch(AlreadyExistNicknameException e){//modifyService.checkNickName에서 발생
 			e.printStackTrace();
 			errors.rejectValue("nickname", "alreadyExistNickname");
-			return "modify";
+			return modifyAccount(session, model);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "modify";
+			return modifyAccount(session, model);
 		}
 		
-		modifyService.updateAccount(modifyForm);
+		modifyService.updateAccount(modifyStoreForm, originalEmail);
 		
-		return "modify";
+		return modifyAccount(session, model);
+	}
+	
+	@RequestMapping("deleteProcess")
+	public String deleteAccount(HttpSession session){
+		Member member = (Member) session.getAttribute("member");
+		modifyService.deleteAccount(member.getEmail());
+		session.invalidate();
+		
+		return "redirect:/";
 	}
 	
 	@RequestMapping("write")
@@ -124,10 +151,13 @@ public class ProfileUI_Controller {
 	
 	@RequestMapping("getProfileImage")
 	public ResponseEntity<byte[]> getProfileImage(HttpSession session){
+		byte[] image = null;
+		
 		Member member = (Member) session.getAttribute("member");
 		String nickname = member.getNickname();
 		Map<String, Object> hashMap = profileService.getProfileImage(nickname);
-		byte[] image = (byte[]) hashMap.get("picture");
+		if(hashMap != null)
+			image = (byte[]) hashMap.get("picture");
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setContentType(MediaType.IMAGE_PNG);
 		return new ResponseEntity<byte[]>(image, httpHeaders, HttpStatus.OK);

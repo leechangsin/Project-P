@@ -61,12 +61,18 @@ public class MemberDao {
 
 	public void updateMember(Member member) {
 		// TODO Auto-generated method stub
-		String sql ="update member set nickname=?, intro=?, picture=?";
-		jdbcTemplate.update(sql, member.getNickname(), member.getIntro(), member.getPicture());
+		String sql ="update member set nickname=?, intro=?, picture=? where email=?";
+		jdbcTemplate.update(sql, member.getNickname(), member.getIntro(), member.getPicture(), member.getEmail());
 	}
 	
 	public Map<String, Object> getMemberImage(String nickname){
 		List<Map<String, Object>> result = query.selectList("query.getMemberImage", nickname);
 		return result.get(0);
+	}
+
+	public void deleteMember(String email) {
+		// TODO Auto-generated method stub
+		String sql = "delete from member where email=?";
+		jdbcTemplate.update(sql, email);
 	}
 }

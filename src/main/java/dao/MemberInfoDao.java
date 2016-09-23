@@ -36,9 +36,15 @@ public class MemberInfoDao {
 		jdbcTemplate.update(sql, passwd, email);
 	}
 
-	public void updateMemberInfo(MemberInfo memberInfo) {
+	public void updateMemberInfo(MemberInfo memberInfo, String originalEmail) {
 		// TODO Auto-generated method stub
-		String sql = "update memberInfo set email=?, passwd=?, birth_date=?, sex=?";
-		jdbcTemplate.update(sql, memberInfo.getEmail(), memberInfo.getPasswd(), memberInfo.getBirth_date(), memberInfo.getSex());
+		String sql = "update memberInfo set email=?, passwd=?, birth_date=?, sex=? where email=?";
+		jdbcTemplate.update(sql, memberInfo.getEmail(), memberInfo.getPasswd(), memberInfo.getBirth_date(), memberInfo.getSex(), originalEmail);
+	}
+
+	public void deleteMemberInfo(String email) {
+		// TODO Auto-generated method stub
+		String sql = "delete from memberInfo where email=?";
+		jdbcTemplate.update(sql, email);
 	}
 }// end class MemberInfoDao
