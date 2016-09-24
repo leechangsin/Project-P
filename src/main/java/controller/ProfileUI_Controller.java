@@ -141,7 +141,7 @@ public class ProfileUI_Controller {
 	
 	@RequestMapping("write")
 	public String write(){
-		return "ProfileUI";
+		return "write";
 	}
 	
 	@RequestMapping()
