@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import command.Contents;
+import command.WriteForm;
 
 public class ContentsDao {
 	private JdbcTemplate jdbcTemplate;
@@ -40,5 +41,18 @@ public class ContentsDao {
 	public Map<String, Object> getVideo() {
 		List<Map<String, Object>> result = query.selectList("query.getVideo");
 		return result.get(0);
+	}
+
+	public String selectMaxCon_id() {
+		// TODO Auto-generated method stub
+		String sql = "select max(con_id) from contents";
+		int result = jdbcTemplate.queryForObject(sql, Integer.class);
+		return String.valueOf(result);
+	}
+
+	public void insertContets(WriteForm writeForm) {
+		// TODO Auto-generated method stub
+		String sql = "insert into contents(con_id, writer, title, content, video, reg_date) values(?,?,?,?,?,?)";
+		jdbcTemplate.update(sql, writeForm.getCon_id(), writeForm.getWriter(), writeForm.getTitle(), writeForm.getContent(), writeForm.getVideo(), writeForm.getReg_date());
 	}
 }

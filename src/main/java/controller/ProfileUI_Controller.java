@@ -22,10 +22,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import command.Member;
 import command.MemberInfo;
 import command.ModifyStoreForm;
+import command.WriteForm;
 import exceptions.AlreadyExistAccountException;
 import exceptions.AlreadyExistNicknameException;
 import service.ModifyService;
 import service.ProfileService;
+import service.WriteService;
 import validator.ModifyStoreFormValidator;
 
 @Controller
@@ -33,10 +35,12 @@ import validator.ModifyStoreFormValidator;
 public class ProfileUI_Controller {
 	private ModifyService modifyService;
 	private ProfileService profileService;
+	private WriteService writeService;
 	
-	public ProfileUI_Controller(ModifyService modifyService, ProfileService profileService){
+	public ProfileUI_Controller(ModifyService modifyService, ProfileService profileService, WriteService writeService){
 		this.modifyService = modifyService;
 		this.profileService = profileService;
+		this.writeService = writeService;
 	}
 	
 	@RequestMapping("main")
@@ -140,8 +144,25 @@ public class ProfileUI_Controller {
 	}
 	
 	@RequestMapping("write")
-	public String write(){
-		return "ProfileUI";
+	public String write(Model model){
+		model.addAttribute("writeForm", new WriteForm());
+		return "write";
+	}
+	
+	@RequestMapping("writeProcess")
+	public String writeProcess(HttpServletRequest request,HttpSession session,FileVo fileVo){
+		WriteForm writeForm = writeService.setWriteForm(request, session);
+		
+			try {
+				if(!fileVo.getPictureFile().isEmpty())
+					writeForm.setVideo(fileVo.getPictureFile().getBytes());
+				writeService.insertContets(writeForm);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		return "redirect:/Profile/";
 	}
 	
 	@RequestMapping()
