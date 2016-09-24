@@ -66,8 +66,8 @@ public class ModifyService {
 	
 	public void checkNickName(String nickName){
 		List<Member> result = memberDao.selectByNickName(nickName, RequestType.ModifyService);
-		Member member =  result.get(0);
-		if(member != null)
+		
+		if(!result.isEmpty())
 			throw new AlreadyExistNicknameException();
 	}
 

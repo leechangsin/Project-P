@@ -1,6 +1,5 @@
 package service;
 
-import java.sql.Blob;
 import java.util.Map;
 
 import dao.MemberDao;
