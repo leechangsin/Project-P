@@ -84,15 +84,15 @@
 						<h3 class="panel-title">동영상</h3>
 					</div>
 					<div class="panel-body">
-						<input type="file" name="pictureFile">
+						<input type="file" name="videoFile">
 					</div>
 					<div class="panel-heading">
 						<h3 class="panel-title">사진</h3>
 					</div>
 					<div class="panel-body">
-						<input type="file" name="videoFile">
+						<input type="file" name="pictureFile">
 					</div>
-					<div class="btn-group btn-group-justified" role="group" aria-label="...">
+					<div class="btn-group btn-group-justified" role="group">
 						<div class="btn-group" role="group">
 							<input type="submit" class="btn btn-default" value="글쓰기">
 						</div>
