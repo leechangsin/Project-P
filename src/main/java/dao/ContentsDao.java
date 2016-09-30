@@ -46,13 +46,14 @@ public class ContentsDao {
 	public String selectMaxCon_id() {
 		// TODO Auto-generated method stub
 		String sql = "select max(con_id) from contents";
-		int result = jdbcTemplate.queryForObject(sql, Integer.class);
-		return String.valueOf(result);
+		String result = jdbcTemplate.queryForObject(sql, String.class);
+		return result;
 	}
 
 	public void insertContets(WriteForm writeForm) {
 		// TODO Auto-generated method stub
-		String sql = "insert into contents(con_id, writer, title, content, video, reg_date) values(?,?,?,?,?,?)";
-		jdbcTemplate.update(sql, writeForm.getCon_id(), writeForm.getWriter(), writeForm.getTitle(), writeForm.getContent(), writeForm.getVideo(), writeForm.getReg_date());
+		String sql = "insert into contents(con_id, writer, title, text, video, image, reg_date) values(?,?,?,?,?,?,?)";
+		jdbcTemplate.update(sql, writeForm.getCon_id(), writeForm.getWriter(), writeForm.getTitle(), 
+				writeForm.getContent(), writeForm.getVideo(), writeForm.getPicture(),writeForm.getReg_date());
 	}
 }

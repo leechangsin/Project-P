@@ -151,11 +151,14 @@ public class ProfileUI_Controller {
 	
 	@RequestMapping("writeProcess")
 	public String writeProcess(HttpServletRequest request,HttpSession session,FileVo fileVo){
-		WriteForm writeForm = writeService.setWriteForm(request, session);
+		WriteForm writeForm = writeService.setWriteForm(request, session, fileVo);
 		
 			try {
 				if(!fileVo.getPictureFile().isEmpty())
-					writeForm.setVideo(fileVo.getPictureFile().getBytes());
+					writeForm.setPicture(fileVo.getPictureFile().getBytes());
+				if(!fileVo.getVideoFile().isEmpty())
+					writeForm.setVideo(fileVo.getVideoFile().getBytes());
+				
 				writeService.insertContets(writeForm);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

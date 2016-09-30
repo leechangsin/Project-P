@@ -72,15 +72,13 @@
 						<h3 class="panel-title">제목</h3>
 					</div>
 					<div class="panel-body">
-						<form:input path="title" size="145" maxlegnth="20" placeholder="제목을 입력하세요."/>
-						<input type="text" size="145" maxlength="20" placeholder="제목을 입력하세요.">
+						<form:input path="title" size="145" placeholder="제목을 입력하세요.(20자 내)"/>
 					</div>
 					<div class="panel-heading">
 						<h3 class="panel-title">내용</h3>
 					</div>
 					<div class="panel-body">
-						<form:textarea path="contents" maxlength="100" rows="10" cols="145" placeholder="내용을 입력하세요.(100자 내)"/>
-						<textarea maxlength="100" rows="10" cols="145" placeholder="내용을 입력하세요.(100자 내)"></textarea>
+						<form:textarea path="content" rows="10" cols="145" placeholder="내용을 입력하세요.(100자 내)"/>
 					</div>
 					<div class="panel-heading">
 						<h3 class="panel-title">동영상</h3>

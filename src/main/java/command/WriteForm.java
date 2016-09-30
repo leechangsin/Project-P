@@ -5,6 +5,7 @@ public class WriteForm {
 	private String writer;
 	private String title;
 	private String content;
+	private Object picture;
 	private Object video;
 	private String reg_date;
 
@@ -38,6 +39,14 @@ public class WriteForm {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public Object getPicture() {
+		return picture;
+	}
+
+	public void setPicture(Object picture) {
+		this.picture = picture;
 	}
 
 	public Object getVideo() {
