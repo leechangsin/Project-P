@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/profile.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/drawer.css" type="text/css" media="screen" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PetSi - 펫시</title>
 </head>
@@ -64,7 +64,46 @@
 		</div>
 		<!-- contents -->
 		<div id="contents">
-		
+			<div class="container-fluid">
+				<c:forEach begin="0" end="31">
+					<div class="row">
+						<c:forEach begin="0" end="4">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<div class="thumbnail">
+									<img src="${pageContext.request.contextPath}/resources/images/my_image.jpg">
+									<div class="caption">
+										<p>제목이표시되는곳입니다최대이십자까지표시</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<div class="thumbnail">
+									<img src="${pageContext.request.contextPath}/resources/images/my_image.jpg">
+									<div class="caption">
+										<p>제목이표시되는곳입니다최대이십자까지표시</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<div class="thumbnail">
+									<img src="${pageContext.request.contextPath}/resources/images/my_image.jpg">
+									<div class="caption">
+										<p>제목이표시되는곳입니다최대이십자까지표시</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<div class="thumbnail">
+									<img src="${pageContext.request.contextPath}/resources/images/my_image.jpg">
+									<div class="caption">
+										<p>제목이표시되는곳입니다최대이십자까지표시</p>
+									</div>
+								</div>
+							</div>
+					</c:forEach>
+				</div>
+			</c:forEach>
+			</div>
 		</div>
 		<!-- footer -->
 		<div id="footer">

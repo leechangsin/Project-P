@@ -173,9 +173,9 @@ public class ProfileUI_Controller {
 		return "redirect:/Profile/drawer";
 	}
 	
-	@RequestMapping()
+	@RequestMapping("drawer")
 	public String drawer(){
-		return "ProfileUI";
+		return "drawer";
 	}
 	
 	@RequestMapping("getProfileImage")
