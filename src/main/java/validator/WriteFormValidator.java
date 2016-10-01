@@ -22,9 +22,9 @@ public class WriteFormValidator implements Validator{
 		WriteForm writeForm = (WriteForm) target;
 		if(!errors.hasErrors())
 			if(writeForm.getTitle().length() > 20)
-				errors.rejectValue("title", "too long title");
+				errors.rejectValue("title", "tooLongTitle");
 		if(!errors.hasErrors())
 			if(writeForm.getContent().length() > 100)
-				errors.rejectValue("content", "too long title");
+				errors.rejectValue("content", "tooLongContent");
 	}
 }

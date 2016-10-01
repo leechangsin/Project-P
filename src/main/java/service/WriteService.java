@@ -69,21 +69,20 @@ public class WriteService {
 		return complateNowDate + uploadNum;
 	}
 
-	public WriteForm setWriteForm(HttpServletRequest request, HttpSession session, FileVo filevo) {
+	public void setWriteForm(WriteForm writeForm, HttpServletRequest request, HttpSession session, FileVo filevo) {
 		// TODO Auto-generated method stub
 		String con_id = generatCont_id();
+		
 		Member member = (Member)session.getAttribute("member");
 		String writer = member.getNickname();
+		
 		Date toDay = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String reg_date = sdf.format(toDay);
 		
-		WriteForm writeForm = new WriteForm();
 		writeForm.setCon_id(con_id);
 		writeForm.setWriter(writer);
 		writeForm.setReg_date(reg_date);
 		
-		return writeForm;
 	}
-
 }

@@ -156,7 +156,7 @@ public class ProfileUI_Controller {
 		if(errors.hasErrors())
 			return "write";
 		
-		writeForm = writeService.setWriteForm(request, session, fileVo);
+		writeService.setWriteForm(writeForm, request, session, fileVo);
 		
 			try {
 				if(!fileVo.getPictureFile().isEmpty())
