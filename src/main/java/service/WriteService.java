@@ -74,8 +74,6 @@ public class WriteService {
 		String con_id = generatCont_id();
 		Member member = (Member)session.getAttribute("member");
 		String writer = member.getNickname();
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
 		Date toDay = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String reg_date = sdf.format(toDay);
@@ -83,8 +81,6 @@ public class WriteService {
 		WriteForm writeForm = new WriteForm();
 		writeForm.setCon_id(con_id);
 		writeForm.setWriter(writer);
-		writeForm.setTitle(title);
-		writeForm.setContent(content);
 		writeForm.setReg_date(reg_date);
 		
 		return writeForm;

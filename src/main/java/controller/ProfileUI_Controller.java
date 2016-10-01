@@ -29,6 +29,7 @@ import service.ModifyService;
 import service.ProfileService;
 import service.WriteService;
 import validator.ModifyStoreFormValidator;
+import validator.WriteFormValidator;
 
 @Controller
 @RequestMapping("/Profile")
@@ -150,8 +151,12 @@ public class ProfileUI_Controller {
 	}
 	
 	@RequestMapping("writeProcess")
-	public String writeProcess(HttpServletRequest request,HttpSession session,FileVo fileVo){
-		WriteForm writeForm = writeService.setWriteForm(request, session, fileVo);
+	public String writeProcess(WriteForm writeForm, Errors errors,HttpServletRequest request,HttpSession session,FileVo fileVo){
+		new WriteFormValidator().validate(writeForm, errors);
+		if(errors.hasErrors())
+			return "write";
+		
+		writeForm = writeService.setWriteForm(request, session, fileVo);
 		
 			try {
 				if(!fileVo.getPictureFile().isEmpty())
@@ -165,7 +170,7 @@ public class ProfileUI_Controller {
 				e.printStackTrace();
 			}
 			
-		return "redirect:/Profile/";
+		return "redirect:/Profile/drawer";
 	}
 	
 	@RequestMapping()
