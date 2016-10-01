@@ -72,13 +72,15 @@
 						<h3 class="panel-title">제목</h3>
 					</div>
 					<div class="panel-body">
-						<form:input path="title" size="145" placeholder="제목을 입력하세요.(20자 내)"/>
+						<form:input path="title" size="145" maxlegnth="20" placeholder="제목을 입력하세요."/>
+						<form:errors path="title"/>
 					</div>
 					<div class="panel-heading">
 						<h3 class="panel-title">내용</h3>
 					</div>
 					<div class="panel-body">
-						<form:textarea path="content" rows="10" cols="145" placeholder="내용을 입력하세요.(100자 내)"/>
+						<form:textarea path="content" maxlength="100" rows="10" cols="145" placeholder="내용을 입력하세요.(100자)"/>
+						<form:errors path="content"/>
 					</div>
 					<div class="panel-heading">
 						<h3 class="panel-title">동영상</h3>
@@ -109,7 +111,7 @@
 				<div class="btn-group dropup">
 					<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 						More pet-si
-						<span class="caret"></span> 
+						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">회사소개</a>
@@ -125,7 +127,7 @@
 				<a href="#">제휴 문의</a>
 				<a href="#">개인 정보 취급방침</a>
 				<label class="AppDownload">App Download</label>
-			</div>			
+			</div>
 			<div class="right_link">
 				<a href="#"><img src="${pageContext.request.contextPath}/resources/images/googleplay_icon.png"></a>
 				<a href="#"><img src="${pageContext.request.contextPath}/resources/images/appstore_icon.png"></a>
