@@ -72,7 +72,7 @@
 						<h3 class="panel-title">제목</h3>
 					</div>
 					<div class="panel-body">
-						<form:textarea path="title" maxlength="20" rows="1" cols="145" placeholder="제목을 입력하세요."/>
+						<form:textarea path="title" maxlegnth="20" rows="1" cols="145" placeholder="제목을 입력하세요.(20자 내)"/>
 						<form:errors path="title"/>
 					</div>
 					<div class="panel-heading">
