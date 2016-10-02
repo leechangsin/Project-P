@@ -25,6 +25,7 @@ import command.ModifyStoreForm;
 import command.WriteForm;
 import exceptions.AlreadyExistAccountException;
 import exceptions.AlreadyExistNicknameException;
+import service.DrawerService;
 import service.ModifyService;
 import service.ProfileService;
 import service.WriteService;
@@ -37,11 +38,13 @@ public class ProfileUI_Controller {
 	private ModifyService modifyService;
 	private ProfileService profileService;
 	private WriteService writeService;
+	private DrawerService drawerService;
 	
-	public ProfileUI_Controller(ModifyService modifyService, ProfileService profileService, WriteService writeService){
+	public ProfileUI_Controller(ModifyService modifyService, ProfileService profileService, WriteService writeService, DrawerService drawerService){
 		this.modifyService = modifyService;
 		this.profileService = profileService;
 		this.writeService = writeService;
+		this.drawerService = drawerService;
 	}
 	
 	@RequestMapping("main")
@@ -173,9 +176,13 @@ public class ProfileUI_Controller {
 		return "redirect:/Profile/drawer";
 	}
 	
-	@RequestMapping()
-	public String drawer(){
-		return "ProfileUI";
+	@RequestMapping("drawer")
+	public String drawer(HttpSession session, Model model){
+		Member member = (Member) session.getAttribute("member");
+		String nickname = member.getNickname();
+		List<String> con_ids = drawerService.getCon_ids(nickname);
+		model.addAttribute("con_ids", con_ids);
+		return "drawer";
 	}
 	
 	@RequestMapping("getProfileImage")
@@ -190,5 +197,37 @@ public class ProfileUI_Controller {
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setContentType(MediaType.IMAGE_PNG);
 		return new ResponseEntity<byte[]>(image, httpHeaders, HttpStatus.OK);
+	}
+	
+	@RequestMapping("getContentsImage")
+	public ResponseEntity<byte[]> getContentsImage(HttpServletRequest request){
+		String con_id = (String) request.getParameter("con_id");
+		byte[] image = null;
+		
+		Map<String, Object> hashMap = drawerService.getContentsImage(con_id);
+		if(hashMap != null){
+			image = (byte[]) hashMap.get("image");
+			HttpHeaders httpHeaders = new HttpHeaders();
+			httpHeaders.setContentType(MediaType.IMAGE_PNG);
+			return new ResponseEntity<byte[]>(image, httpHeaders, HttpStatus.OK);
+		}
+		
+		return null;
+	}
+	
+	@RequestMapping("getContentsVideo")
+	public ResponseEntity<byte[]> getContentsVideo(HttpServletRequest request){
+		String con_id = (String) request.getParameter("con_id");
+		byte[] video = null;
+		
+		Map<String, Object> hashMap = drawerService.getContentsVideo(con_id);
+		if(hashMap != null){
+			video = (byte[]) hashMap.get("video");
+			HttpHeaders httpHeaders = new HttpHeaders();
+			httpHeaders.setContentType(MediaType.IMAGE_JPEG);
+			return new ResponseEntity<byte[]>(video, httpHeaders, HttpStatus.OK);
+		}
+		
+		return null;
 	}
 }

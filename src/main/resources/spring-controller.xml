@@ -33,6 +33,10 @@
 	<bean id="writeService" class="service.WriteService">
 		<constructor-arg ref="contentsDao"/>
 	</bean>
+	
+	<bean id="drawerService" class="service.DrawerService">
+		<constructor-arg ref="contentsDao"/>
+	</bean>
 
 	<bean class="controller.LoginUI_Controller">
 		<constructor-arg ref="loginRequestService" />
@@ -78,5 +82,6 @@
 		<constructor-arg ref="modifyService"/>
 		<constructor-arg ref="profileService"/>
 		<constructor-arg ref="writeService"/>
+		<constructor-arg ref="drawerService"/>
 	</bean>
 </beans>
