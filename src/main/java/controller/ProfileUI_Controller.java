@@ -160,19 +160,8 @@ public class ProfileUI_Controller {
 			return "write";
 		
 		writeService.setWriteForm(writeForm, request, session, fileVo);
+		writeService.insertContets(writeForm);
 		
-			try {
-				if(!fileVo.getPictureFile().isEmpty())
-					writeForm.setPicture(fileVo.getPictureFile().getBytes());
-				if(!fileVo.getVideoFile().isEmpty())
-					writeForm.setVideo(fileVo.getVideoFile().getBytes());
-				
-				writeService.insertContets(writeForm);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
 		return "redirect:/Profile/drawer";
 	}
 	

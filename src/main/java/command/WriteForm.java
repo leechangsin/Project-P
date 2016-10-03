@@ -5,9 +5,9 @@ public class WriteForm {
 	private String writer;
 	private String title;
 	private String content;
-	private Object picture;
+	private Object image;
 	private Object video;
-	private String reg_date;
+	private String type;
 
 	public String getCon_id() {
 		return con_id;
@@ -41,12 +41,12 @@ public class WriteForm {
 		this.content = content;
 	}
 
-	public Object getPicture() {
-		return picture;
+	public Object getImage() {
+		return image;
 	}
 
-	public void setPicture(Object picture) {
-		this.picture = picture;
+	public void setImage(Object image) {
+		this.image = image;
 	}
 
 	public Object getVideo() {
@@ -57,12 +57,11 @@ public class WriteForm {
 		this.video = video;
 	}
 
-	public String getReg_date() {
-		return reg_date;
+	public String getType() {
+		return type;
 	}
 
-	public void setReg_date(String reg_date) {
-		this.reg_date = reg_date;
+	public void setType(String type) {
+		this.type = type;
 	}
-
 }

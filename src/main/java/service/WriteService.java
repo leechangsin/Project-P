@@ -1,8 +1,7 @@
 package service;
 
-import java.text.SimpleDateFormat;
+import java.io.IOException;
 import java.util.Calendar;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -69,20 +68,34 @@ public class WriteService {
 		return complateNowDate + uploadNum;
 	}
 
-	public void setWriteForm(WriteForm writeForm, HttpServletRequest request, HttpSession session, FileVo filevo) {
+	public void setWriteForm(WriteForm writeForm, HttpServletRequest request, HttpSession session, FileVo fileVo) {
 		// TODO Auto-generated method stub
 		String con_id = generatCont_id();
 		
 		Member member = (Member)session.getAttribute("member");
 		String writer = member.getNickname();
 		
-		Date toDay = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String reg_date = sdf.format(toDay);
-		
 		writeForm.setCon_id(con_id);
 		writeForm.setWriter(writer);
-		writeForm.setReg_date(reg_date);
 		
+		String type = "";
+		if(!writeForm.getContent().isEmpty())
+			type = "text,";
+		try {
+			if(!fileVo.getPictureFile().isEmpty()){
+				writeForm.setImage(fileVo.getPictureFile().getBytes());
+				type += "image,";
+			}
+			if(!fileVo.getVideoFile().isEmpty()){
+				writeForm.setVideo(fileVo.getVideoFile().getBytes());
+				type += "video";
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}//end try
+		
+		writeForm.setType(type);
 	}
 }
