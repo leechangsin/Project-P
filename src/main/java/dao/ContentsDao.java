@@ -52,8 +52,8 @@ public class ContentsDao {
 
 	public void insertContets(WriteForm writeForm) {
 		// TODO Auto-generated method stub
-		String sql = "insert into contents(con_id, writer, title, text, video, image, reg_date) values(?,?,?,?,?,?,?)";
+		String sql = "insert into contents(con_id, writer, title, text, video, image, type) values(?,?,?,?,?,?,?)";
 		jdbcTemplate.update(sql, writeForm.getCon_id(), writeForm.getWriter(), writeForm.getTitle(), 
-				writeForm.getContent(), writeForm.getVideo(), writeForm.getPicture(),writeForm.getReg_date());
+				writeForm.getContent(), writeForm.getVideo(), writeForm.getImage(),writeForm.getType());
 	}
 }
