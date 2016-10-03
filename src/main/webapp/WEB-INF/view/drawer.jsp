@@ -66,7 +66,6 @@
 		<div id="contents">
 			<c:forEach var="i" begin="0" end="${con_ids.size()-1}">
 				<c:set var="con_id" value="${con_ids.get(i)}"/>
-					<p>내가 업로드한 컨텐츠의 id값은 ${con_id}</p>
 					<img src="/Project-P/Profile/getContentsImage?con_id=${con_id}">
 					<video controls src="/Project-P/Profile/getContentsVideo?con_id=${con_id}"></video>
 			</c:forEach>

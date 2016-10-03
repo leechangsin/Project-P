@@ -24,4 +24,9 @@ public class DrawerService {
 		return contentsDao.getCon_ids(nickname);
 	}
 
+	public List<String> getTypes(String nickname) {
+		// TODO Auto-generated method stub
+		return contentsDao.getTypes(nickname);
+	}
+
 }

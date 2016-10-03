@@ -80,6 +80,21 @@ public class ContentsDao {
 			}
 			
 		}, nickname);
+		
+		return result;
+	}
+
+	public List<String> getTypes(String nickname) {
+		// TODO Auto-generated method stub
+		String sql = "select type from contents where writer=?";
+		List<String> result = jdbcTemplate.query(sql, new RowMapper<String>(){
+			@Override
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				return rs.getString("type");
+			}
+		}, nickname);
+		
 		return result;
 	}
 }

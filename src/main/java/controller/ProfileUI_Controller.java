@@ -170,7 +170,23 @@ public class ProfileUI_Controller {
 		Member member = (Member) session.getAttribute("member");
 		String nickname = member.getNickname();
 		List<String> con_ids = drawerService.getCon_ids(nickname);
+		//List<String> listTypes = drawerService.getTypes(nickname);
+		
+		/*
+		for(int i=0; i<tmpTypes.size(); i++){
+			String tmpType = tmpTypes.get(i);
+			if(tmpType != null){
+				String[] types = tmpType.split(",");
+				System.out.println("types.length = " + types.length);
+				for(int j=0; j<types.length; j++)
+					System.out.print("types[" + j + "] = " + types[j] + "    ");
+				System.out.println();
+			}
+		}
+		*/
+		
 		model.addAttribute("con_ids", con_ids);
+		//model.addAttribute("listTypes", listTypes);
 		return "drawer";
 	}
 	
