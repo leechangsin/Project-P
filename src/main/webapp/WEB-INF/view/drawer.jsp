@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/profile.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/drawer.css" type="text/css" media="screen" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PetSi - 펫시</title>
 </head>
@@ -64,11 +64,22 @@
 		</div>
 		<!-- contents -->
 		<div id="contents">
-			<c:forEach var="i" begin="0" end="${con_ids.size()-1}">
-				<c:set var="con_id" value="${con_ids.get(i)}"/>
-					<img src="/Project-P/Profile/getContentsImage?con_id=${con_id}">
-					<video controls src="/Project-P/Profile/getContentsVideo?con_id=${con_id}"></video>
-			</c:forEach>
+			<div class="container-fluid">
+				<div class="row">
+				<c:forEach var="i" begin="0" end="${con_ids.size()-1}">
+					<c:set var="con_id" value="${con_ids.get(i)}"/>
+						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+							<div class="thumbnail">
+								<img src="/Project-P/Profile/getContentsImage?con_id=${con_id}">
+								<video controls src="/Project-P/Profile/getContentsVideo?con_id=${con_id}"></video>
+								<div class="caption">
+									<p>내용이 표시되는 곳입니다. 최대 100자까지 표시됩니다.</p>
+								</div>
+							</div>
+						</div>
+				</c:forEach>
+				</div>
+			</div>
 		</div>
 		<!-- footer -->
 		<div id="footer">

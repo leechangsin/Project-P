@@ -187,6 +187,7 @@ public class ProfileUI_Controller {
 		
 		model.addAttribute("con_ids", con_ids);
 		//model.addAttribute("listTypes", listTypes);
+
 		return "drawer";
 	}
 	
