@@ -30,7 +30,6 @@ public class ContentsDao {
 		return results;
 	}
 
-
 	public void savePicture(Map<String, Object> hashMap) throws SQLException {
 		query.insert("query.savePicture", hashMap);
 	}
@@ -49,18 +48,8 @@ public class ContentsDao {
 				writeForm.getContent(), writeForm.getVideo(), writeForm.getImage(),writeForm.getType());
 	}
 	
-	public Map<String, Object> getPicture() {
-		List<Map<String, Object>> result = query.selectList("query.getPicture");
-		return result.get(0);
-	}
-	
 	public Map<String, Object> getContentsImage(String con_id){
 		List<Map<String, Object>> result = query.selectList("query.getContentsImage", con_id);
-		return result.get(0);
-	}
-	
-	public Map<String, Object> getVideo() {
-		List<Map<String, Object>> result = query.selectList("query.getVideo");
 		return result.get(0);
 	}
 	
@@ -95,6 +84,34 @@ public class ContentsDao {
 			}
 		}, nickname);
 		
+		return result;
+	}
+
+	public List<String> getTitles(String nickname) {
+		// TODO Auto-generated method stub
+		String sql = "select title from contents where writer=?";
+		List<String> result = jdbcTemplate.query(sql, new RowMapper<String>(){
+			@Override
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				return rs.getString("title");
+			}
+		}, nickname);
+		
+		return result;
+	}
+
+	public List<String> getTexts(String nickname) {
+		// TODO Auto-generated method stub
+		String sql = "select text from contents where writer=?";
+		List<String> result = jdbcTemplate.query(sql, new RowMapper<String>(){
+			@Override
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				return rs.getString("text");
+			}
+		}, nickname);
+
 		return result;
 	}
 }

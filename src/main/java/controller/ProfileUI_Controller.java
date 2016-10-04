@@ -170,6 +170,8 @@ public class ProfileUI_Controller {
 		Member member = (Member) session.getAttribute("member");
 		String nickname = member.getNickname();
 		List<String> con_ids = drawerService.getCon_ids(nickname);
+		List<String> titles = drawerService.getTitles(nickname);
+		List<String> texts = drawerService.getTexts(nickname);
 		//List<String> listTypes = drawerService.getTypes(nickname);
 		
 		/*
@@ -186,6 +188,8 @@ public class ProfileUI_Controller {
 		*/
 		
 		model.addAttribute("con_ids", con_ids);
+		model.addAttribute("titles", titles);
+		model.addAttribute("texts", texts);
 		//model.addAttribute("listTypes", listTypes);
 
 		return "drawer";

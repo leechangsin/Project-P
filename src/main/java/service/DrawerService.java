@@ -29,4 +29,14 @@ public class DrawerService {
 		return contentsDao.getTypes(nickname);
 	}
 
+	public List<String> getTitles(String nickname) {
+		// TODO Auto-generated method stub
+		return contentsDao.getTitles(nickname);
+	}
+
+	public List<String> getTexts(String nickname) {
+		// TODO Auto-generated method stub
+		return contentsDao.getTexts(nickname);
+	}
+
 }
