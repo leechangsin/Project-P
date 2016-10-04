@@ -28,6 +28,7 @@
 	
 	<bean id="profileService" class="service.ProfileService">
 		<constructor-arg ref="memberDao"/>
+		<constructor-arg ref="memberInfoDao"/>
 	</bean>
 
 	<bean class="controller.LoginUI_Controller">

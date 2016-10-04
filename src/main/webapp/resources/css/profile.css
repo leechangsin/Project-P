@@ -122,6 +122,13 @@ body{
 	height: 85%;
 }
 
+#contents .profile_image img{
+	width: 150px;
+	height: 150px;
+	margin-bottom: 20px;
+	border-radius: 80px;
+}
+
 /*
  * footer의 CSS영역
  */
