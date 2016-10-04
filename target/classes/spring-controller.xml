@@ -4,6 +4,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
+		
+	<bean id="indexService" class="service.IndexService">
+		<constructor-arg ref="contentsDao" />
+	</bean>
 
 	<bean id="signUpEmailService" class="service.SignUpEmailService">
 		<constructor-arg ref="memberInfoDao" />
@@ -43,7 +47,9 @@
 		<constructor-arg ref="loginRequestService" />
 	</bean>
 
-	<bean class="controller.IndexUI_Controller" />
+	<bean class="controller.IndexUI_Controller">
+		<constructor-arg ref="indexService"/>
+	</bean>
 
 	<bean class="controller.RegistUI_Controller">
 		<constructor-arg ref="signUpEmailService" />

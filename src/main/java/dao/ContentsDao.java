@@ -114,4 +114,48 @@ public class ContentsDao {
 
 		return result;
 	}
+
+	public List<String> getAllCon_id() {
+		// TODO Auto-generated method stub
+		String sql = "select con_id from contents";
+		List<String> result = jdbcTemplate.query(sql, new RowMapper<String>(){
+			@Override
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				return rs.getString("con_id");
+			}
+			
+		});
+		
+		return result;
+	}
+
+	public List<String> getAllTitle() {
+		// TODO Auto-generated method stub
+		String sql = "select title from contents";
+		List<String> result = jdbcTemplate.query(sql, new RowMapper<String>(){
+			@Override
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				return rs.getString("title");
+			}
+		});
+		
+		return result;
+	}
+
+	public List<String> getAllText() {
+		// TODO Auto-generated method stub
+		String sql = "select text from contents";
+		List<String> result = jdbcTemplate.query(sql, new RowMapper<String>(){
+			@Override
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				// TODO Auto-generated method stub
+				return rs.getString("text");
+			}
+			
+		});
+		
+		return result;
+	}
 }

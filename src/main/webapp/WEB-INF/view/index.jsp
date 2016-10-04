@@ -145,11 +145,39 @@
 				<a href="#" class="list-group-item list-item">다섯 번째</a>
 			</div>
 
-			<c:forEach begin="0" end="31">
-				<div class="content">
-					<video src="https://www.youtube.com/watch?v=25y8-5hAAdU" controls preload="metadata"></video>
+			<div class="container-fluid">
+				<div class="row">
+					<c:forEach var="i" begin="0" end="${con_ids.size()-1}">
+						<c:set var="con_id" value="${con_ids.get(i)}"/>
+						<c:set var="title" value="${titles.get(i)}"/>
+						<c:set var="text" value="${texts.get(i)}"/>
+						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+							<div class="thumbnail">
+								<img src="/Project-P/Profile/getContentsImage?con_id=${con_id}">
+								<div class="caption">
+									<p id="thumbnail_title">${title}</p>
+								</div>
+								<button class="btn btn-default" data-target="#layerpop${con_id}" data-toggle="modal">자세히 보기</button>
+								<div class="modal fade" id="layerpop${con_id}">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">×</button>
+												<h4 id="modal-header-title">${title}</h4>
+											</div>
+											<div class="modal-body">
+												<img src="/Project-P/Profile/getContentsImage?con_id=${con_id}">
+												<video controls src="/Project-P/Profile/getContentsVideo?con_id=${con_id}"></video>
+												<textarea rows="10" cols="78" disabled>${text}</textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
 				</div>
-			</c:forEach>
+			</div>
 		</div>
 		<div id="footer">
 			<div class="left_link">
