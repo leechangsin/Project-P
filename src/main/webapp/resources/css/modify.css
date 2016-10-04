@@ -114,6 +114,7 @@ body{
  */
 #contents {
 	margin-top: 6.5%;
+	padding-bottom: 20px;
 	overflow-y: scroll;
 	background-color: #DCDAD9;
 	float: right;
