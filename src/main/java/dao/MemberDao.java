@@ -1,23 +1,23 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
 
 import command.Member;
 import command.RequestType;
 
 public class MemberDao {
 	private JdbcTemplate jdbcTemplate;
+	private SqlSession query;
 	
-	public MemberDao(DataSource dataSource) {
+	public MemberDao(DataSource dataSource, SqlSession query) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
+		this.query = query;
 	}
 
 	public List<Member> selectAll() {
@@ -39,7 +39,7 @@ public class MemberDao {
 		if(requestType == RequestType.Search_Members)
 			sql = "select * from member where nickname like concat('%', ? , '%')";
 		//RegistUI_Controller의 @RequestMapping("SignUpEmail/step4")에서 요청했다면
-		else if(requestType == RequestType.signUpMember)
+		else if(requestType == RequestType.signUpMember || requestType == RequestType.ModifyService)
 			sql = "select nickname from member where nickname = ?";
 
 		List<Member> results = jdbcTemplate.query(sql, new MemberRowMapper(), nickName);
@@ -57,5 +57,22 @@ public class MemberDao {
 		String sql = "select * from member where email=?";
 		Member member = jdbcTemplate.queryForObject(sql, new MemberRowMapper() ,email);
 		return member;
+	}
+
+	public void updateMember(Member member) {
+		// TODO Auto-generated method stub
+		String sql ="update member set nickname=?, intro=?, picture=? where email=?";
+		jdbcTemplate.update(sql, member.getNickname(), member.getIntro(), member.getPicture(), member.getEmail());
+	}
+	
+	public Map<String, Object> getMemberImage(String nickname){
+		List<Map<String, Object>> result = query.selectList("query.getMemberImage", nickname);
+		return result.get(0);
+	}
+
+	public void deleteMember(String email) {
+		// TODO Auto-generated method stub
+		String sql = "delete from member where email=?";
+		jdbcTemplate.update(sql, email);
 	}
 }

@@ -68,7 +68,7 @@ public class ContentsUI_Controller {
 		return "redirect:main";
 	}
 	*/
-	
+/*
 	@RequestMapping("getPicture")
 	public ResponseEntity<byte[]> getPicture(){
 		Map<String, Object> hashMap = contentsDao.getPicture();
@@ -86,7 +86,7 @@ public class ContentsUI_Controller {
 		header.setContentType(MediaType.IMAGE_PNG);
 		return new ResponseEntity<byte[]>(video, header, HttpStatus.OK);
 	}
-	
+*/
 	/*미구현 메서드
 	@RequestMapping("getText")
 	public String getText(){

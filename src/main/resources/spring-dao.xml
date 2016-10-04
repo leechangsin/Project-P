@@ -11,7 +11,7 @@
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost/DevelopDB?characterEncoding=utf8" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost/DevelopDB?useUnicode=true&amp;characterEncoding=utf8" />
 		<property name="user" value="developer" />
 		<property name="password" value="developer" />
 	</bean>
@@ -35,15 +35,13 @@
 	</bean>
 	<bean id="memberDao" class="dao.MemberDao">
 		<constructor-arg ref="dataSource" />
+		<constructor-arg ref="sqlSession" />
 	</bean>
 
 	<bean id="memberInfoDao" class="dao.MemberInfoDao">
 		<constructor-arg ref="dataSource" />
 	</bean>
-	
-	<bean id="Contents" class="command.Contents" />
-	<bean id="Contents_comment" class="command.Contents_comment" />
-	
+
 	<bean id="pwSearchDao" class="dao.PWSearchDao">
 		<constructor-arg ref="dataSource"/>
 	</bean>
