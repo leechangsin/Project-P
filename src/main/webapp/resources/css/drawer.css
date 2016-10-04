@@ -115,6 +115,7 @@ body{
  */
 #contents {
 	margin-top: 6.5%;
+	padding-bottom: 20px;
 	overflow-y: scroll;
 	background-color: #DCDAD9;
 	float: right;
@@ -131,6 +132,15 @@ body{
 	margin-right: 0px;
 	width: 100%;
 	height: 20%;
+}
+
+.thumbnail .btn{
+	width: 100%;
+}
+
+.modal-body img, .modal-body video{
+	width: 100%;
+	height: 50%;
 }
 
 /*

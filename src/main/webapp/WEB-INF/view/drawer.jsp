@@ -66,18 +66,33 @@
 		<div id="contents">
 			<div class="container-fluid">
 				<div class="row">
-				<c:forEach var="i" begin="0" end="${con_ids.size()-1}">
+					<c:forEach var="i" begin="0" end="${con_ids.size()-1}">
 					<c:set var="con_id" value="${con_ids.get(i)}"/>
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 							<div class="thumbnail">
 								<img src="/Project-P/Profile/getContentsImage?con_id=${con_id}">
-								<video controls src="/Project-P/Profile/getContentsVideo?con_id=${con_id}"></video>
 								<div class="caption">
-									<p>내용이 표시되는 곳입니다. 최대 100자까지 표시됩니다.</p>
+									<p id="thumbnail_title">제목이 표시되는 곳입니다. 최대 20자까지 표시됩니다.
+								</div>
+								<button class="btn btn-default" data-target="#layerpop${con_id}" data-toggle="modal">자세히 보기</button>
+								<div class="modal fade" id="layerpop${con_id}">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">×</button>
+												<h4 id="modal-header-title">제목이 표시되는 곳입니다. 최대 20자까지 표시됩니다.</h4>
+											</div>
+											<div class="modal-body">
+												<img src="/Project-P/Profile/getContentsImage?con_id=${con_id}">
+												<video controls src="/Project-P/Profile/getContentsVideo?con_id=${con_id}"></video>
+												<p id="modeal-body-content">내용이 표시되는 곳입니다.
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-				</c:forEach>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -111,4 +126,10 @@
 		</div>
 	</div>
 </body>
+
+<script>
+	$(document).ready(function(){
+		
+	})
+</script>
 </html>
