@@ -28,6 +28,7 @@
 	
 	<bean id="profileService" class="service.ProfileService">
 		<constructor-arg ref="memberDao"/>
+		<constructor-arg ref="memberInfoDao"/>
 	</bean>
 	
 	<bean id="writeService" class="service.WriteService">

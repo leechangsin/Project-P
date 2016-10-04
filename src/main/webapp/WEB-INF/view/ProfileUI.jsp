@@ -64,7 +64,71 @@
 		</div>
 		<!-- contents -->
 		<div id="contents">
-			
+			<c:set var="email" value="${memberInfo.email}"/>
+			<c:set var="birth_date" value="${memberInfo.birth_date}"/>
+			<c:set var="sex" value="${memberInfo.sex}"/>
+			<c:set var="nickname" value="${member.nickname}"/>
+			<c:set var="intro" value="${member.intro}"/>
+			<c:set var="reg_date" value="${memberInfo.reg_date}"/>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">이메일</h3>
+				</div>
+				<div class="panel-body">
+					<label>${email}</label>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">생일</h3>
+				</div>
+				<div class="panel-body">
+					<label>${birth_date}</label>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">성별</h3>
+				</div>
+				<div class="panel-body">
+					<label>${sex}</label>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">닉네임</h3>
+				</div>
+				<div class="panel-body">
+					<label>${nickname}</label>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">자기소개</h3>
+				</div>
+				<div class="panel-body">
+					<label>${intro}</label>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">사진</h3>
+				</div>
+				<div class="panel-body">
+					<div class="profile_image">
+						<img src="/Project-P/Profile/getProfileImage">
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">가입일</h3>
+				</div>
+				<div class="panel-body">
+					<label>${reg_date}</label>
+				</div>
+			</div>
 		</div>
 		<!-- footer -->
 		<div id="footer">

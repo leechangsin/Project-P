@@ -48,7 +48,11 @@ public class ProfileUI_Controller {
 	}
 	
 	@RequestMapping("main")
-	public String showProfileUI(){
+	public String showProfileUI(HttpSession session, Model model){
+		Member member = (Member) session.getAttribute("member");
+		MemberInfo memberInfo = profileService.selectByEmail(member.getEmail());
+		model.addAttribute("member", member);
+		model.addAttribute("memberInfo", memberInfo);
 		return "ProfileUI";
 	}
 	
