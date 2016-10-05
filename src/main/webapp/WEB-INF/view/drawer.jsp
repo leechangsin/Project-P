@@ -128,10 +128,4 @@
 		</div>
 	</div>
 </body>
-
-<script>
-	$(document).ready(function(){
-		
-	})
-</script>
 </html>

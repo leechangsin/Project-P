@@ -21,8 +21,11 @@
 				<a href="/Project-P/"><img src="${pageContext.request.contextPath}/resources/images/logo.png"/></a>
 			</div>
 			<div class="search_area">
-				<input type="text" placeholder="검색하기" size="30">
-				<a href="/Project-P/searchUI/main"><img src="${pageContext.request.contextPath}/resources/images/search.png"/></a>
+				<form method="post" action="/Project-P/Search/main">
+					<button type="submit" class="btn btn-default btn-lg">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>검색하러가기
+					</button>
+				</form>
 			</div>
 			<div class="login_area">
 				<c:if test="${!empty member}">

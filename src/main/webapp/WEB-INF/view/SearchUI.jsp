@@ -21,11 +21,11 @@
 				<a href="/Project-P/"><img src="${pageContext.request.contextPath}/resources/images/logo.png"/></a>
 			</div>
 			<div class="search_area">
-				<form action="/Project-P/Search/search_users">
-				
+				<form method="post" action="/Project-P/Search/main">
+					<button type="submit" class="btn btn-default btn-lg">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>검색하러가기
+					</button>
 				</form>
-				<input type="text" placeholder="검색하기" size="30">
-				<a href="/Project-P/searchUI/main"><img src="${pageContext.request.contextPath}/resources/images/search.png"/></a>
 			</div>
 			<div class="login_area">
 				<c:if test="${!empty member}">
@@ -91,37 +91,24 @@
 		</div>
 		<!-- contents -->
 		<div id="contents">
-			<div class="btn-group btn-group-justified" role="group">
-				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default" autofocus="autofocus">사용자</button>
+			<form action="/Project-P/Search/search_users" method="post">
+				<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요.">
+				<div class="btn-group btn-group-justified" role="group">
+					<div class="btn-group" role="group">
+						<button type="submit" name="requestType" value="사용자" class="btn btn-default">사용자</button>
+					</div>
+					<div class="btn-group" role="group">
+						<button type="submit" name="requestType" value="게시물" class="btn btn-default">게시물</button>
+					</div>
 				</div>
-				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default">게시물</button>
-				</div>
-			</div>
-			<div id="resultBox">
-				<c:if test="${!empty results}">
-					<c:forEach var="i" begin="0" end="${results.size()-1}">
-						<c:set var="result" value="${results.get(i)}" />
-						<div class="media">
-							<div class="media-left media-middle">
-								<a href="#">
-									<img class="media-object" src="/Project-P/SearchUI/getMemberImage?nickname=${result.nickname}">
-								</a>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">${result.nickname}</h4>
-								${result.intro}
-							</div>
-						</div>
-					</c:forEach>
-				</c:if>
-				<c:if test="${empty results}">
-					<img
-						src="${pageContext.request.contextPath}/resources/images/not_found.png">
-					<label> 검색결과가 없습니다.<br> 검색어를 확인바랍니다.
-					</label>
-				</c:if>
+			</form>
+			<div class="resultsBox">
+				<label>
+					원하는 검색어를 입력하시고 사용자를 검색할지, 게시물을 검색할지 선택하세요!
+					
+					검색을 통해 펫시를 더 즐기시기 바랍니다!
+				</label>
+				<img src="${pageContext.request.contextPath}/resources/images/searchUIImage.png">
 			</div>
 		</div>
 		<!-- footer -->
