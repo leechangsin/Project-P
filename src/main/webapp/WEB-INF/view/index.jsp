@@ -31,7 +31,7 @@
 						<img width="50px" height="50px" src="${pageContext.request.contextPath}/resources/images/logout.png">
 					</a>
 				</c:if>
-				<c:if test="${empty member }">
+				<c:if test="${empty member}">
 					<a href="/Project-P/login/main">
 						<img src="${pageContext.request.contextPath}/resources/images/header_icon.png"/>
 						<img src="${pageContext.request.contextPath}/resources/images/login.png"/>

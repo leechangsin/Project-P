@@ -10,7 +10,7 @@
 	<div class="wrapper">
 		<div class="top">
 			<div class="logo">
-				<a href="/Project-P/index">
+				<a href="/Project-P/">
 					<img src="${pageContext.request.contextPath}/resources/images/logo2.png" />
 				</a>
 			</div>
@@ -30,14 +30,13 @@
 				</div>
 
 				<div class="confirmMSG">
-					<label id="nickname">${nickName}</label> <label>님의 이메일은</label>
-					<label id="email">${email}</label> <label>입니다.</label>
+					<label id="nickname">${member.nickname}</label> <label>님의 이메일은</label>
+					<label id="email">${member.email}</label> <label>입니다.</label>
 				</div>
 				
-				<form action="/Project-P/index">
+				<form action="/Project-P/">
 					<div class="startBtn">
 						<input type="submit" id="start" value="시작하기">
-						<input type="hidden" id="email" value="${email}">
 					</div>
 				</form>
 			</div>

@@ -2,6 +2,7 @@ package controller;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import command.CodeAuth;
 import command.EmailForm;
+import command.Member;
 import command.PasswdSet;
 import dao.MemberInfoDao;
 import exceptions.NotFindCodeException;
@@ -102,7 +104,7 @@ public class PW_SearchUI_Controller {
 	}
 	//비밀번호변경 화면에서 패스워드를 두 차례 올바르게 입력했다면 DB에 비밀번호변경 실행 변경이 완료되면 메인UI로 이동
 	@RequestMapping("changePW")
-	public String changePW(PasswdSet passwdSet, Errors errors, Model model) {
+	public String changePW(PasswdSet passwdSet, Errors errors, Model model, HttpSession session) {
 		new PasswdSetValidator().validate(passwdSet, errors);
 		if (errors.hasErrors())
 			return "inputPW";
@@ -110,7 +112,9 @@ public class PW_SearchUI_Controller {
 		pw_searchService.updatePasswd(passwdSet.getEmailAddress(), passwdSet.getPasswd());
 		pw_searchService.deleteCode(passwdSet.getEmailAddress());
 
-		model.addAttribute("email", passwdSet.getEmailAddress());
-		return "IndexUI";
+		Member member = pw_searchService.selectByMember(passwdSet.getEmailAddress());
+		
+		session.setAttribute("member", member);
+		return "redirect:/";
 	}
 }

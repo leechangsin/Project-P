@@ -179,14 +179,9 @@ public class RegistUI_Controller {
 		// 사용자가 입력한 계정정보를 DB에 저장
 		member.setEmail(memberInfo.getEmail());
 		signUpEmailService.signUpMember(member);
-
-		// xxx님 회원가입에 성공했습니다. 라고 뷰에 출력하기 위해 model로 전달
-		model.addAttribute("nickName", member.getNickname());
-		model.addAttribute("email", member.getEmail());
 		
-		//사용자가 입력했던 개인정보를 없애기위한 부분
-		session.invalidate();
-
+		session.setAttribute("member", member);
+		
 		return "SignUpEmailStep4";
 	}
 	/*

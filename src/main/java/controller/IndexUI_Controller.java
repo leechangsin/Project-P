@@ -31,9 +31,9 @@ public class IndexUI_Controller {
 		return "index";
 	}
 
-	@RequestMapping("/index")
+	@RequestMapping("index")
 	public String index() {
-		return "index";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("testUI")

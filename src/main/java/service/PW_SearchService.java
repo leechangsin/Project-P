@@ -11,7 +11,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 
 import command.CodeAuth;
 import command.EmailForm;
+import command.Member;
 import command.MemberInfo;
+import dao.MemberDao;
 import dao.MemberInfoDao;
 import dao.PWSearchDao;
 import exceptions.NotFindCodeException;
@@ -20,11 +22,13 @@ import exceptions.NotMatchEmailException;
 
 public class PW_SearchService {
 	private MemberInfoDao memberInfoDao;
+	private MemberDao memberDao;
 	private PWSearchDao pwSearchDao;
 	private JavaMailSender mailSender;
 	
-	public PW_SearchService(MemberInfoDao memberInfoDao, PWSearchDao pwSearchDao ,JavaMailSender mailSender){
+	public PW_SearchService(MemberInfoDao memberInfoDao, MemberDao memberDao,PWSearchDao pwSearchDao ,JavaMailSender mailSender){
 		this.memberInfoDao = memberInfoDao;
+		this.memberDao = memberDao;
 		this.pwSearchDao = pwSearchDao;
 		this.mailSender = mailSender;
 	}
@@ -89,5 +93,10 @@ public class PW_SearchService {
 	public void confirmCode(String resultEmail, String userEmail){
 		if(!resultEmail.equals(userEmail))
 			throw new NotMatchEmailException();
+	}
+
+	public Member selectByMember(String emailAddress) {
+		// TODO Auto-generated method stub
+		return memberDao.selectByEmail(emailAddress);
 	}
 }

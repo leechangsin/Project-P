@@ -57,12 +57,12 @@ public class LoginUI_Controller {
 			return "LoginUI";
 		}//end try
 		
-		return "index";
+		return "redirect:/";
 	}//end loginRequest(MemberInfo memberInfo, Errors errors)
 	
 	@RequestMapping("logout")
 	public String logoutRequest(HttpSession session){
 		session.invalidate();
-		return "redirect:/index";
+		return "redirect:/";
 	}
 }//end class LoginUI_Controller
