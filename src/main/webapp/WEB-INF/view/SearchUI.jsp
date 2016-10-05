@@ -21,11 +21,7 @@
 				<a href="/Project-P/"><img src="${pageContext.request.contextPath}/resources/images/logo.png"/></a>
 			</div>
 			<div class="search_area">
-				<form method="post" action="/Project-P/Search/main">
-					<button type="submit" class="btn btn-default btn-lg">
-						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>검색하러가기
-					</button>
-				</form>
+				<a href="/Project-P/Search/main"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>검색하러가기</a>
 			</div>
 			<div class="login_area">
 				<c:if test="${!empty member}">
@@ -92,7 +88,7 @@
 		<!-- contents -->
 		<div id="contents">
 			<form action="/Project-P/Search/search_users" method="post">
-				<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요.">
+				<input type="text" name="keyword" required placeholder="검색어를 입력하세요.">
 				<div class="btn-group btn-group-justified" role="group">
 					<div class="btn-group" role="group">
 						<button type="submit" name="requestType" value="사용자" class="btn btn-default">사용자</button>
@@ -104,8 +100,7 @@
 			</form>
 			<div class="resultsBox">
 				<label>
-					원하는 검색어를 입력하시고 사용자를 검색할지, 게시물을 검색할지 선택하세요!
-					
+					검색어를 입력하시고 사용자를 검색할지, 게시물을 검색할지 선택하세요!<br>
 					검색을 통해 펫시를 더 즐기시기 바랍니다!
 				</label>
 				<img src="${pageContext.request.contextPath}/resources/images/searchUIImage.png">

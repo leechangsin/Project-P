@@ -33,17 +33,13 @@ body{
 }
 
 #header .search_area{
-	margin-top: 1%;
-	margin-left: 15%
-}
-
-#header .search_area input{
-	margin-bottom: 10px;
+	margin-top: 30px;
+	margin-left: 18%
 }
 
 #header .login_area{
 	margin-top: 1%;
-	margin-left: 18%
+	margin-left: 28%
 }
 
 #header .login_area .lougout {

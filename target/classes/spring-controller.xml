@@ -8,6 +8,11 @@
 	<bean id="indexService" class="service.IndexService">
 		<constructor-arg ref="contentsDao" />
 	</bean>
+	
+	<bean id="searchService" class="service.SearchService">
+		<constructor-arg ref="memberDao"/>
+		<constructor-arg ref="contentsDao"/>
+	</bean>
 
 	<bean id="signUpEmailService" class="service.SignUpEmailService">
 		<constructor-arg ref="memberInfoDao" />
@@ -61,7 +66,7 @@
 	</bean>
 
 	<bean class="controller.SearchUI_Controller">
-		<constructor-arg ref="memberDao" />
+		<constructor-arg ref="searchService" />
 	</bean>
 
 	<bean class="controller.PW_SearchUI_Controller">

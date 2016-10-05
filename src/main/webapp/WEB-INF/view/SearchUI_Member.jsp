@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/search.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/searchMember.css" type="text/css" media="screen" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PetSi - 펫시</title>
 </head>
@@ -21,11 +21,7 @@
 				<a href="/Project-P/"><img src="${pageContext.request.contextPath}/resources/images/logo.png"/></a>
 			</div>
 			<div class="search_area">
-				<form action="/Project-P/Search/search_users">
-				
-				</form>
-				<input type="text" placeholder="검색하기" size="30">
-				<a href="/Project-P/searchUI/main"><img src="${pageContext.request.contextPath}/resources/images/search.png"/></a>
+				<a href="/Project-P/Search/main"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>검색하러가기</a>
 			</div>
 			<div class="login_area">
 				<c:if test="${!empty member}">
@@ -91,9 +87,10 @@
 		</div>
 		<!-- contents -->
 		<div id="contents">
+			<input type="text" name="keyword" required placeholder="검색어를 입력하세요.">
 			<div class="btn-group btn-group-justified" role="group">
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default" autofocus="autofocus">사용자</button>
+					<button type="button" class="btn btn-default" autofocus>사용자</button>
 				</div>
 				<div class="btn-group" role="group">
 					<button type="button" class="btn btn-default">게시물</button>
@@ -106,7 +103,7 @@
 						<div class="media">
 							<div class="media-left media-middle">
 								<a href="#">
-									<img class="media-object" src="/Project-P/SearchUI/getMemberImage?nickname=${result.nickname}">
+									<img class="media-object" src="/Project-P/Search/getMemberImage?nickname=${result.nickname}">
 								</a>
 							</div>
 							<div class="media-body">
@@ -117,8 +114,7 @@
 					</c:forEach>
 				</c:if>
 				<c:if test="${empty results}">
-					<img
-						src="${pageContext.request.contextPath}/resources/images/not_found.png">
+					<img src="${pageContext.request.contextPath}/resources/images/not_found.png">
 					<label> 검색결과가 없습니다.<br> 검색어를 확인바랍니다.
 					</label>
 				</c:if>
