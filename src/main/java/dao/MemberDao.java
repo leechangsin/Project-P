@@ -67,7 +67,7 @@ public class MemberDao {
 	
 	public Map<String, Object> getMemberImage(String nickname){
 		List<Map<String, Object>> result = query.selectList("query.getMemberImage", nickname);
-		return result.get(0);
+		return result.isEmpty() ? null : result.get(0);
 	}
 
 	public void deleteMember(String email) {

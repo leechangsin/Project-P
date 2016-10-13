@@ -32,7 +32,10 @@ public class SearchService {
 		// TODO Auto-generated method stub
 		return memberDao.getMemberImage(nickname);
 	}
-	
-	
+
+	public Map<String, Object> getContentsImage(String con_id) {
+		// TODO Auto-generated method stub
+		return contentsDao.getContentsImage(con_id);
+	}
 
 }

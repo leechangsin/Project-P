@@ -33,17 +33,13 @@ body{
 }
 
 #header .search_area{
-	margin-top: 1%;
-	margin-left: 15%
-}
-
-#header .search_area input{
-	margin-bottom: 10px;
+	margin-top: 30px;
+	margin-left: 18%
 }
 
 #header .login_area{
 	margin-top: 1%;
-	margin-left: 18%
+	margin-left: 30%
 }
 
 #header .login_area .lougout {
@@ -90,7 +86,6 @@ body{
 	text-decoration: none;
 }
 
-
 #sideinfo .loginbox .active{
 	margin-top: 10px;
 	margin-left: 60px;
@@ -102,6 +97,11 @@ body{
 }
 
 #sideinfo .loginbox .active img{
+	width: 25px;
+	height: 25px;
+}
+
+#sideinfo .loginbox .active .drawer .image_drawer_btn{
 	width: 25px;
 	height: 25px;
 }

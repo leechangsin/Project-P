@@ -87,7 +87,7 @@ body{
 
 #sideinfo .loginbox .profile_nickName{
 	margin-top: 10px;
-	margin-left: 60px;
+	margin-left: 80px;
 }
 
 #sideinfo .loginbox .profile_nickName a, a:link, a:visited, a:hover, a:active{
@@ -98,7 +98,7 @@ body{
 
 #sideinfo .loginbox .active{
 	margin-top: 10px;
-	margin-left: 60px;
+	margin-left: 90px;
 }
 
 #sideinfo .loginbox .active a, a:link, a:visited, a:hover, a:active{
@@ -107,6 +107,11 @@ body{
 }
 
 #sideinfo .loginbox .active img{
+	width: 25px;
+	height: 25px;
+}
+
+#sideinfo .loginbox .active .drawer .image_drawer_btn{
 	width: 25px;
 	height: 25px;
 }
@@ -123,6 +128,7 @@ body{
 #sideinfo .login_regist{
 	padding-top: 40px;
 	padding-left: 40%;
+	margin-bottom: 40px;
 }
 
 #sideinfo .login_regist a, a:link, a:visited, a:hover, a:active{
@@ -141,6 +147,10 @@ body{
 	float: right;
 	width: 75%;
 	height: 85%;
+}
+
+#contents input{
+	width: 100%;
 }
 
 #contents label{

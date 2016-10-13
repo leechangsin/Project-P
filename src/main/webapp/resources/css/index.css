@@ -39,7 +39,7 @@ body{
 
 #header .login_area{
 	margin-top: 1%;
-	margin-left: 28%
+	margin-left: 30%
 }
 
 #header .login_area .lougout {
@@ -70,7 +70,7 @@ body{
 
 #sideinfo .loginbox .profile_nickName{
 	margin-top: 10px;
-	margin-left: 80px;
+	margin-left: 60px;
 }
 
 #sideinfo .loginbox .profile_nickName a, a:link, a:visited, a:hover, a:active{
@@ -83,12 +83,12 @@ body{
 	height: 150px;
 	border-radius: 70px;
 	margin-top: 20px;
-	margin-left: 70px;
+	margin-left: 50px;
 }
 
 #sideinfo .loginbox .active{
 	margin-top: 10px;
-	margin-left: 80px;
+	margin-left: 60px;
 }
 
 #sideinfo .loginbox .active a, a:link, a:visited, a:hover, a:active{

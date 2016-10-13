@@ -5,12 +5,11 @@ public class Contents {
 	String con_id;
 	String writer;
 	String title;
-	String content;
-	String vidio;
+	String text;
+	String video;
 	String image;
 	String hit_number;
 	String like_number;
-	String comment_number;
 	String share_number;
 
 	public String getCon_id() {
@@ -37,20 +36,20 @@ public class Contents {
 		this.title = title;
 	}
 
-	public String getContent() {
-		return content;
+	public String getText() {
+		return text;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setText(String text) {
+		this.text = text;
 	}
 
-	public String getVidio() {
-		return vidio;
+	public String getVideo() {
+		return video;
 	}
 
-	public void setVidio(String vidio) {
-		this.vidio = vidio;
+	public void setVideo(String video) {
+		this.video = video;
 	}
 
 	public String getImage() {
@@ -75,14 +74,6 @@ public class Contents {
 
 	public void setLike_number(String like_number) {
 		this.like_number = like_number;
-	}
-
-	public String getComment_number() {
-		return comment_number;
-	}
-
-	public void setComment_number(String comment_number) {
-		this.comment_number = comment_number;
 	}
 
 	public String getShare_number() {

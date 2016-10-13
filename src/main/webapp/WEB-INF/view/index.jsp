@@ -105,26 +105,24 @@
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
 						<img src="${pageContext.request.contextPath}/resources/images/carousel1testimage.png">
-						<div class="carousel-caption">캐러셀 테스트용 이미지1입니다.</div>
+						<div class="carousel-caption">공기를 캔퍼스 삼아 공중에 그린 그림</div>
 					</div>
 					<div class="item">
 						<img src="${pageContext.request.contextPath}/resources/images/carousel2testimage.png">
-						<div class="carousel-caption">캐러셀 테스트용 이미지2입니다.</div>
+						<div class="carousel-caption">지하100M 암반수보다 힐링되는 영상</div>
 					</div>
 					<div class="item">
 						<img src="${pageContext.request.contextPath}/resources/images/carousel3testimage.png">
-						<div class="carousel-caption">캐러셀 테스트용 이미지3입니다.</div>
+						<div class="carousel-caption">플라스틱 쓰레기로부터 바다를 구하는 또다른 방법</div>
 					</div>
 				</div>
 
 				<!-- Controls -->
-				<a class="left carousel-control" href="#carousel-example-generic"
-					role="button" data-slide="prev"> <span
-					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> 
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 					<span class="sr-only">Previous</span>
-				</a> <a class="right carousel-control" href="#carousel-example-generic"
-					role="button" data-slide="next"> <span
-					class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				</a> <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 					<span class="sr-only">Next</span>
 				</a>
 			</div>
@@ -139,11 +137,11 @@
 					</div>
 				</div>
 				-->
-				<a href="#" class="list-group-item list-item">첫 번째</a> 
-				<a href="#" class="list-group-item list-item">두 번째</a> 
-				<a href="#" class="list-group-item list-item">세 번쨰</a> 
-				<a href="#" class="list-group-item list-item">네 번쨰</a>
-				<a href="#" class="list-group-item list-item">다섯 번째</a>
+				<a href="#" class="list-group-item list-item">잠금화면에 넣으면 딱인 아가들</a> 
+				<a href="#" class="list-group-item list-item">없던 자신감도 생기는 주토피아 속 명대사</a> 
+				<a href="#" class="list-group-item list-item">외국인도 반한 반려동물 용품</a> 
+				<a href="#" class="list-group-item list-item">사람보다 잘생긴 동물들</a>
+				<a href="#" class="list-group-item list-item">반려견 훈련시키기</a>
 			</div>
 
 			<div class="container-fluid">

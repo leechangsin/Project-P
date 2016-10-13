@@ -23,8 +23,7 @@
 				<a href="/Project-P/"><img src="${pageContext.request.contextPath}/resources/images/logo.png"/></a>
 			</div>
 			<div class="search_area">
-				<input type="text" placeholder="검색하기" size="30">
-				<a href="/Project-P/searchUI/main"><img src="${pageContext.request.contextPath}/resources/images/search.png"/></a>
+				<a href="/Project-P/Search/main"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>검색하러가기</a>
 			</div>
 			<div class="login_area">
 				<c:if test="${!empty member}">
@@ -56,7 +55,10 @@
 						<a href="/Project-P/Profile/write"><img src="${pageContext.request.contextPath}/resources/images/write_icon.png">글쓰기</a>
 					</div>
 					<div class="drawer">
-						<a href="/Project-P/Profile/drawer"><img src="${pageContext.request.contextPath}/resources/images/drawer_icon.png">보관함</a>
+						<form action="/Project-P/Profile/drawer" method="post">
+							<input type="hidden" name="nickname" value="${nickName}">
+							<input type="image" class="image_drawer_btn" src="${pageContext.request.contextPath}/resources/images/drawer_icon.png">보관함
+						</form>
 					</div>
 					<div class="modify">
 						<a href="/Project-P/Profile/modify"><img src="${pageContext.request.contextPath}/resources/images/cog_icon.png">정보수정</a>

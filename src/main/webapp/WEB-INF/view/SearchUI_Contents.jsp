@@ -87,34 +87,50 @@
 		</div>
 		<!-- contents -->
 		<div id="contents">
-			<div class="btn-group btn-group-justified" role="group">
-				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default">사용자</button>
+			<form action="/Project-P/Search/search_users" method="post">
+				<input type="text" name="keyword" required placeholder="검색어를 입력하세요.">
+				<div class="btn-group btn-group-justified" role="group">
+					<div class="btn-group" role="group">
+						<button type="submit" name="requestType" value="사용자" class="btn btn-default">사용자</button>
+					</div>
+					<div class="btn-group" role="group">
+						<button type="submit" name="requestType" value="게시물" class="btn btn-default" autofocus>게시물</button>
+					</div>
 				</div>
-				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default" autofocus>게시물</button>
-				</div>
-			</div>
-			<div id="resultBox">
+			</form>
+			<div class="resultBox">
 				<c:if test="${!empty results}">
 					<c:forEach var="i" begin="0" end="${results.size()-1}">
 						<c:set var="result" value="${results.get(i)}" />
 						<div class="media">
-							<div class="media-left media-middle">
-								<a href="#">
-									<img class="media-object" src="/Project-P/SearchUI/getMemberImage?nickname=${result.nickname}">
-								</a>
+							<div class="media-left">
+								<img src="/Project-P/Search/getContentsImage?con_id=${result.con_id}">
 							</div>
 							<div class="media-body">
-								<h4 class="media-heading">${result.nickname}</h4>
-								${result.intro}
+								<p><strong>제목 : </strong> ${result.title}</p>
+								<p><strong>내용 : </strong> ${result.text}</p>
+								<button class="btn btn-default" data-target="#layerpop${result.con_id}" data-toggle="modal">자세히보기</button>
+								<div class="modal fade" id="layerpop${result.con_id}">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">×</button>
+												<h4 id="modal-header-title">${result.title}</h4>
+											</div>
+											<div class="modal-body">
+												<img src="/Project-P/Search/getContentsImage?con_id=${result.con_id}">
+												<video controls src="/Project-P/Search/getContentsVideo?con_id=${result.con_id}"></video>
+												<textarea rows="10" cols="78" disabled>${result.text}</textarea>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</c:forEach>
 				</c:if>
 				<c:if test="${empty results}">
-					<img
-						src="${pageContext.request.contextPath}/resources/images/not_found.png">
+					<img src="${pageContext.request.contextPath}/resources/images/not_found.png">
 					<label> 검색결과가 없습니다.<br> 검색어를 확인바랍니다.
 					</label>
 				</c:if>

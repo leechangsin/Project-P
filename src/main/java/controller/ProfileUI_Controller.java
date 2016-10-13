@@ -170,9 +170,9 @@ public class ProfileUI_Controller {
 	}
 	
 	@RequestMapping("drawer")
-	public String drawer(HttpSession session, Model model){
-		Member member = (Member) session.getAttribute("member");
-		String nickname = member.getNickname();
+		public String drawer(HttpServletRequest request ,Model model){
+		String nickname = request.getParameter("nickname");
+		
 		List<String> con_ids = drawerService.getCon_ids(nickname);
 		List<String> titles = drawerService.getTitles(nickname);
 		List<String> texts = drawerService.getTexts(nickname);

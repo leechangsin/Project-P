@@ -61,10 +61,6 @@
 		<constructor-arg ref="signUpEmailService" />
 	</bean>
 
-	<bean class="controller.ContentsUI_Controller">
-		<constructor-arg ref="contentsDao" />
-	</bean>
-
 	<bean class="controller.SearchUI_Controller">
 		<constructor-arg ref="searchService" />
 	</bean>

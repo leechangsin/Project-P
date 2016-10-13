@@ -56,9 +56,10 @@
 							</a>
 						</div>
 						<div class="drawer">
-							<a href="/Project-P/Profile/drawer">
-								<img src="${pageContext.request.contextPath}/resources/images/drawer_icon.png">보관함
-							</a>
+							<form action="/Project-P/Profile/drawer" method="post">
+								<input type="hidden" name="nickname" value="${nickName}">
+								<input type="image" class="image_drawer_btn" src="${pageContext.request.contextPath}/resources/images/drawer_icon.png">보관함
+							</form>
 						</div>
 						<div class="modify">
 							<a href="/Project-P/Profile/modify">
@@ -100,7 +101,7 @@
 			</form>
 			<div class="resultsBox">
 				<label>
-					검색어를 입력하시고 사용자를 검색할지, 게시물을 검색할지 선택하세요!<br>
+					검색어를 입력하시고 사용자를 검색하려면 사용자버튼을, 게시물을 검색하려면 게시물버튼을 선택하세요!<br>
 					검색을 통해 펫시를 더 즐기시기 바랍니다!
 				</label>
 				<img src="${pageContext.request.contextPath}/resources/images/searchUIImage.png">

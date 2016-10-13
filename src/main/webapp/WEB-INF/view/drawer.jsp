@@ -42,60 +42,90 @@
 		<!-- sideinfo -->
 		<div id="sideinfo">
 			<div class="loginbox">
-				<c:set var="nickName" value="${member.nickname}" />
-				<div class="profile_image">
-					<a href="/Project-P/Profile/main"><img src="/Project-P/Profile/getProfileImage"></a>
-				</div>
-				<div class="profile_nickName">
-					<a href="/Project-P/Profile/main">${nickName}</a>
-				</div>
-				<div class="active">
-					<div class="write">
-						<a href="/Project-P/Profile/write"><img src="${pageContext.request.contextPath}/resources/images/write_icon.png">글쓰기</a>
+				<c:if test="${!empty member}">
+					<c:set var="nickName" value="${member.nickname}" />
+					<div class="profile_image">
+						<a href="/Project-P/Profile/main"><img src="/Project-P/Profile/getProfileImage"></a>
 					</div>
-					<div class="drawer">
-						<a href="/Project-P/Profile/drawer"><img src="${pageContext.request.contextPath}/resources/images/drawer_icon.png">보관함</a>
+					<div class="profile_nickName">
+						<a href="/Project-P/Profile/main">${nickName}</a>
 					</div>
-					<div class="modify">
-						<a href="/Project-P/Profile/modify"><img src="${pageContext.request.contextPath}/resources/images/cog_icon.png">정보수정</a>
+					<div class="active">
+						<div class="write">
+							<a href="/Project-P/Profile/write">
+								<img src="${pageContext.request.contextPath}/resources/images/write_icon.png">글쓰기
+							</a>
+						</div>
+						<div class="drawer">
+							<form action="/Project-P/Profile/drawer" method="post">
+								<input type="hidden" name="nickname" value="${nickName}">
+								<input type="image" class="image_drawer_btn" src="${pageContext.request.contextPath}/resources/images/drawer_icon.png">보관함
+							</form>
+						</div>
+						<div class="modify">
+							<a href="/Project-P/Profile/modify">
+								<img src="${pageContext.request.contextPath}/resources/images/cog_icon.png">정보수정
+							</a>
+						</div>
 					</div>
-				</div>
+				</c:if>
+				<c:if test="${empty member}">
+				<!-- 여기서 요청하고 로그인하고 나면 Index로 돌아가게된다... 요청한뷰(URL)를 알아내서 컨트롤러로 반환한 다음에 로그인 처리를 하고
+				요청한 뷰로 돌아오도록 고쳐야한다. -->
+					<div class="login_title">
+						<label>로그인하세요.<br> 더욱 즐거워집니다!
+						</label><br>
+					</div>
+					<div class="login_image">
+						<a href="/Project-P/login/main">
+							<img src="${pageContext.request.contextPath}/resources/images/login1.png">
+						</a>
+					</div>
+					<div class="login_regist">
+						<a href="/Project-P/regist/main">회원가입</a>
+					</div>
+				</c:if>
 			</div>
 		</div>
 		<!-- contents -->
 		<div id="contents">
 			<div class="container-fluid">
-				<div class="row">
-					<c:forEach var="i" begin="0" end="${con_ids.size()-1}">
-						<c:set var="con_id" value="${con_ids.get(i)}"/>
-						<c:set var="title" value="${titles.get(i)}"/>
-						<c:set var="text" value="${texts.get(i)}"/>
-						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							<div class="thumbnail">
-								<img src="/Project-P/Profile/getContentsImage?con_id=${con_id}">
-								<div class="caption">
-									<p id="thumbnail_title">${title}</p>
-								</div>
-								<button class="btn btn-default" data-target="#layerpop${con_id}" data-toggle="modal">자세히 보기</button>
-								<div class="modal fade" id="layerpop${con_id}">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal">×</button>
-												<h4 id="modal-header-title">${title}</h4>
-											</div>
-											<div class="modal-body">
-												<img src="/Project-P/Profile/getContentsImage?con_id=${con_id}">
-												<video controls src="/Project-P/Profile/getContentsVideo?con_id=${con_id}"></video>
-												<textarea rows="10" cols="78" disabled>${text}</textarea>
+				<c:if test="${!empty con_ids}">
+					<div class="row">
+						<c:forEach var="i" begin="0" end="${con_ids.size()-1}">
+							<c:set var="con_id" value="${con_ids.get(i)}" />
+							<c:set var="title" value="${titles.get(i)}" />
+							<c:set var="text" value="${texts.get(i)}" />
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+								<div class="thumbnail">
+									<img src="/Project-P/Profile/getContentsImage?con_id=${con_id}">
+									<div class="caption">
+										<p id="thumbnail_title">${title}</p>
+									</div>
+									<button class="btn btn-default" data-target="#layerpop${con_id}" data-toggle="modal">자세히보기</button>
+									<div class="modal fade" id="layerpop${con_id}">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal">×</button>
+													<h4 id="modal-header-title">${title}</h4>
+												</div>
+												<div class="modal-body">
+													<img src="/Project-P/Profile/getContentsImage?con_id=${con_id}">
+													<video controls src="/Project-P/Profile/getContentsVideo?con_id=${con_id}"></video>
+													<textarea rows="10" cols="78" disabled>${text}</textarea>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</c:forEach>
-				</div>
+						</c:forEach>
+					</div>
+				</c:if>
+				<c:if test="${empty con_ids}">
+					<p>올린 게시물이 없습니다.
+				</c:if>
 			</div>
 		</div>
 		<!-- footer -->

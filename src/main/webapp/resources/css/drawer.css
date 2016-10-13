@@ -80,9 +80,18 @@ body{
 	margin-left: 50px;
 }
 
+#sideinfo .login_title{
+	padding-top: 25%;
+	padding-left: 30%;
+}
+
+#sideinfo .login_title label{
+	color: #DD5053;
+}
+
 #sideinfo .loginbox .profile_nickName{
 	margin-top: 10px;
-	margin-left: 60px;
+	margin-left: 80px;
 }
 
 #sideinfo .loginbox .profile_nickName a, a:link, a:visited, a:hover, a:active{
@@ -93,7 +102,7 @@ body{
 
 #sideinfo .loginbox .active{
 	margin-top: 10px;
-	margin-left: 60px;
+	margin-left: 90px;
 }
 
 #sideinfo .loginbox .active a, a:link, a:visited, a:hover, a:active{
@@ -106,8 +115,29 @@ body{
 	height: 25px;
 }
 
+#sideinfo .loginbox .active .drawer .image_drawer_btn{
+	width: 25px;
+	height: 25px;
+}
+
 #sideinfo .loginbox .write, #sideinfo .loginbox .drawer, #sideinfo .loginbox .modify{
 	margin-bottom: 10px;
+}
+
+#sideinfo .login_image img{
+	padding-top: 10px;
+	padding-left: 35%;
+}
+
+#sideinfo .login_regist{
+	padding-top: 40px;
+	padding-left: 40%;
+	margin-bottom: 40px;
+}
+
+#sideinfo .login_regist a, a:link, a:visited, a:hover, a:active{
+	color: #DD5053;
+	text-decoration: underline;
 }
 
 /*

@@ -56,9 +56,10 @@
 							</a>
 						</div>
 						<div class="drawer">
-							<a href="/Project-P/Profile/drawer">
-								<img src="${pageContext.request.contextPath}/resources/images/drawer_icon.png">보관함
-							</a>
+							<form action="/Project-P/Profile/drawer" method="post">
+								<input type="hidden" name="nickname" value="${nickName}">
+								<input type="image" class="image_drawer_btn" src="${pageContext.request.contextPath}/resources/images/drawer_icon.png">보관함
+							</form>
 						</div>
 						<div class="modify">
 							<a href="/Project-P/Profile/modify">
@@ -87,28 +88,31 @@
 		</div>
 		<!-- contents -->
 		<div id="contents">
-			<input type="text" name="keyword" required placeholder="검색어를 입력하세요.">
-			<div class="btn-group btn-group-justified" role="group">
-				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default" autofocus>사용자</button>
+			<form action="/Project-P/Search/search_users" method="post">
+				<input type="text" name="keyword" required placeholder="검색어를 입력하세요.">
+				<div class="btn-group btn-group-justified" role="group">
+					<div class="btn-group" role="group">
+						<button type="submit" name="requestType" value="사용자" class="btn btn-default" autofocus>사용자</button>
+					</div>
+					<div class="btn-group" role="group">
+						<button type="submit" name="requestType" value="게시물" class="btn btn-default">게시물</button>
+					</div>
 				</div>
-				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default">게시물</button>
-				</div>
-			</div>
-			<div id="resultBox">
+			</form>
+			<div class="resultBox">
 				<c:if test="${!empty results}">
 					<c:forEach var="i" begin="0" end="${results.size()-1}">
 						<c:set var="result" value="${results.get(i)}" />
 						<div class="media">
-							<div class="media-left media-middle">
-								<a href="#">
-									<img class="media-object" src="/Project-P/Search/getMemberImage?nickname=${result.nickname}">
-								</a>
+							<div class="media-left">
+								<form action="/Project-P/Profile/drawer" method="post">
+									<input type="hidden" name="nickname" value="${result.nickname}">
+									<input type="image" class="imagebtn" src="/Project-P/Search/getMemberImage?nickname=${result.nickname}">
+								</form>
 							</div>
 							<div class="media-body">
-								<h4 class="media-heading">${result.nickname}</h4>
-								${result.intro}
+								<p><strong>닉네임 : </strong> ${result.nickname}</p>
+								<p><strong>자기소개 : </strong>${result.intro}</p>
 							</div>
 						</div>
 					</c:forEach>
